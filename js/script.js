@@ -16,7 +16,7 @@ function countdown() {
 };
 
 const startButton = document.getElementById("start");
-startButton.addEventListener("click", countdown());
+startButton.addEventListener("click", countdown);
 
 // View
 function renderTime() {
