@@ -1,6 +1,7 @@
 // Model
 const stopWatch = {
-  timeDisplay: 0,
+  seconds: 0,
+  miliseconds: 0,
   waitingForPause: false,
 };
 
@@ -18,7 +19,7 @@ function countdown() {
   if (!waitingForPause) {
     stopWatch.waitingForPause = true;
     interval = setInterval(function () {
-      stopWatch.timeDisplay += 1;
+      stopWatch.seconds += 1;
       renderTime();
     }, 1000);
     console.log(stopWatch.waitingForPause);
@@ -32,7 +33,7 @@ function countdown() {
 function resetCountdown() {
   const { waitingForPause } = stopWatch;
   if(!waitingForPause) {
-    stopWatch.timeDisplay = 0;
+    stopWatch.seconds = 0;
   }
   renderTime();
 }
@@ -40,7 +41,7 @@ function resetCountdown() {
 // View
 function renderTime() {
   const timeDisplay = document.getElementById("display");
-  timeDisplay.value = stopWatch.timeDisplay;
+  timeDisplay.value = `${stopWatch.seconds}.${stopWatch.miliseconds}`;
   timeDisplay.style.textAlign = "end";
 }
 
