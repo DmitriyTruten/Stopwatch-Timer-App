@@ -2,6 +2,7 @@
 const stopWatch = {
   seconds: 0,
   miliseconds: 0,
+  minutes: 0,
   waitingForPause: false,
 };
 
@@ -29,11 +30,13 @@ function StartCountdown() {
 function handleCountdown() {
   interval = setInterval(function () {
     stopWatch.miliseconds += 1;
-    if(stopWatch.miliseconds === 10) {
-
-    } else if(stopWatch.miliseconds === 100) {
+    if (stopWatch.miliseconds === 100) {
       stopWatch.seconds += 1;
       stopWatch.miliseconds = 0;
+    }
+    if(stopWatch.seconds === 60) {
+      stopWatch.minutes += 1;
+      stopWatch.seconds = 0;
     }
     renderTime();
   }, 10);
@@ -42,20 +45,12 @@ function handleCountdown() {
 
 function resetCountdown() {
   const { waitingForPause } = stopWatch;
-  if(!waitingForPause) {
+  if (!waitingForPause) {
     stopWatch.seconds = 0;
     stopWatch.miliseconds = 0;
+    stopWatch.minutes = 0;
   }
   renderTime();
-}
-
-function checkSeconds() {
-  const { seconds } = stopWatch;
-  if (seconds < 10) {
-    return "0" + stopWatch.seconds;
-  } else {
-    return stopWatch.seconds;
-  }
 }
 
 function checkMiliseconds() {
@@ -67,10 +62,28 @@ function checkMiliseconds() {
   }
 }
 
+function checkSeconds() {
+  const { seconds } = stopWatch;
+  if (seconds < 10) {
+    return "0" + stopWatch.seconds;
+  } else {
+    return stopWatch.seconds;
+  }
+}
+
+function checkMinutes() {
+  const { minutes } = stopWatch;
+  if (minutes < 10) {
+    return "0" + stopWatch.minutes;
+  } else {
+    return stopWatch.minutes;
+  }
+}
+
 // View
 function renderTime() {
   const timeDisplay = document.getElementById("display");
-  timeDisplay.value = checkSeconds() + "." + checkMiliseconds();
+  timeDisplay.value = checkMinutes() + ":" + checkSeconds() + "." + checkMiliseconds();
   timeDisplay.style.textAlign = "end";
 }
 
