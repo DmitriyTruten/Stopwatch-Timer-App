@@ -15,6 +15,9 @@ startButton.addEventListener("click", StartCountdown);
 const resetButton = document.getElementById("reset");
 resetButton.addEventListener("click", resetCountdown);
 
+const segmentButton = document.getElementById("segment");
+segmentButton.addEventListener("click", createSegment);
+
 function StartCountdown() {
   const { waitingForPause } = stopWatch;
   if (!waitingForPause) {
@@ -23,7 +26,6 @@ function StartCountdown() {
   } else if (waitingForPause) {
     clearInterval(interval);
     stopWatch.waitingForPause = false;
-    console.log(stopWatch.waitingForPause);
   }
 }
 
@@ -34,23 +36,32 @@ function handleCountdown() {
       stopWatch.seconds += 1;
       stopWatch.miliseconds = 0;
     }
-    if(stopWatch.seconds === 60) {
+    if (stopWatch.seconds === 60) {
       stopWatch.minutes += 1;
       stopWatch.seconds = 0;
     }
     renderTime();
   }, 10);
-  console.log(stopWatch.waitingForPause);
 }
 
 function resetCountdown() {
+  const segmentContainer = document.getElementById("segment-container");
   const { waitingForPause } = stopWatch;
   if (!waitingForPause) {
     stopWatch.seconds = 0;
     stopWatch.miliseconds = 0;
     stopWatch.minutes = 0;
+    segmentContainer.innerHTML = "";
   }
   renderTime();
+}
+
+function createSegment() {
+  const segmentContainer = document.getElementById("segment-container");
+  const segment = document.createElement("div");
+  segment.innerHTML =
+    checkMinutes() + ":" + checkSeconds() + "." + checkMiliseconds();
+  segmentContainer.appendChild(segment);
 }
 
 function checkMiliseconds() {
@@ -83,7 +94,8 @@ function checkMinutes() {
 // View
 function renderTime() {
   const timeDisplay = document.getElementById("display");
-  timeDisplay.value = checkMinutes() + ":" + checkSeconds() + "." + checkMiliseconds();
+  timeDisplay.value =
+    checkMinutes() + ":" + checkSeconds() + "." + checkMiliseconds();
   timeDisplay.style.textAlign = "end";
 }
 
