@@ -7,25 +7,35 @@ const stopWatch = {
 let interval;
 
 // Controller
+const startButton = document.getElementById("start");
+startButton.addEventListener("click", countdown);
+
+const resetButton = document.getElementById("reset");
+resetButton.addEventListener("click", resetCountdown);
+
 function countdown() {
-  const { waitingForPause } = stopWatch; 
-  if (waitingForPause === false) {
+  const { waitingForPause } = stopWatch;
+  if (!waitingForPause) {
     stopWatch.waitingForPause = true;
-    interval = setInterval(function() {
+    interval = setInterval(function () {
       stopWatch.timeDisplay += 1;
       renderTime();
     }, 1000);
-    console.log(stopWatch.waitingForPause)
-  } else if(waitingForPause) {
-    clearInterval(interval)
+    console.log(stopWatch.waitingForPause);
+  } else if (waitingForPause) {
+    clearInterval(interval);
     stopWatch.waitingForPause = false;
-    console.log(stopWatch.waitingForPause)
+    console.log(stopWatch.waitingForPause);
   }
 }
-console.log(stopWatch.waitingForPause)
 
-const startButton = document.getElementById("start");
-startButton.addEventListener("click", countdown);
+function resetCountdown() {
+  const { waitingForPause } = stopWatch;
+  if(!waitingForPause) {
+    stopWatch.timeDisplay = 0;
+  }
+  renderTime();
+}
 
 // View
 function renderTime() {
