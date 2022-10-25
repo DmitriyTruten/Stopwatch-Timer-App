@@ -6,6 +6,8 @@ const stopWatch = {
   waitingForPause: false,
 };
 
+const segmentStopWatch = Object.assign({}, stopWatch);
+
 let interval;
 
 // Controller
@@ -21,27 +23,44 @@ segmentButton.addEventListener("click", createSegment);
 function StartCountdown() {
   const { waitingForPause } = stopWatch;
   if (!waitingForPause) {
+    startButton.innerHTML = "Stop";
     stopWatch.waitingForPause = true;
-    handleCountdown();
+    handleCountdown("stopWatch");
   } else if (waitingForPause) {
+    startButton.innerHTML = "Start";
     clearInterval(interval);
     stopWatch.waitingForPause = false;
   }
 }
 
-function handleCountdown() {
-  interval = setInterval(function () {
-    stopWatch.miliseconds += 1;
-    if (stopWatch.miliseconds === 100) {
-      stopWatch.seconds += 1;
-      stopWatch.miliseconds = 0;
-    }
-    if (stopWatch.seconds === 60) {
-      stopWatch.minutes += 1;
-      stopWatch.seconds = 0;
-    }
-    renderTime();
-  }, 10);
+function handleCountdown(value) {
+  if (value === "stopWatch") {
+    interval = setInterval(function () {
+      stopWatch.miliseconds += 1;
+      if (stopWatch.miliseconds === 100) {
+        stopWatch.seconds += 1;
+        stopWatch.miliseconds = 0;
+      }
+      if (stopWatch.seconds === 60) {
+        stopWatch.minutes += 1;
+        stopWatch.seconds = 0;
+      }
+      renderTime();
+    }, 10);
+  } else {
+    interval = setInterval(function () {
+      segmentStopWatch.miliseconds += 1;
+      if (stopWatch.miliseconds === 100) {
+        segmentStopWatch.seconds += 1;
+        segmentStopWatch.miliseconds = 0;
+      }
+      if (segmentStopWatch.seconds === 60) {
+        segmentStopWatch.minutes += 1;
+        segmentStopWatch.seconds = 0;
+      }
+      renderTime();
+    }, 10);
+  }
 }
 
 function resetCountdown() {
@@ -62,40 +81,84 @@ function createSegment() {
   segment.innerHTML =
     checkMinutes() + ":" + checkSeconds() + "." + checkMiliseconds();
   segmentContainer.appendChild(segment);
+  createSegmentCountdown();
 }
 
-function checkMiliseconds() {
-  const { miliseconds } = stopWatch;
-  if (miliseconds < 10) {
-    return "0" + stopWatch.miliseconds;
+function createSegmentCountdown() {
+  const segmentDisplay = document.getElementById("segment-display");
+  segmentDisplay.innerHTML = handleCountdown("segmentStopWatch");
+}
+
+function checkMiliseconds(value) {
+  if(value === "stopWatch") {
+    const { miliseconds } = stopWatch;
+    if (miliseconds < 10) {
+      return "0" + stopWatch.miliseconds;
+    } else {
+      return stopWatch.miliseconds;
+    }
   } else {
-    return stopWatch.miliseconds;
+    const { miliseconds } = segmentStopWatch;
+    if (miliseconds < 10) {
+      return "0" + segmentStopWatch.miliseconds;
+    } else {
+      return segmentStopWatch.miliseconds;
+    }
   }
 }
 
-function checkSeconds() {
-  const { seconds } = stopWatch;
-  if (seconds < 10) {
-    return "0" + stopWatch.seconds;
+function checkSeconds(value) {
+  if(value === "stopWatch") {
+    const { seconds } = stopWatch;
+    if (seconds < 10) {
+      return "0" + stopWatch.seconds;
+    } else {
+      return stopWatch.seconds;
+    }
   } else {
-    return stopWatch.seconds;
+    const { seconds } = segmentStopWatch;
+    if (seconds < 10) {
+      return "0" + segmentStopWatch.seconds;
+    } else {
+      return segmentStopWatch.seconds;
+    }
   }
 }
 
-function checkMinutes() {
-  const { minutes } = stopWatch;
-  if (minutes < 10) {
-    return "0" + stopWatch.minutes;
+function checkMinutes(value) {
+  if(value === "stopWatch") {
+    const { minutes } = stopWatch;
+    if (minutes < 10) {
+      return "0" + stopWatch.minutes;
+    } else {
+      return stopWatch.minutes;
+    }
   } else {
-    return stopWatch.minutes;
+    const { minutes } = segmentStopWatch;
+    if (minutes < 10) {
+      return "0" + segmentStopWatch.minutes;
+    } else {
+      return segmentStopWatch.minutes;
+    }
   }
 }
 
 // View
 function renderTime() {
   const timeDisplay = document.getElementById("display");
+  const segmentDisplay = document.getElementById("segment-display");
   timeDisplay.value =
-    checkMinutes() + ":" + checkSeconds() + "." + checkMiliseconds();
+    checkMinutes("stopWatch") +
+    ":" +
+    checkSeconds("stopWatch") +
+    "." +
+    checkMiliseconds("stopWatch");
+  segmentDisplay.value =
+    checkMinutes("segmentStopWatch") +
+    ":" +
+    checkSeconds("segmentStopWatch") +
+    "." +
+    checkMiliseconds("segmentStopWatch");
   timeDisplay.style.textAlign = "end";
 }
 
