@@ -18,11 +18,7 @@ function countdown() {
   const { waitingForPause } = stopWatch;
   if (!waitingForPause) {
     stopWatch.waitingForPause = true;
-    interval = setInterval(function () {
-      stopWatch.seconds += 1;
-      renderTime();
-    }, 1000);
-    console.log(stopWatch.waitingForPause);
+    handleCountdown();
   } else if (waitingForPause) {
     clearInterval(interval);
     stopWatch.waitingForPause = false;
@@ -30,10 +26,25 @@ function countdown() {
   }
 }
 
+function handleCountdown() {
+  interval = setInterval(function () {
+    stopWatch.miliseconds += 1;
+    if(stopWatch.miliseconds === 10) {
+
+    } else if(stopWatch.miliseconds === 100) {
+      stopWatch.seconds += 1;
+      stopWatch.miliseconds = 0;
+    }
+    renderTime();
+  }, 10);
+  console.log(stopWatch.waitingForPause);
+}
+
 function resetCountdown() {
   const { waitingForPause } = stopWatch;
   if(!waitingForPause) {
     stopWatch.seconds = 0;
+    stopWatch.miliseconds = 0;
   }
   renderTime();
 }
@@ -41,7 +52,12 @@ function resetCountdown() {
 // View
 function renderTime() {
   const timeDisplay = document.getElementById("display");
-  timeDisplay.value = `${stopWatch.seconds}.${stopWatch.miliseconds}`;
+  const { miliseconds } = stopWatch;
+  if(miliseconds < 10) {
+    timeDisplay.value = stopWatch.seconds + "." + "0" + stopWatch.miliseconds;
+  } else {
+    timeDisplay.value = stopWatch.seconds + "." + stopWatch.miliseconds;
+  }
   timeDisplay.style.textAlign = "end";
 }
 
