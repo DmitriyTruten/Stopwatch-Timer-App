@@ -32,6 +32,7 @@ function StartCountdown() {
     startButton.innerHTML = "Stop";
     segmentButton.disabled = false;
     resetButton.disabled = true;
+    segmentStopWatch.waitingForPause = true;
     console.log("StopWatch: ", stopWatch);
     console.log("SegmentStopWatch: ", segmentStopWatch);
     handleCountdown("stopWatch");
