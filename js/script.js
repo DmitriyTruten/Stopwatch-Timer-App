@@ -35,6 +35,9 @@ function StartCountdown() {
     console.log("StopWatch: ", stopWatch);
     console.log("SegmentStopWatch: ", segmentStopWatch);
     handleCountdown("stopWatch");
+    if (segmentButton.value === 'on') {
+      handleCountdown('segment');
+    }
   } else if (waitingForPause) {
     stopWatch.waitingForPause = false;
     segmentStopWatch.waitingForPause = false;
@@ -45,11 +48,7 @@ function StartCountdown() {
     startButton.innerHTML = "Start";
     console.log("StopWatch: ", stopWatch);
     console.log("SegmentStopWatch: ", segmentStopWatch);
-  } else if (!waitingForPause && segmentStopWatch.countdown) {
-    stopWatch.waitingForPause = true;
-    segmentStopWatch.waitingForPause = true;
-    handleCountdown("segment");
-  }
+  } 
 }
 
 function handleCountdown(value) {
