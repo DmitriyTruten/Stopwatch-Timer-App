@@ -35,24 +35,24 @@ function StartCountdown() {
     console.log("StopWatch: ", stopWatch);
     console.log("SegmentStopWatch: ", segmentStopWatch);
     handleCountdown("stopWatch");
-    if (segmentButton.value === 'on') {
-      handleCountdown('segment');
+    if (segmentButton.value === "on") {
+      handleCountdown("segment");
     }
   } else if (waitingForPause) {
     stopWatch.waitingForPause = false;
     segmentStopWatch.waitingForPause = false;
     clearInterval(interval);
-    clearInterval(segmentInterval)
+    clearInterval(segmentInterval);
     resetButton.disabled = false;
     segmentButton.disabled = true;
     startButton.innerHTML = "Start";
     console.log("StopWatch: ", stopWatch);
     console.log("SegmentStopWatch: ", segmentStopWatch);
-  } 
+  }
 }
 
 function handleCountdown(value) {
-  if(value === 'stopWatch') {
+  if (value === "stopWatch") {
     interval = setInterval(function () {
       stopWatch.miliseconds += 1;
       if (stopWatch.miliseconds === 100) {
@@ -81,18 +81,30 @@ function handleCountdown(value) {
   }
 }
 
+function resetStopWatch() {
+  stopWatch.seconds = 0;
+  stopWatch.miliseconds = 0;
+  stopWatch.minutes = 0;
+  stopWatch.countdown = "off";
+}
+
+function resetSegmentStopWatch() {
+  segmentStopWatch.seconds = 0;
+  segmentStopWatch.miliseconds = 0;
+  segmentStopWatch.minutes = 0;
+  segmentStopWatch.countdown = "off";
+}
+
+
 function resetCountdown() {
   const segmentContainer = document.getElementById("segment-container");
   const { waitingForPause } = stopWatch;
   if (!waitingForPause) {
-    stopWatch.seconds = 0;
-    stopWatch.miliseconds = 0;
-    stopWatch.minutes = 0;
-    stopWatch.countdown = "off";
-    segmentStopWatch.countdown   = 'off';
     segmentButton.value = "off";
     segmentContainer.innerHTML = "";
     resetButton.disabled = true;
+    resetStopWatch();
+    resetSegmentStopWatch();
     console.log("StopWatch: ", stopWatch);
     console.log("SegmentStopWatch: ", segmentStopWatch);
   }
@@ -102,16 +114,21 @@ function resetCountdown() {
 function createSegment() {
   const segmentContainer = document.getElementById("segment-container");
   const segment = document.createElement("div");
+  if(segmentButton.value === 'off') {
+    handleCountdown("segment");
+  }
+  if (segmentStopWatch.countdown === "on") {
+    resetSegmentStopWatch();
+  } 
   segmentStopWatch.waitingForPause = true;
-  segmentStopWatch.countdown = 'on';
-  segmentButton.value = 'on';
+  segmentStopWatch.countdown = "on";
+  segmentButton.value = "on";
   segment.innerHTML =
     checkMinutes("stopWatch") +
     ":" +
     checkSeconds("stopWatch") +
     "." +
     checkMiliseconds("stopWatch");
-    handleCountdown('segment')
   segmentContainer.appendChild(segment);
   console.log("StopWatch: ", stopWatch);
   console.log("SegmentStopWatch: ", segmentStopWatch);
@@ -126,7 +143,7 @@ function checkMiliseconds(value) {
       return stopWatch.miliseconds;
     }
   } else {
-    const { miliseconds } = segmentStopWatch
+    const { miliseconds } = segmentStopWatch;
     if (miliseconds < 10) {
       return "0" + segmentStopWatch.miliseconds;
     } else {
@@ -144,7 +161,7 @@ function checkSeconds(value) {
       return stopWatch.seconds;
     }
   } else {
-    const { seconds } = segmentStopWatch
+    const { seconds } = segmentStopWatch;
     if (seconds < 10) {
       return "0" + segmentStopWatch.seconds;
     } else {
@@ -181,15 +198,15 @@ function renderTime() {
     checkSeconds("stopWatch") +
     "." +
     checkMiliseconds("stopWatch");
-    segmentDisplay.value = "";
-    if(segmentButton.value === 'on') {
-      segmentDisplay.value =
-        checkMinutes("segment") +
-        ":" +
-        checkSeconds("segment") +
-        "." +
-        checkMiliseconds("segment");
-    }
+  segmentDisplay.value = "";
+  if (segmentButton.value === "on") {
+    segmentDisplay.value =
+      checkMinutes("segment") +
+      ":" +
+      checkSeconds("segment") +
+      "." +
+      checkMiliseconds("segment");
+  }
   stopWatchDisplay.style.textAlign = "end";
 }
 
