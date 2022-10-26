@@ -8,9 +8,11 @@ const stopWatch = {
 };
 
 const segmentStopWatch = Object.assign({}, stopWatch);
+console.log("StopWatch: ", stopWatch);
 console.log("SegmentStopWatch: ", segmentStopWatch);
 
 let interval;
+let segmentInterval;
 
 // Controller
 const startButton = document.getElementById("start");
@@ -31,44 +33,69 @@ function StartCountdown() {
     segmentButton.disabled = false;
     resetButton.disabled = true;
     console.log("StopWatch: ", stopWatch);
-    handleCountdown();
+    console.log("SegmentStopWatch: ", segmentStopWatch);
+    handleCountdown("stopWatch");
   } else if (waitingForPause) {
-    startButton.innerHTML = "Start";
-    clearInterval(interval);
     stopWatch.waitingForPause = false;
+    segmentStopWatch.waitingForPause = false;
+    clearInterval(interval);
+    clearInterval(segmentInterval)
     resetButton.disabled = false;
     segmentButton.disabled = true;
+    startButton.innerHTML = "Start";
     console.log("StopWatch: ", stopWatch);
+    console.log("SegmentStopWatch: ", segmentStopWatch);
+  } else if (!waitingForPause && segmentStopWatch.countdown) {
+    stopWatch.waitingForPause = true;
+    segmentStopWatch.waitingForPause = true;
+    handleCountdown("segment");
   }
 }
 
-function handleCountdown() {
-  interval = setInterval(function () {
-    stopWatch.miliseconds += 1;
-    if (stopWatch.miliseconds === 100) {
-      stopWatch.seconds += 1;
-      stopWatch.miliseconds = 0;
-    }
-    if (stopWatch.seconds === 60) {
-      stopWatch.minutes += 1;
-      stopWatch.seconds = 0;
-    }
-    renderTime();
-  }, 10);
+function handleCountdown(value) {
+  if(value === 'stopWatch') {
+    interval = setInterval(function () {
+      stopWatch.miliseconds += 1;
+      if (stopWatch.miliseconds === 100) {
+        stopWatch.seconds += 1;
+        stopWatch.miliseconds = 0;
+      }
+      if (stopWatch.seconds === 60) {
+        stopWatch.minutes += 1;
+        stopWatch.seconds = 0;
+      }
+      renderTime();
+    }, 10);
+  } else {
+    segmentInterval = setInterval(function () {
+      segmentStopWatch.miliseconds += 1;
+      if (segmentStopWatch.miliseconds === 100) {
+        segmentStopWatch.seconds += 1;
+        segmentStopWatch.miliseconds = 0;
+      }
+      if (segmentStopWatch.seconds === 60) {
+        segmentStopWatch.minutes += 1;
+        segmentStopWatch.seconds = 0;
+      }
+      renderTime();
+    }, 10);
+  }
 }
 
 function resetCountdown() {
   const segmentContainer = document.getElementById("segment-container");
   const { waitingForPause } = stopWatch;
   if (!waitingForPause) {
-    stopWatch.countdown = "off";
-    segmentButton.value = "off";
     stopWatch.seconds = 0;
     stopWatch.miliseconds = 0;
     stopWatch.minutes = 0;
+    stopWatch.countdown = "off";
+    segmentStopWatch.countdown   = 'off';
+    segmentButton.value = "off";
     segmentContainer.innerHTML = "";
     resetButton.disabled = true;
     console.log("StopWatch: ", stopWatch);
+    console.log("SegmentStopWatch: ", segmentStopWatch);
   }
   renderTime();
 }
@@ -76,6 +103,8 @@ function resetCountdown() {
 function createSegment() {
   const segmentContainer = document.getElementById("segment-container");
   const segment = document.createElement("div");
+  segmentStopWatch.waitingForPause = true;
+  segmentStopWatch.countdown = 'on';
   segmentButton.value = 'on';
   segment.innerHTML =
     checkMinutes("stopWatch") +
@@ -83,8 +112,10 @@ function createSegment() {
     checkSeconds("stopWatch") +
     "." +
     checkMiliseconds("stopWatch");
+    handleCountdown('segment')
   segmentContainer.appendChild(segment);
   console.log("StopWatch: ", stopWatch);
+  console.log("SegmentStopWatch: ", segmentStopWatch);
 }
 
 function checkMiliseconds(value) {
