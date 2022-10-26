@@ -82,54 +82,38 @@ function handleCountdown(value) {
   }
 }
 
-function resetStopWatch() {
-  stopWatch.seconds = 0;
-  stopWatch.miliseconds = 0;
-  stopWatch.minutes = 0;
-  stopWatch.countdown = "off";
-}
-
-function resetSegmentStopWatch() {
-  segmentStopWatch.seconds = 0;
-  segmentStopWatch.miliseconds = 0;
-  segmentStopWatch.minutes = 0;
-  segmentStopWatch.countdown = "off";
-}
-
-
-function resetCountdown() {
-  const segmentContainer = document.getElementById("segment-container");
-  const { waitingForPause } = stopWatch;
-  if (!waitingForPause) {
-    segmentButton.value = "off";
-    segmentContainer.innerHTML = "";
-    resetButton.disabled = true;
-    resetStopWatch();
-    resetSegmentStopWatch();
-    console.log("StopWatch: ", stopWatch);
-    console.log("SegmentStopWatch: ", segmentStopWatch);
-  }
-  renderTime();
-}
-
 function createSegment() {
   const segmentContainer = document.getElementById("segment-container");
+  const secondSegmentContainer = document.getElementById("second");
   const segment = document.createElement("div");
-  if(segmentButton.value === 'off') {
-    handleCountdown("segment");
-  }
-  if (segmentStopWatch.countdown === "on") {
-    resetSegmentStopWatch();
-  } 
-  segmentStopWatch.waitingForPause = true;
-  segmentStopWatch.countdown = "on";
-  segmentButton.value = "on";
+  const secondSegment = document.createElement("div");
   segment.innerHTML =
     checkMinutes("stopWatch") +
     ":" +
     checkSeconds("stopWatch") +
     "." +
     checkMiliseconds("stopWatch");
+  secondSegment.innerHTML =
+    checkMinutes("segment") +
+    ":" +
+    checkSeconds("segment") +
+    "." +
+    checkMiliseconds("segment");
+  if (segmentButton.value === "off") {
+    if(secondSegment.innerHTML === "00:00.00") {
+      secondSegment.innerHTML = segment.innerHTML;
+    }
+    secondSegmentContainer.appendChild(secondSegment);
+    handleCountdown("segment");
+  }
+  if (segmentStopWatch.countdown === "on") {
+    secondSegmentContainer.appendChild(secondSegment);
+    resetSegmentStopWatch();
+  }
+  segmentStopWatch.waitingForPause = true;
+  segmentStopWatch.countdown = "on";
+  segmentButton.value = "on";
+
   segmentContainer.appendChild(segment);
   console.log("StopWatch: ", stopWatch);
   console.log("SegmentStopWatch: ", segmentStopWatch);
@@ -187,6 +171,37 @@ function checkMinutes(value) {
       return segmentStopWatch.minutes;
     }
   }
+}
+
+function resetStopWatch() {
+  stopWatch.seconds = 0;
+  stopWatch.miliseconds = 0;
+  stopWatch.minutes = 0;
+  stopWatch.countdown = "off";
+}
+
+function resetSegmentStopWatch() {
+  segmentStopWatch.seconds = 0;
+  segmentStopWatch.miliseconds = 0;
+  segmentStopWatch.minutes = 0;
+  segmentStopWatch.countdown = "off";
+}
+
+function resetCountdown() {
+  const segmentContainer = document.getElementById("segment-container");
+  const secondSegmentContainer = document.getElementById('second')
+  const { waitingForPause } = stopWatch;
+  if (!waitingForPause) {
+    segmentButton.value = "off";
+    segmentContainer.innerHTML = "";
+    secondSegmentContainer.innerHTML = "";
+    resetButton.disabled = true;
+    resetStopWatch();
+    resetSegmentStopWatch();
+    console.log("StopWatch: ", stopWatch);
+    console.log("SegmentStopWatch: ", segmentStopWatch);
+  }
+  renderTime();
 }
 
 // View
