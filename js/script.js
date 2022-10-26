@@ -8,11 +8,10 @@ const stopWatch = {
 };
 
 const segmentStopWatch = Object.assign({}, stopWatch);
-console.log("StopWatch: ", stopWatch);
-console.log("SegmentStopWatch: ", segmentStopWatch);
 
 let interval;
 let segmentInterval;
+let segmentCounter = 0;
 
 // Controller
 const startButton = document.getElementById("start");
@@ -33,8 +32,6 @@ function StartCountdown() {
     segmentButton.disabled = false;
     resetButton.disabled = true;
     segmentStopWatch.waitingForPause = true;
-    console.log("StopWatch: ", stopWatch);
-    console.log("SegmentStopWatch: ", segmentStopWatch);
     handleCountdown("stopWatch");
     if (segmentButton.value === "on") {
       handleCountdown("segment");
@@ -47,8 +44,6 @@ function StartCountdown() {
     resetButton.disabled = false;
     segmentButton.disabled = true;
     startButton.innerHTML = "Start";
-    console.log("StopWatch: ", stopWatch);
-    console.log("SegmentStopWatch: ", segmentStopWatch);
   }
 }
 
@@ -83,10 +78,12 @@ function handleCountdown(value) {
 }
 
 function createSegment() {
-  const segmentContainer = document.getElementById("segment-container");
   const secondSegmentContainer = document.getElementById("second");
   const segment = document.createElement("div");
   const secondSegment = document.createElement("div");
+  const secondSegmentInnerContainer = document.createElement('div');
+  let secondSegmentText = document.createElement('p');
+  segmentCounter += 1;
   segment.innerHTML =
     checkMinutes("stopWatch") +
     ":" +
@@ -99,24 +96,28 @@ function createSegment() {
     checkSeconds("segment") +
     "." +
     checkMiliseconds("segment");
+  segment.style.display = "inline-block";
+  segment.style.marginLeft = "50px";
+  secondSegment.appendChild(segment)
+  secondSegmentText.innerText = `Segment ${segmentCounter}`;
   if (segmentButton.value === "off") {
     if(secondSegment.innerHTML === "00:00.00") {
       secondSegment.innerHTML = segment.innerHTML;
     }
-    secondSegmentContainer.appendChild(secondSegment);
+    secondSegmentInnerContainer.appendChild(secondSegmentText);
+    secondSegmentInnerContainer.appendChild(secondSegment);
+    secondSegmentContainer.appendChild(secondSegmentInnerContainer)
     handleCountdown("segment");
   }
   if (segmentStopWatch.countdown === "on") {
-    secondSegmentContainer.appendChild(secondSegment);
+    secondSegmentInnerContainer.appendChild(secondSegmentText);
+    secondSegmentInnerContainer.appendChild(secondSegment);
+    secondSegmentContainer.appendChild(secondSegmentInnerContainer)
     resetSegmentStopWatch();
   }
   segmentStopWatch.waitingForPause = true;
   segmentStopWatch.countdown = "on";
   segmentButton.value = "on";
-
-  segmentContainer.appendChild(segment);
-  console.log("StopWatch: ", stopWatch);
-  console.log("SegmentStopWatch: ", segmentStopWatch);
 }
 
 function checkMiliseconds(value) {
@@ -192,14 +193,13 @@ function resetCountdown() {
   const secondSegmentContainer = document.getElementById('second')
   const { waitingForPause } = stopWatch;
   if (!waitingForPause) {
+    segmentCounter = 0;
     segmentButton.value = "off";
     segmentContainer.innerHTML = "";
     secondSegmentContainer.innerHTML = "";
     resetButton.disabled = true;
     resetStopWatch();
     resetSegmentStopWatch();
-    console.log("StopWatch: ", stopWatch);
-    console.log("SegmentStopWatch: ", segmentStopWatch);
   }
   renderTime();
 }
