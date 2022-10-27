@@ -135,8 +135,6 @@ function createSegment() {
     resetSegmentStopWatch();
   }
   secondSegment.appendChild(segment);
-  segment.style.display = "inline-block";
-  segment.style.marginLeft = "50px";
   secondSegmentText.innerText = `Segment ${segmentCounter}`;
   segmentStopWatch.waitingForPause = true;
   segmentStopWatch.countdown = "on";
