@@ -81,8 +81,8 @@ function createSegment() {
   const secondSegmentContainer = document.getElementById("second");
   const segment = document.createElement("div");
   const secondSegment = document.createElement("div");
-  const secondSegmentInnerContainer = document.createElement('div');
-  let secondSegmentText = document.createElement('p');
+  const secondSegmentInnerContainer = document.createElement("div");
+  let secondSegmentText = document.createElement("p");
   segmentCounter += 1;
   segment.innerHTML =
     checkMinutes("stopWatch") +
@@ -96,23 +96,23 @@ function createSegment() {
     checkSeconds("segment") +
     "." +
     checkMiliseconds("segment");
+  if(secondSegment.innerHTML === "00:00.00") {
+    secondSegment.innerHTML = segment.innerHTML;
+  }
   segment.style.display = "inline-block";
   segment.style.marginLeft = "50px";
-  secondSegment.appendChild(segment)
+  secondSegment.appendChild(segment);
   secondSegmentText.innerText = `Segment ${segmentCounter}`;
   if (segmentButton.value === "off") {
-    if(secondSegment.innerHTML === "00:00.00") {
-      secondSegment.innerHTML = segment.innerHTML;
-    }
     secondSegmentInnerContainer.appendChild(secondSegmentText);
     secondSegmentInnerContainer.appendChild(secondSegment);
-    secondSegmentContainer.appendChild(secondSegmentInnerContainer)
+    secondSegmentContainer.appendChild(secondSegmentInnerContainer);
     handleCountdown("segment");
   }
   if (segmentStopWatch.countdown === "on") {
     secondSegmentInnerContainer.appendChild(secondSegmentText);
     secondSegmentInnerContainer.appendChild(secondSegment);
-    secondSegmentContainer.appendChild(secondSegmentInnerContainer)
+    secondSegmentContainer.appendChild(secondSegmentInnerContainer);
     resetSegmentStopWatch();
   }
   segmentStopWatch.waitingForPause = true;
@@ -190,7 +190,7 @@ function resetSegmentStopWatch() {
 
 function resetCountdown() {
   const segmentContainer = document.getElementById("segment-container");
-  const secondSegmentContainer = document.getElementById('second')
+  const secondSegmentContainer = document.getElementById("second");
   const { waitingForPause } = stopWatch;
   if (!waitingForPause) {
     segmentCounter = 0;
