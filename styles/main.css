@@ -1,0 +1,26 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.whole-container {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.display-container {
+  display: flex;
+  flex-direction: column;
+}
+.display-container input {
+  text-align: center;
+}
+
+.button-container {
+  display: grid;
+  grid-template: 1fr/1fr 1fr 1fr;
+}/*# sourceMappingURL=main.css.map */

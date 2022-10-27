@@ -252,7 +252,6 @@ function renderTime() {
       "." +
       checkMiliseconds("segment");
   }
-  stopWatchDisplay.style.textAlign = "end";
 }
 
 renderTime();
