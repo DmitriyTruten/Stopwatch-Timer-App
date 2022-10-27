@@ -125,12 +125,14 @@ function createSegment() {
   if (segmentButton.value === "off") {
     secondSegmentInnerContainer.appendChild(secondSegmentText);
     secondSegmentInnerContainer.appendChild(secondSegment);
+    secondSegmentInnerContainer.classList.add('segment-div')
     secondSegmentContainer.appendChild(secondSegmentInnerContainer);
     handleCountdown("segment");
   }
   if (segmentStopWatch.countdown === "on") {
     secondSegmentInnerContainer.appendChild(secondSegmentText);
     secondSegmentInnerContainer.appendChild(secondSegment);
+    secondSegmentInnerContainer.classList.add('segment-div')
     secondSegmentContainer.appendChild(secondSegmentInnerContainer);
     resetSegmentStopWatch();
   }
@@ -214,13 +216,11 @@ function resetSegmentStopWatch() {
 
 // Reset all values 
 function resetCountdown() {
-  const segmentContainer = document.getElementById("segment-container");
   const secondSegmentContainer = document.getElementById("second");
   const { waitingForPause } = stopWatch;
   if (!waitingForPause) {
     segmentCounter = 0;
     segmentButton.value = "off";
-    segmentContainer.innerHTML = "";
     secondSegmentContainer.innerHTML = "";
     resetButton.disabled = true;
     resetStopWatch();

@@ -10,7 +10,7 @@
 .whole-container {
   display: flex;
   flex-direction: column;
-  max-width: 11.5%;
+  max-width: 11.2%;
   margin: auto;
   margin-top: 10%;
 }
@@ -39,10 +39,21 @@
 .button-container {
   display: grid;
   grid-template: 1fr / 1fr 1fr 1fr;
+  justify-items: center;
+  margin-top: 10px;
+  button {
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    border: 1px solid gray;
+  }
 }
-
-.segment-container{
-  width: max-content;
+.second-segment-container {
+  margin-top: 20px;
+}
+.segment-div {
+  border-bottom: 1px solid black;
+  padding: 5px 0px;
 }
 
 .second-segment-container div div{
