@@ -47,6 +47,7 @@ function StartCountdown() {
     handleCountdown("stopWatch");
     startButton.innerHTML = "<img style='margin-left: 0px;' src='images/pause.png'>";
     segmentButton.innerHTML = "<img style='opacity: 1;' src='images/stopwatch-black.png'>"
+    resetButton.innerHTML = "<img style='opacity: 0.5;' src='images/undo.png'>"
 
     // If segmentButton is pressed then start the countdown for copied stopwatch object(segmentStopWatch)
     if (segmentButton.value === "on") {
@@ -98,8 +99,8 @@ function handleCountdown(value) {
 
 function createSegment() {
 
-  // Get access for second-segment-container and fill it dynamically created divs
-  const secondSegmentContainer = document.getElementById("second");
+  // Get access for segment-container and fill it dynamically created divs
+  const SegmentContainer = document.getElementById("segment-container");
   const segment = document.createElement("div");
   const secondSegment = document.createElement("div");
   const secondSegmentInnerContainer = document.createElement("div");
@@ -132,14 +133,14 @@ function createSegment() {
     secondSegmentInnerContainer.appendChild(secondSegmentText);
     secondSegmentInnerContainer.appendChild(secondSegment);
     secondSegmentInnerContainer.classList.add('segment-div')
-    secondSegmentContainer.appendChild(secondSegmentInnerContainer);
+    SegmentContainer.appendChild(secondSegmentInnerContainer);
     handleCountdown("segment");
   }
   if (segmentStopWatch.countdown === "on") {
     secondSegmentInnerContainer.appendChild(secondSegmentText);
     secondSegmentInnerContainer.appendChild(secondSegment);
     secondSegmentInnerContainer.classList.add('segment-div')
-    secondSegmentContainer.appendChild(secondSegmentInnerContainer);
+    SegmentContainer.appendChild(secondSegmentInnerContainer);
     resetSegmentStopWatch();
   }
   secondSegment.appendChild(segment);
@@ -222,12 +223,12 @@ function resetSegmentStopWatch() {
 
 // Reset all values 
 function resetCountdown() {
-  const secondSegmentContainer = document.getElementById("second");
+  const SegmentContainer = document.getElementById("segment-container");
   const { waitingForPause } = stopWatch;
   if (!waitingForPause) {
     segmentCounter = 0;
     segmentButton.value = "off";
-    secondSegmentContainer.innerHTML = "";
+    SegmentContainer.innerHTML = "";
     resetButton.innerHTML = "<img style='opacity: 0.5;' src='images/undo.png'>"
     resetButton.disabled = true;
     resetStopWatch();

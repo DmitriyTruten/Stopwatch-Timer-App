@@ -9,9 +9,10 @@
 .whole-container {
   display: flex;
   flex-direction: column;
-  max-width: 11.2%;
+  max-width: 15%;
   margin: auto;
-  margin-top: 10%;
+  margin-top: 8%;
+  justify-content: center;
 }
 
 .display-container {
@@ -27,21 +28,20 @@
 
 .display {
   max-width: 100%;
-  font-size: 40px;
+  font-size: 54px;
 }
 
 .segment-display {
   width: 62%;
-  font-size: 25px;
+  font-size: 34px;
 }
 
 .button-container {
   display: grid;
   grid-template: 1fr/1fr 1fr 1fr;
   justify-items: center;
-  justify-content: center;
   margin-top: 10px;
-  width: 110%;
+  width: 100%;
 }
 .button-container button {
   display: flex;
@@ -51,7 +51,7 @@
   width: 50px;
   border-radius: 50%;
   border: 1px solid gray;
-  margin-right: 15px;
+  background-color: white;
 }
 .button-container .start {
   background-color: rgb(65, 144, 248);
@@ -65,7 +65,7 @@
   height: 24px;
 }
 
-.second-segment-container {
+.segment-container {
   margin-top: 20px;
 }
 
@@ -73,14 +73,17 @@
   border-bottom: 1px solid black;
   padding: 5px 0px;
 }
+.segment-div p {
+  margin-bottom: 5px;
+}
 
-.second-segment-container div div {
+.segment-container div div {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
 }
 
-.second-segment-container div div div {
+.segment-container div div div {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
