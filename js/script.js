@@ -1,3 +1,5 @@
+import { toggleSwitch } from "./toggleSwitch.js";
+
 // Model
 // Creating model of stopwatch object
 const stopWatch = {
@@ -33,6 +35,8 @@ const segmentButton = document.getElementById("segment");
 segmentButton.innerHTML = "<img style='opacity: 0.5;' src='images/stopwatch-black.png'>";
 segmentButton.addEventListener("click", createSegment);
 
+const toggleSwitchSlider = document.getElementById('toggle')
+
 // Function handles the countdown process
 function StartCountdown() {
   const { waitingForPause } = stopWatch;
@@ -46,13 +50,19 @@ function StartCountdown() {
     resetButton.disabled = true;
     handleCountdown("stopWatch");
     startButton.innerHTML = "<img style='margin-left: 0px;' src='images/pause.png'>";
-    segmentButton.innerHTML = "<img style='opacity: 1;' src='images/stopwatch-black.png'>"
     resetButton.innerHTML = "<img style='opacity: 0.5;' src='images/undo.png'>"
+
+    if(toggleSwitchSlider.value === 'dark') {
+      segmentButton.innerHTML = "<img style='opacity: 1;' src='images/stopwatch.png'>"
+    } else {
+      segmentButton.innerHTML = "<img style='opacity: 1;' src='images/stopwatch-black.png'>"
+    }
 
     // If segmentButton is pressed then start the countdown for copied stopwatch object(segmentStopWatch)
     if (segmentButton.value === "on") {
       handleCountdown("segment");
     }
+
     // Else if original stopwatch object waiting for pause - stop the countdown and invert both objects property values besides countdown property
   } else if (waitingForPause) {
     stopWatch.waitingForPause = false;
@@ -64,6 +74,12 @@ function StartCountdown() {
     startButton.innerHTML = "<img src='images/play.png'>";
     segmentButton.innerHTML = "<img style='opacity: 0.5;' src='images/stopwatch-black.png'>"
     resetButton.innerHTML = "<img style='opacity: 1;' src='images/undo.png'>";
+
+    if(toggleSwitchSlider.value === 'dark') {
+      segmentButton.innerHTML = "<img style='opacity: 0.5;' src='images/stopwatch.png'>"
+    } else {
+      segmentButton.innerHTML = "<img style='opacity: 0.5;' src='images/stopwatch-black.png'>"
+    }
   }
 }
 // Function gets access for interval variables, assign its values to setInterval function and invoke renderTime

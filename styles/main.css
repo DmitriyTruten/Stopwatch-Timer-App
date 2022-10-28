@@ -108,11 +108,11 @@ input:checked + .slider:before {
   justify-content: center;
   align-items: center;
   border-radius: 50%;
-  border: 1px solid gray;
+  border: none;
   background-color: white;
 }
 .button-container .start {
-  background-color: rgb(65, 144, 248);
+  background-color: #2196F3;
   height: 50px;
   width: 50px;
 }
