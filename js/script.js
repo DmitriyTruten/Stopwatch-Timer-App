@@ -26,6 +26,7 @@ startButton.innerHTML = "<img src='images/play.png'>";
 startButton.addEventListener("click", StartCountdown);
 
 const resetButton = document.getElementById("reset");
+resetButton.innerHTML = "<img style='opacity: 0.5;' src='images/undo.png'>";
 resetButton.addEventListener("click", resetCountdown);
 
 const segmentButton = document.getElementById("segment");
@@ -41,11 +42,11 @@ function StartCountdown() {
     stopWatch.waitingForPause = true;
     segmentStopWatch.waitingForPause = true;
     stopWatch.countdown = "on";
-    startButton.innerHTML = "<img style='margin-left: 0px;' src='images/pause.png'>";
-    segmentButton.innerHTML = "<img style='opacity: 1;' src='images/stopwatch-black.png'>"
     segmentButton.disabled = false;
     resetButton.disabled = true;
     handleCountdown("stopWatch");
+    startButton.innerHTML = "<img style='margin-left: 0px;' src='images/pause.png'>";
+    segmentButton.innerHTML = "<img style='opacity: 1;' src='images/stopwatch-black.png'>"
 
     // If segmentButton is pressed then start the countdown for copied stopwatch object(segmentStopWatch)
     if (segmentButton.value === "on") {
@@ -55,12 +56,13 @@ function StartCountdown() {
   } else if (waitingForPause) {
     stopWatch.waitingForPause = false;
     segmentStopWatch.waitingForPause = false;
-    clearInterval(interval);
-    clearInterval(segmentInterval);
     resetButton.disabled = false;
     segmentButton.disabled = true;
+    clearInterval(interval);
+    clearInterval(segmentInterval);
     startButton.innerHTML = "<img src='images/play.png'>";
     segmentButton.innerHTML = "<img style='opacity: 0.5;' src='images/stopwatch-black.png'>"
+    resetButton.innerHTML = "<img style='opacity: 1;' src='images/undo.png'>";
   }
 }
 // Function gets access for interval variables, assign its values to setInterval function and invoke renderTime
@@ -226,6 +228,7 @@ function resetCountdown() {
     segmentCounter = 0;
     segmentButton.value = "off";
     secondSegmentContainer.innerHTML = "";
+    resetButton.innerHTML = "<img style='opacity: 0.5;' src='images/undo.png'>"
     resetButton.disabled = true;
     resetStopWatch();
     resetSegmentStopWatch();

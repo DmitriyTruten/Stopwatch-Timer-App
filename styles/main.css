@@ -60,6 +60,10 @@
   height: 20px;
   margin-left: 4px;
 }
+.button-container .reset img,
+.button-container .segment img {
+  height: 24px;
+}
 
 .second-segment-container {
   margin-top: 20px;
