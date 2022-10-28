@@ -29,6 +29,7 @@ const resetButton = document.getElementById("reset");
 resetButton.addEventListener("click", resetCountdown);
 
 const segmentButton = document.getElementById("segment");
+segmentButton.innerHTML = "<img style='opacity: 0.5;' src='images/stopwatch-black.png'>";
 segmentButton.addEventListener("click", createSegment);
 
 // Function handles the countdown process
@@ -40,7 +41,8 @@ function StartCountdown() {
     stopWatch.waitingForPause = true;
     segmentStopWatch.waitingForPause = true;
     stopWatch.countdown = "on";
-    startButton.innerHTML = "<img style='margin-right: 4px;' src='images/pause.png'>";
+    startButton.innerHTML = "<img style='margin-left: 0px;' src='images/pause.png'>";
+    segmentButton.innerHTML = "<img style='opacity: 1;' src='images/stopwatch-black.png'>"
     segmentButton.disabled = false;
     resetButton.disabled = true;
     handleCountdown("stopWatch");
@@ -58,6 +60,7 @@ function StartCountdown() {
     resetButton.disabled = false;
     segmentButton.disabled = true;
     startButton.innerHTML = "<img src='images/play.png'>";
+    segmentButton.innerHTML = "<img style='opacity: 0.5;' src='images/stopwatch-black.png'>"
   }
 }
 // Function gets access for interval variables, assign its values to setInterval function and invoke renderTime
