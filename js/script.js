@@ -45,16 +45,16 @@ function StartCountdown() {
 
   // If stopwatch object not waiting for pause then start the countdown
   if (!waitingForPause) {
-    stopWatch.waitingForPause = true;
-    startButton.value = 'on';
     segmentStopWatch.waitingForPause = true;
-    stopWatch.countdown = "on";
     segmentButton.disabled = false;
+    stopWatch.waitingForPause = true;
+    stopWatch.countdown = "on";
     resetButton.disabled = true;
-    handleCountdown("stopWatch");
+    startButton.value = 'on';
     startButton.innerHTML =
-      "<img style='margin-left: 0px;' src='images/pause.png'>";
+    "<img style='margin-left: 0px;' src='images/pause.png'>";
     resetButton.innerHTML = "<img style='opacity: 0.5;' src='images/undo-black.png'>";
+    handleCountdown("stopWatch");
 
     if (toggleSwitchSlider.value === "dark") {
       segmentButton.innerHTML =
@@ -75,17 +75,17 @@ function StartCountdown() {
 
     // Else if original stopwatch object waiting for pause - stop the countdown and invert both objects property values besides countdown property
   } else if (waitingForPause) {
+    segmentStopWatch.waitingForPause = false;
+    segmentButton.disabled = true;
     startButton.value = 'off';
     stopWatch.waitingForPause = false;
-    segmentStopWatch.waitingForPause = false;
     resetButton.disabled = false;
-    segmentButton.disabled = true;
-    clearInterval(interval);
-    clearInterval(segmentInterval);
     startButton.innerHTML = "<img src='images/play.png'>";
     segmentButton.innerHTML =
-      "<img style='opacity: 0.5;' src='images/stopwatch-black.png'>";
+    "<img style='opacity: 0.5;' src='images/stopwatch-black.png'>";
     resetButton.innerHTML = "<img style='opacity: 1;' src='images/undo-black.png'>";
+    clearInterval(interval);
+    clearInterval(segmentInterval);
 
     if (toggleSwitchSlider.value === "dark") {
       segmentButton.innerHTML =
@@ -133,10 +133,10 @@ function handleCountdown(value) {
 
 function createSegment() {
   // Get access for segment-container and fill it dynamically created divs
-  const SegmentContainer = document.getElementById("segment-container");
-  const segment = document.createElement("div");
-  const secondSegment = document.createElement("div");
   const secondSegmentInnerContainer = document.createElement("div");
+  const SegmentContainer = document.getElementById("segment-container");
+  const secondSegment = document.createElement("div");
+  const segment = document.createElement("div");
   let secondSegmentText = document.createElement("p");
 
   // For every segmentButton click increment segmentCounter by 1

@@ -17,8 +17,8 @@ export function toggleSwitch() {
     resetButton.style.backgroundColor = "transparent";
     segmentContainer.style.color = "white";
     stopWatchDisplay.style.color = "white";
-    toggleSwitchSlider.value = "dark";
     segmentDisplay.style.color = "white";
+    toggleSwitchSlider.value = "dark";
     if (startButton.value === "on") {
       segmentButton.innerHTML =
         "<img style='opacity: 1;' src='images/stopwatch-white.png'>";
