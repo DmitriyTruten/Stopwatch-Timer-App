@@ -46,6 +46,7 @@ function StartCountdown() {
   // If stopwatch object not waiting for pause then start the countdown
   if (!waitingForPause) {
     stopWatch.waitingForPause = true;
+    startButton.value = 'on';
     segmentStopWatch.waitingForPause = true;
     stopWatch.countdown = "on";
     segmentButton.disabled = false;
@@ -74,6 +75,7 @@ function StartCountdown() {
 
     // Else if original stopwatch object waiting for pause - stop the countdown and invert both objects property values besides countdown property
   } else if (waitingForPause) {
+    startButton.value = 'off';
     stopWatch.waitingForPause = false;
     segmentStopWatch.waitingForPause = false;
     resetButton.disabled = false;
@@ -268,6 +270,7 @@ function resetCountdown() {
   }
   if (!waitingForPause) {
     segmentCounter = 0;
+    startButton.value = 'null';
     segmentButton.value = "off";
     SegmentContainer.innerHTML = "";
     resetButton.disabled = true;

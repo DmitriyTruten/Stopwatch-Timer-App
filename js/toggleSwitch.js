@@ -4,6 +4,7 @@ const toggleSwitchSlider = document.getElementById("toggle");
 const stopWatchDisplay = document.getElementById("display");
 const segmentButton = document.getElementById("segment");
 const resetButton = document.getElementById("reset");
+const startButton = document.getElementById("start");
 
 toggleSwitchSlider.addEventListener("click", toggleSwitch);
 
@@ -18,10 +19,22 @@ export function toggleSwitch() {
     stopWatchDisplay.style.color = "white";
     toggleSwitchSlider.value = "dark";
     segmentDisplay.style.color = "white";
-    segmentButton.innerHTML =
-      "<img style='opacity: 0.5;' src='images/stopwatch-white.png'>";
-    resetButton.innerHTML =
-      "<img style='opacity: 0.5;' src='images/undo-white.png'>";
+    if (startButton.value === "on") {
+      segmentButton.innerHTML =
+        "<img style='opacity: 1;' src='images/stopwatch-white.png'>";
+      resetButton.innerHTML =
+        "<img style='opacity: 0.5;' src='images/undo-white.png'>";
+    } else if (startButton.value === "off") {
+      segmentButton.innerHTML =
+        "<img style='opacity: 0.5;' src='images/stopwatch-white.png'>";
+      resetButton.innerHTML =
+        "<img style='opacity: 1;' src='images/undo-white.png'>";
+    } else {
+      segmentButton.innerHTML =
+        "<img style='opacity: 0.5;' src='images/stopwatch-white.png'>";
+      resetButton.innerHTML =
+        "<img style='opacity: 0.5;' src='images/undo-white.png'>";
+    }
   } else {
     toggleSwitchSlider.value = "light";
     document.body.style.backgroundColor = "rgba(255, 255, 255)";
@@ -30,9 +43,21 @@ export function toggleSwitch() {
     stopWatchDisplay.style.color = "rgb(84, 84, 84)";
     segmentDisplay.style.color = "rgb(84, 84, 84)";
     segmentContainer.style.color = "black";
-    segmentButton.innerHTML =
-      "<img style='opacity: 0.5;' src='images/stopwatch-black.png'>";
-    resetButton.innerHTML =
-      "<img style='opacity: 0.5;' src='images/undo-black.png'>";
+    if (startButton.value === "on") {
+      segmentButton.innerHTML =
+        "<img style='opacity: 1;' src='images/stopwatch-black.png'>";
+      resetButton.innerHTML =
+        "<img style='opacity: 0.5;' src='images/undo-black.png'>";
+    } else if (startButton.value === "off") {
+      segmentButton.innerHTML =
+        "<img style='opacity: 0.5;' src='images/stopwatch-black.png'>";
+      resetButton.innerHTML =
+        "<img style='opacity: 1;' src='images/undo-black.png'>";
+    } else {
+      segmentButton.innerHTML =
+        "<img style='opacity: 0.5;' src='images/stopwatch-black.png'>";
+      resetButton.innerHTML =
+        "<img style='opacity: 0.5;' src='images/undo-black.png'>";
+    }
   }
 }
