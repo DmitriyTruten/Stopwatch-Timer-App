@@ -28,7 +28,7 @@ startButton.innerHTML = "<img src='images/play.png'>";
 startButton.addEventListener("click", StartCountdown);
 
 const resetButton = document.getElementById("reset");
-resetButton.innerHTML = "<img style='opacity: 0.5;' src='images/undo.png'>";
+resetButton.innerHTML = "<img style='opacity: 0.5;' src='images/undo-black.png'>";
 resetButton.addEventListener("click", resetCountdown);
 
 const segmentButton = document.getElementById("segment");
@@ -53,9 +53,11 @@ function StartCountdown() {
     resetButton.innerHTML = "<img style='opacity: 0.5;' src='images/undo.png'>"
 
     if(toggleSwitchSlider.value === 'dark') {
-      segmentButton.innerHTML = "<img style='opacity: 1;' src='images/stopwatch.png'>"
+      segmentButton.innerHTML = "<img style='opacity: 1;' src='images/stopwatch-white.png'>"
+      resetButton.innerHTML = "<img style='opacity: 0.5;' src='images/undo-white.png'>";
     } else {
       segmentButton.innerHTML = "<img style='opacity: 1;' src='images/stopwatch-black.png'>"
+      resetButton.innerHTML = "<img style='opacity: 0.5;' src='images/undo-black.png'>";
     }
 
     // If segmentButton is pressed then start the countdown for copied stopwatch object(segmentStopWatch)
@@ -76,9 +78,11 @@ function StartCountdown() {
     resetButton.innerHTML = "<img style='opacity: 1;' src='images/undo.png'>";
 
     if(toggleSwitchSlider.value === 'dark') {
-      segmentButton.innerHTML = "<img style='opacity: 0.5;' src='images/stopwatch.png'>"
+      segmentButton.innerHTML = "<img style='opacity: 0.5;' src='images/stopwatch-white.png'>"
+      resetButton.innerHTML = "<img style='opacity: 1;' src='images/undo-white.png'>";
     } else {
       segmentButton.innerHTML = "<img style='opacity: 0.5;' src='images/stopwatch-black.png'>"
+      resetButton.innerHTML = "<img style='opacity: 1;' src='images/undo-black.png'>";
     }
   }
 }
@@ -241,11 +245,15 @@ function resetSegmentStopWatch() {
 function resetCountdown() {
   const SegmentContainer = document.getElementById("segment-container");
   const { waitingForPause } = stopWatch;
+  if(toggleSwitchSlider.value === 'dark') {
+    resetButton.innerHTML = "<img style='opacity: 0.5;' src='images/undo-white.png'>";
+  } else {
+    resetButton.innerHTML = "<img style='opacity: 0.5;' src='images/undo-black.png'>";
+  }
   if (!waitingForPause) {
     segmentCounter = 0;
     segmentButton.value = "off";
     SegmentContainer.innerHTML = "";
-    resetButton.innerHTML = "<img style='opacity: 0.5;' src='images/undo.png'>"
     resetButton.disabled = true;
     resetStopWatch();
     resetSegmentStopWatch();
