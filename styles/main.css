@@ -140,7 +140,6 @@ input:checked + .slider:before {
 }
 
 .segment-div {
-  border-bottom: 1px solid black;
   padding: 5px 0px;
 }
 .segment-div p {

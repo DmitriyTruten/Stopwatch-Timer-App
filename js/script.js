@@ -28,14 +28,16 @@ startButton.innerHTML = "<img src='images/play.png'>";
 startButton.addEventListener("click", StartCountdown);
 
 const resetButton = document.getElementById("reset");
-resetButton.innerHTML = "<img style='opacity: 0.5;' src='images/undo-black.png'>";
+resetButton.innerHTML =
+  "<img style='opacity: 0.5;' src='images/undo-black.png'>";
 resetButton.addEventListener("click", resetCountdown);
 
 const segmentButton = document.getElementById("segment");
-segmentButton.innerHTML = "<img style='opacity: 0.5;' src='images/stopwatch-black.png'>";
+segmentButton.innerHTML =
+  "<img style='opacity: 0.5;' src='images/stopwatch-black.png'>";
 segmentButton.addEventListener("click", createSegment);
 
-const toggleSwitchSlider = document.getElementById('toggle')
+const toggleSwitchSlider = document.getElementById("toggle");
 
 // Function handles the countdown process
 function StartCountdown() {
@@ -49,15 +51,20 @@ function StartCountdown() {
     segmentButton.disabled = false;
     resetButton.disabled = true;
     handleCountdown("stopWatch");
-    startButton.innerHTML = "<img style='margin-left: 0px;' src='images/pause.png'>";
-    resetButton.innerHTML = "<img style='opacity: 0.5;' src='images/undo.png'>"
+    startButton.innerHTML =
+      "<img style='margin-left: 0px;' src='images/pause.png'>";
+    resetButton.innerHTML = "<img style='opacity: 0.5;' src='images/undo.png'>";
 
-    if(toggleSwitchSlider.value === 'dark') {
-      segmentButton.innerHTML = "<img style='opacity: 1;' src='images/stopwatch-white.png'>"
-      resetButton.innerHTML = "<img style='opacity: 0.5;' src='images/undo-white.png'>";
+    if (toggleSwitchSlider.value === "dark") {
+      segmentButton.innerHTML =
+        "<img style='opacity: 1;' src='images/stopwatch-white.png'>";
+      resetButton.innerHTML =
+        "<img style='opacity: 0.5;' src='images/undo-white.png'>";
     } else {
-      segmentButton.innerHTML = "<img style='opacity: 1;' src='images/stopwatch-black.png'>"
-      resetButton.innerHTML = "<img style='opacity: 0.5;' src='images/undo-black.png'>";
+      segmentButton.innerHTML =
+        "<img style='opacity: 1;' src='images/stopwatch-black.png'>";
+      resetButton.innerHTML =
+        "<img style='opacity: 0.5;' src='images/undo-black.png'>";
     }
 
     // If segmentButton is pressed then start the countdown for copied stopwatch object(segmentStopWatch)
@@ -74,15 +81,20 @@ function StartCountdown() {
     clearInterval(interval);
     clearInterval(segmentInterval);
     startButton.innerHTML = "<img src='images/play.png'>";
-    segmentButton.innerHTML = "<img style='opacity: 0.5;' src='images/stopwatch-black.png'>"
+    segmentButton.innerHTML =
+      "<img style='opacity: 0.5;' src='images/stopwatch-black.png'>";
     resetButton.innerHTML = "<img style='opacity: 1;' src='images/undo.png'>";
 
-    if(toggleSwitchSlider.value === 'dark') {
-      segmentButton.innerHTML = "<img style='opacity: 0.5;' src='images/stopwatch-white.png'>"
-      resetButton.innerHTML = "<img style='opacity: 1;' src='images/undo-white.png'>";
+    if (toggleSwitchSlider.value === "dark") {
+      segmentButton.innerHTML =
+        "<img style='opacity: 0.5;' src='images/stopwatch-white.png'>";
+      resetButton.innerHTML =
+        "<img style='opacity: 1;' src='images/undo-white.png'>";
     } else {
-      segmentButton.innerHTML = "<img style='opacity: 0.5;' src='images/stopwatch-black.png'>"
-      resetButton.innerHTML = "<img style='opacity: 1;' src='images/undo-black.png'>";
+      segmentButton.innerHTML =
+        "<img style='opacity: 0.5;' src='images/stopwatch-black.png'>";
+      resetButton.innerHTML =
+        "<img style='opacity: 1;' src='images/undo-black.png'>";
     }
   }
 }
@@ -118,7 +130,6 @@ function handleCountdown(value) {
 }
 
 function createSegment() {
-
   // Get access for segment-container and fill it dynamically created divs
   const SegmentContainer = document.getElementById("segment-container");
   const segment = document.createElement("div");
@@ -143,25 +154,28 @@ function createSegment() {
     "." +
     checkMiliseconds("segment");
 
-    // Checks if copied stopwatch object property are equal to zero in the moment of pressing segmentButton. If yes then first dynamically created div will contain same values for both stopwatch objects
+  /* Checks if copied stopwatch object property are equal to zero in the moment of pressing segmentButton. If yes then first dynamically created div will contain same values for both stopwatch objects */
   if (secondSegment.innerHTML === "00:00.00") {
     secondSegment.innerHTML = segment.innerHTML;
   }
 
-  // Checking the segmentButton value. In both cases appending stopwatch objects. If segmentButton is already pressed - reset properties of copied stopWatch object but not stopping the countdown
+  /* Checking the segmentButton value. In both cases appending stopwatch objects. If segmentButton is already pressed - reset properties of copied stopWatch object but not stopping the countdown*/
   if (segmentButton.value === "off") {
     secondSegmentInnerContainer.appendChild(secondSegmentText);
     secondSegmentInnerContainer.appendChild(secondSegment);
-    secondSegmentInnerContainer.classList.add('segment-div')
+    secondSegmentInnerContainer.classList.add("segment-div");
     SegmentContainer.appendChild(secondSegmentInnerContainer);
     handleCountdown("segment");
   }
   if (segmentStopWatch.countdown === "on") {
     secondSegmentInnerContainer.appendChild(secondSegmentText);
     secondSegmentInnerContainer.appendChild(secondSegment);
-    secondSegmentInnerContainer.classList.add('segment-div')
+    secondSegmentInnerContainer.classList.add("segment-div");
     SegmentContainer.appendChild(secondSegmentInnerContainer);
     resetSegmentStopWatch();
+  }
+  if (toggleSwitchSlider.value === "dark") {
+
   }
   secondSegment.appendChild(segment);
   secondSegmentText.innerText = `Segment ${segmentCounter}`;
@@ -241,14 +255,16 @@ function resetSegmentStopWatch() {
   segmentStopWatch.countdown = "off";
 }
 
-// Reset all values 
+// Reset all values
 function resetCountdown() {
   const SegmentContainer = document.getElementById("segment-container");
   const { waitingForPause } = stopWatch;
-  if(toggleSwitchSlider.value === 'dark') {
-    resetButton.innerHTML = "<img style='opacity: 0.5;' src='images/undo-white.png'>";
+  if (toggleSwitchSlider.value === "dark") {
+    resetButton.innerHTML =
+      "<img style='opacity: 0.5;' src='images/undo-white.png'>";
   } else {
-    resetButton.innerHTML = "<img style='opacity: 0.5;' src='images/undo-black.png'>";
+    resetButton.innerHTML =
+      "<img style='opacity: 0.5;' src='images/undo-black.png'>";
   }
   if (!waitingForPause) {
     segmentCounter = 0;
