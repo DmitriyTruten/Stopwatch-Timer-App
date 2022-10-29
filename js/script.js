@@ -53,7 +53,7 @@ function StartCountdown() {
     handleCountdown("stopWatch");
     startButton.innerHTML =
       "<img style='margin-left: 0px;' src='images/pause.png'>";
-    resetButton.innerHTML = "<img style='opacity: 0.5;' src='images/undo.png'>";
+    resetButton.innerHTML = "<img style='opacity: 0.5;' src='images/undo-black.png'>";
 
     if (toggleSwitchSlider.value === "dark") {
       segmentButton.innerHTML =
@@ -83,7 +83,7 @@ function StartCountdown() {
     startButton.innerHTML = "<img src='images/play.png'>";
     segmentButton.innerHTML =
       "<img style='opacity: 0.5;' src='images/stopwatch-black.png'>";
-    resetButton.innerHTML = "<img style='opacity: 1;' src='images/undo.png'>";
+    resetButton.innerHTML = "<img style='opacity: 1;' src='images/undo-black.png'>";
 
     if (toggleSwitchSlider.value === "dark") {
       segmentButton.innerHTML =
