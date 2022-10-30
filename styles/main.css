@@ -81,17 +81,17 @@ input:checked + .slider:before {
   align-items: center;
 }
 .display-container input {
-  padding: auto;
   border: none;
 }
 
 .display {
   max-width: 100%;
-  font-size: 54px;
+  min-width: 100%;
+  font-size: 53px;
 }
 
 .segment-display {
-  width: 62%;
+  width: 65%;
   font-size: 34px;
 }
 
@@ -136,7 +136,6 @@ input:checked + .slider:before {
 
 .segment-div {
   padding: 5px 0px;
-  border-bottom: 1px solid black;
 }
 .segment-div p {
   margin-bottom: 5px;
