@@ -42,7 +42,7 @@ const toggleSwitchSlider = document.getElementById("toggle");
 // Function handles the countdown process
 function StartCountdown() {
   const { waitingForPause } = stopWatch;
-
+  
   // If stopwatch object not waiting for pause then start the countdown
   if (!waitingForPause) {
     segmentStopWatch.waitingForPause = true;
@@ -55,6 +55,11 @@ function StartCountdown() {
     "<img style='margin-left: 0px;' src='images/pause.png'>";
     resetButton.innerHTML = "<img style='opacity: 0.5;' src='images/undo-black.png'>";
     handleCountdown("stopWatch");
+    
+    // If segmentButton is pressed then start the countdown for copied stopwatch object(segmentStopWatch)
+    if (segmentButton.value === "on") {
+      handleCountdown("segment");
+    }
 
     if (toggleSwitchSlider.value === "dark") {
       segmentButton.innerHTML =
@@ -68,10 +73,6 @@ function StartCountdown() {
         "<img style='opacity: 0.5;' src='images/undo-black.png'>";
     }
 
-    // If segmentButton is pressed then start the countdown for copied stopwatch object(segmentStopWatch)
-    if (segmentButton.value === "on") {
-      handleCountdown("segment");
-    }
 
     // Else if original stopwatch object waiting for pause - stop the countdown and invert both objects property values besides countdown property
   } else if (waitingForPause) {
@@ -175,9 +176,6 @@ function createSegment() {
     secondSegmentInnerContainer.classList.add("segment-div");
     SegmentContainer.appendChild(secondSegmentInnerContainer);
     resetSegmentStopWatch();
-  }
-  if (toggleSwitchSlider.value === "dark") {
-
   }
   secondSegment.appendChild(segment);
   secondSegmentText.innerText = `Segment ${segmentCounter}`;

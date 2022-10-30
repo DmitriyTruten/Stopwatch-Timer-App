@@ -109,7 +109,7 @@ input:checked + .slider:before {
   align-items: center;
   border-radius: 50%;
   border: none;
-  background-color: white;
+  background-color: rgb(255, 255, 255);
 }
 .button-container .start {
   background-color: #2196F3;
@@ -136,6 +136,7 @@ input:checked + .slider:before {
 
 .segment-div {
   padding: 5px 0px;
+  border-bottom: 1px solid black;
 }
 .segment-div p {
   margin-bottom: 5px;
