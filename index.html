@@ -18,12 +18,34 @@
       <input type="text" class="segment-display" id="segment-display" value="" disabled>
     </div>
     <div class="button-container">
-      <button class="reset" id="reset" disabled></button>
+      <button class="reset" id="reset" onmousedown="changeBackgroundColor('reset')"  onmouseup="resetTransparent()" disabled></button>
       <button class="start" id="start" value="null"></button>
-      <button class="segment" id="segment" value="off" disabled></button>
+      <button class="segment" id="segment" value="off" onmousedown="changeBackgroundColor('segment')" onmouseup="resetTransparent()" disabled></button>
     </div>
     <div class="segment-container" id="segment-container"></div>
   </div>
+  <script>
+    const toggleSwitchSlider = document.getElementById("toggle");
+    function changeBackgroundColor(value) {
+      if(toggleSwitchSlider.value === 'light') {
+        if(value === 'reset') {
+          document.getElementById('reset').style.backgroundColor = "rgb(211, 211, 211)"
+        } else {
+          document.getElementById('segment').style.backgroundColor = "rgb(211, 211, 211)"
+        }
+      } else {
+        if(value === 'reset') {
+          document.getElementById('reset').style.backgroundColor = "rgb(70, 70, 70)"
+        } else {
+          document.getElementById('segment').style.backgroundColor = "rgb(70, 70, 70)"
+        }
+      }
+    }
+    function resetTransparent() {
+      document.getElementById('reset').style.backgroundColor = "transparent"
+      document.getElementById('segment').style.backgroundColor =  "transparent"
+    }
+  </script>
   <script type="module" src="js/script.js"></script>
 </body>
 </html>

@@ -130,11 +130,6 @@ input:checked + .slider:before {
   height: 24px;
 }
 
-.reset:active,
-.segment:active {
-  background-color: rgb(211, 211, 211);
-}
-
 .segment-container {
   margin-top: 20px;
 }
