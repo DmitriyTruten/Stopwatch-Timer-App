@@ -76,6 +76,7 @@ input:checked + .slider:before {
   right: 0;
   margin: auto;
   border-radius: 50%;
+  z-index: -1;
 }
 
 .line {
@@ -89,8 +90,21 @@ input:checked + .slider:before {
   right: 0;
   overflow: hidden;
   margin: auto;
-  -webkit-animation: circle 6s linear infinite;
-          animation: circle 6s linear infinite;
+  transform: translateY(-150px);
+}
+
+.circle-line {
+  width: 5px;
+  height: 29px;
+  background-color: black;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  overflow: hidden;
+  margin: auto;
+  transform: translateY(-150px);
 }
 
 @-webkit-keyframes circle {
