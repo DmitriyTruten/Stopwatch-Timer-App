@@ -54,10 +54,10 @@ function StartCountdown() {
     resetButton.disabled = true;
     startButton.value = "on";
     startButton.innerHTML =
-    "<img style='margin-left: 0px;' src='images/pause.png'>";
+      "<img style='margin-left: 0px;' src='images/pause.png'>";
     resetButton.innerHTML =
-    "<img style='opacity: 0.5;' src='images/undo-black.png'>";
-    line.style.animation = "circle 60.6s linear infinite";
+      "<img style='opacity: 0.5;' src='images/undo-black.png'>";
+    line.style.animation = "circle 60.7s linear infinite";
     handleCountdown("stopWatch");
 
     // If segmentButton is pressed then start the countdown for copied stopwatch object(segmentStopWatch)
@@ -77,35 +77,44 @@ function StartCountdown() {
         "<img style='opacity: 0.5;' src='images/undo-black.png'>";
     }
 
-    // Else if original stopwatch object waiting for pause - stop the countdown and invert both objects property values besides countdown property
+    /* Else if original stopwatch object waiting for pause - stop the countdown and 
+    invert both objects property values besides countdown property */
   } else if (waitingForPause) {
-    segmentStopWatch.waitingForPause = false;
-    segmentButton.disabled = true;
-    startButton.value = "off";
-    stopWatch.waitingForPause = false;
-    resetButton.disabled = false;
-    startButton.innerHTML = "<img src='images/play.png'>";
+    handleWaitingForPause();
+  }
+}
+
+function handleWaitingForPause() {
+  segmentStopWatch.waitingForPause = false;
+  segmentButton.disabled = true;
+  startButton.value = "off";
+  stopWatch.waitingForPause = false;
+  resetButton.disabled = false;
+  startButton.innerHTML = "<img src='images/play.png'>";
+  segmentButton.innerHTML =
+    "<img style='opacity: 0.5;' src='images/stopwatch-black.png'>";
+  resetButton.innerHTML =
+    "<img style='opacity: 1;' src='images/undo-black.png'>";
+  line.style.animationPlayState = "paused";
+  clearInterval(interval);
+  clearInterval(segmentInterval);
+
+  if (toggleSwitchSlider.value === "dark") {
+    segmentButton.innerHTML =
+      "<img style='opacity: 0.5;' src='images/stopwatch-white.png'>";
+    resetButton.innerHTML =
+      "<img style='opacity: 1;' src='images/undo-white.png'>";
+  } else {
     segmentButton.innerHTML =
       "<img style='opacity: 0.5;' src='images/stopwatch-black.png'>";
     resetButton.innerHTML =
       "<img style='opacity: 1;' src='images/undo-black.png'>";
-    line.style.animationPlayState = "paused";
-    clearInterval(interval);
-    clearInterval(segmentInterval);
-
-    if (toggleSwitchSlider.value === "dark") {
-      segmentButton.innerHTML =
-        "<img style='opacity: 0.5;' src='images/stopwatch-white.png'>";
-      resetButton.innerHTML =
-        "<img style='opacity: 1;' src='images/undo-white.png'>";
-    } else {
-      segmentButton.innerHTML =
-        "<img style='opacity: 0.5;' src='images/stopwatch-black.png'>";
-      resetButton.innerHTML =
-        "<img style='opacity: 1;' src='images/undo-black.png'>";
-    }
   }
 }
+
+// Stops the countdown if user switch pages
+window.addEventListener("blur", handleWaitingForPause);
+
 // Function gets access for interval variables, assign its values to setInterval function and invoke renderTime
 function handleCountdown(value) {
   if (value === "stopWatch") {
@@ -272,7 +281,7 @@ function resetCountdown() {
       "<img style='opacity: 0.5;' src='images/undo-black.png'>";
   }
   if (!waitingForPause) {
-    line.style.animation = 'none'
+    line.style.animation = "none";
     segmentCounter = 0;
     startButton.value = "null";
     segmentButton.value = "off";

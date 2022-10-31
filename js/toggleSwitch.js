@@ -1,5 +1,5 @@
-const segmentDisplay = document.getElementById("segment-display");
 const segmentContainer = document.getElementById("segment-container");
+const segmentDisplay = document.getElementById("segment-display");
 const toggleSwitchSlider = document.getElementById("toggle");
 const stopWatchDisplay = document.getElementById("display");
 const segmentButton = document.getElementById("segment");

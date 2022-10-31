@@ -25,12 +25,12 @@
 .slider {
   position: absolute;
   cursor: pointer;
+  background-color: #ccc;
+  transition: 0.4s;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: #ccc;
-  transition: 0.4s;
 }
 
 .slider:before {
@@ -70,16 +70,16 @@ input:checked + .slider:before {
   height: 330px;
   border: 30px solid #ccc;
   position: relative;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
   margin: auto;
   border-radius: 50%;
   z-index: -1;
   display: flex;
   justify-content: center;
   align-items: center;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
 }
 .circle input {
   border: none;
@@ -90,13 +90,13 @@ input:checked + .slider:before {
   height: 30px;
   background-color: cyan;
   position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
   overflow: hidden;
   margin: auto;
   transform: translateY(-150px);
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
 }
 
 @-webkit-keyframes circle {

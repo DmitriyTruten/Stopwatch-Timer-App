@@ -3,3 +3,10 @@
   text-align: center;
   background-color: transparent;
 }
+
+@mixin position {
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
