@@ -272,6 +272,7 @@ function resetCountdown() {
       "<img style='opacity: 0.5;' src='images/undo-black.png'>";
   }
   if (!waitingForPause) {
+    line.style.animation = 'none'
     segmentCounter = 0;
     startButton.value = "null";
     segmentButton.value = "off";
