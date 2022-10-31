@@ -1,7 +1,8 @@
+@import url("https://fonts.googleapis.com/css2?family=Inconsolata:wght@400;500;600;700&display=swap");
 * {
   margin: 0;
   padding: 0;
-  font-family: Consolas;
+  font-family: Inconsolata, monospace;
   box-sizing: border-box;
 }
 
@@ -124,19 +125,23 @@ input:checked + .slider:before {
 }
 
 .display {
-  position: absolute;
   max-width: 77%;
   min-width: 77%;
   font-size: 45px;
+  font-weight: 600;
+  position: absolute;
   text-align: center;
+  background-color: transparent;
 }
 
 .segment-display {
   width: 50%;
+  font-weight: 600;
   font-size: 25px;
-  position: absolute;
   top: 70%;
+  position: absolute;
   text-align: center;
+  background-color: transparent;
 }
 
 .button-container {
@@ -177,23 +182,18 @@ input:checked + .slider:before {
 .segment-container {
   margin-top: 20px;
 }
+.segment-container div div {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  font-weight: 400;
+  font-size: 20px;
+}
 
 .segment-div {
   padding: 5px 0px;
 }
 .segment-div p {
   margin-bottom: 5px;
-}
-
-.segment-container div div {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-}
-
-.segment-container div div div {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  max-width: 100%;
+  font-weight: 600;
 }/*# sourceMappingURL=main.css.map */
