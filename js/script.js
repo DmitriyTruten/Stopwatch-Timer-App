@@ -57,7 +57,7 @@ function StartCountdown() {
     "<img style='margin-left: 0px;' src='images/pause.png'>";
     resetButton.innerHTML =
     "<img style='opacity: 0.5;' src='images/undo-black.png'>";
-    line.style.animation = "circle 60s linear infinite";
+    line.style.animation = "circle 60.6s linear infinite";
     handleCountdown("stopWatch");
 
     // If segmentButton is pressed then start the countdown for copied stopwatch object(segmentStopWatch)

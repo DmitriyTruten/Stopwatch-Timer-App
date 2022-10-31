@@ -1,9 +1,8 @@
-@import url("https://fonts.googleapis.com/css2?family=Fira+Sans:wght@300;400;500;600;700&display=swap");
 
 * {
   margin: 0;
   padding: 0;
-  font-family: "Fira Sans";
+  font-family: Consolas;
   box-sizing: border-box;
 }
 
@@ -74,7 +73,7 @@ input:checked + .slider:before {
   width: 330px;
   height: 330px;
   border: 30px solid #ccc;
-  position: absolute;
+  position: relative;
   top: 0;
   bottom: 0;
   left: 0;
@@ -82,6 +81,12 @@ input:checked + .slider:before {
   margin: auto;
   border-radius: 50%;
   z-index: -1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  input {
+    border: none;
+  }
 }
 
 .line {
@@ -112,29 +117,23 @@ input:checked + .slider:before {
   flex-direction: column;
   max-width: 15%;
   margin: auto;
-  margin-top: 8%;
   justify-content: center;
-}
-
-.display-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  input {
-    border: none;
-  }
 }
 
 .display {
-  max-width: 100%;
-  min-width: 100%;
-  font-size: 53px;
+  position: absolute;
+  max-width: 77%;
+  min-width: 77%;
+  font-size: 45px;
+  text-align: center;
 }
 
 .segment-display {
-  width: 65%;
-  font-size: 34px;
+  width: 50%;
+  font-size: 25px;
+  position: absolute;
+  top: 70%;
+  text-align: center;
 }
 
 .button-container {
