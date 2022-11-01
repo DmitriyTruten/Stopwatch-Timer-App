@@ -68,6 +68,15 @@ input:checked + .slider:before {
   border-radius: 50%;
 }
 
+.left-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+  flex-direction: column;
+  border-right: 1px solid gray;
+}
+
 .circle {
   width: 330px;
   height: 330px;
@@ -105,10 +114,10 @@ input:checked + .slider:before {
   }
 }
 
-.whole-container {
+.stopwatch-container {
   display: flex;
   flex-direction: column;
-  max-width: 15%;
+  width: 40%;
   margin: auto;
   justify-content: center;
 }
