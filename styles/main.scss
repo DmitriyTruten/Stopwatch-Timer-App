@@ -117,12 +117,9 @@ input:checked + .slider:before {
 .stopwatch-container {
   display: flex;
   flex-direction: column;
-  min-width: 100%;
-  max-width: 100%;
   align-items: center;
   justify-content: center;
   position: absolute;
-  top: 65%;
 }
 
 .display {
@@ -145,8 +142,6 @@ input:checked + .slider:before {
   display: grid;
   grid-template: 1fr / 1fr 1fr 1fr;
   justify-items: center;
-  margin-top: 10px;
-  width: 100%;
   align-items: center;
   button {
     display: flex;

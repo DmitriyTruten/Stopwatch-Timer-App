@@ -10,6 +10,16 @@
   .circle-container {
     min-width: 330px;
   }
+  .stopwatch-container {
+    top: 60%;
+    min-width: 330px;
+  }
+  .button-container {
+    width: 100%;
+  }
+  .segment-container {
+    width: 70%;
+  }
 }
 * {
   margin: 0;
@@ -137,12 +147,9 @@ input:checked + .slider:before {
 .stopwatch-container {
   display: flex;
   flex-direction: column;
-  min-width: 100%;
-  max-width: 100%;
   align-items: center;
   justify-content: center;
   position: absolute;
-  top: 65%;
 }
 
 .display {
@@ -169,8 +176,6 @@ input:checked + .slider:before {
   display: grid;
   grid-template: 1fr/1fr 1fr 1fr;
   justify-items: center;
-  margin-top: 10px;
-  width: 100%;
   align-items: center;
 }
 .button-container button {
