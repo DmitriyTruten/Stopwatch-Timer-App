@@ -222,9 +222,32 @@ input:checked + .slider:before {
 }
 
 .segment-div {
+  transition: all 0.5s ease-in-out;
   padding: 5px 0px;
 }
 .segment-div p {
   margin-bottom: 5px;
   font-weight: 600;
+}
+
+@-webkit-keyframes approach {
+  0% {
+    transform: translateX(-100px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0px);
+    opacity: 1;
+  }
+}
+
+@keyframes approach {
+  0% {
+    transform: translateX(-100px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0px);
+    opacity: 1;
+  }
 }/*# sourceMappingURL=main.css.map */

@@ -181,14 +181,16 @@ function createSegment() {
     secondSegmentInnerContainer.appendChild(secondSegmentText);
     secondSegmentInnerContainer.appendChild(secondSegment);
     secondSegmentInnerContainer.classList.add("segment-div");
-    SegmentContainer.appendChild(secondSegmentInnerContainer);
+    secondSegmentInnerContainer.style.animation = 'approach 1s ease-in-out';
+    SegmentContainer.prepend(secondSegmentInnerContainer);
     handleCountdown("segment");
   }
   if (segmentStopWatch.countdown === "on") {
     secondSegmentInnerContainer.appendChild(secondSegmentText);
     secondSegmentInnerContainer.appendChild(secondSegment);
     secondSegmentInnerContainer.classList.add("segment-div");
-    SegmentContainer.appendChild(secondSegmentInnerContainer);
+    secondSegmentInnerContainer.style.animation = 'approach 1s ease-in-out';
+    SegmentContainer.prepend(secondSegmentInnerContainer);
     resetSegmentStopWatch();
   }
   secondSegment.appendChild(segment);
