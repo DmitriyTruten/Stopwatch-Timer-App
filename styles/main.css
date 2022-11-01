@@ -35,6 +35,10 @@
   box-sizing: border-box;
 }
 
+body {
+  transition: background-color 0.5s ease-in-out;
+}
+
 .switch-container {
   position: absolute;
 }
@@ -125,6 +129,7 @@ input:checked + .slider:before {
   position: absolute;
   overflow: hidden;
   margin: auto;
+  transition: background-color 0.5s ease-in-out;
   transform: translateY(-150px);
   top: 0;
   left: 0;
@@ -162,6 +167,7 @@ input:checked + .slider:before {
   min-width: 77%;
   font-size: 45px;
   font-weight: 600;
+  transition: color 0.5s ease-in-out;
   position: absolute;
   text-align: center;
   background-color: transparent;
@@ -172,6 +178,7 @@ input:checked + .slider:before {
   font-weight: 600;
   font-size: 25px;
   top: 70%;
+  transition: color 0.5s ease-in-out;
   position: absolute;
   text-align: center;
   background-color: transparent;
