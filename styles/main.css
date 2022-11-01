@@ -219,6 +219,7 @@ input:checked + .slider:before {
   justify-content: space-between;
   font-weight: 400;
   font-size: 20px;
+  padding: 0px 5px;
 }
 
 .segment-div {
