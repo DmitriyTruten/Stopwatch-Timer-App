@@ -1,4 +1,8 @@
 @media (max-width: 480px) {
+  .switch-container {
+    top: 10px;
+    right: 10px;
+  }
   .whole-container {
     min-width: 330px;
   }
@@ -10,7 +14,7 @@
     min-width: 330px;
   }
   .stopwatch-container {
-    top: 60%;
+    top: 400px;
     min-width: 330px;
   }
   .button-container {
@@ -18,5 +22,8 @@
   }
   .segment-container {
     width: 70%;
+    height: 150px;
+    overflow-y: scroll;
+    margin-bottom: 30px;
   }
 }
