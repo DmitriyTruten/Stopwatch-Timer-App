@@ -149,11 +149,10 @@ function handleCountdown(value) {
 function createSegment() {
   // Get access for segment-container and fill it dynamically created divs
   const secondSegmentInnerContainer = document.createElement("div");
-  const SegmentContainer = document.getElementById("segment-container");
+  const segmentContainer = document.getElementById("segment-container");
   const secondSegment = document.createElement("div");
   const segment = document.createElement("div");
   let secondSegmentText = document.createElement("p");
-
   // For every segmentButton click increment segmentCounter by 1
   segmentCounter += 1;
 
@@ -181,16 +180,16 @@ function createSegment() {
     secondSegmentInnerContainer.appendChild(secondSegmentText);
     secondSegmentInnerContainer.appendChild(secondSegment);
     secondSegmentInnerContainer.classList.add("segment-div");
-    secondSegmentInnerContainer.style.animation = 'approach 1s ease-in-out';
-    SegmentContainer.prepend(secondSegmentInnerContainer);
+    secondSegmentInnerContainer.style.animation = "approach 1s ease-in-out";
+    segmentContainer.prepend(secondSegmentInnerContainer);
     handleCountdown("segment");
   }
   if (segmentStopWatch.countdown === "on") {
     secondSegmentInnerContainer.appendChild(secondSegmentText);
     secondSegmentInnerContainer.appendChild(secondSegment);
     secondSegmentInnerContainer.classList.add("segment-div");
-    secondSegmentInnerContainer.style.animation = 'approach 1s ease-in-out';
-    SegmentContainer.prepend(secondSegmentInnerContainer);
+    secondSegmentInnerContainer.style.animation = "approach 1s ease-in-out";
+    segmentContainer.prepend(secondSegmentInnerContainer);
     resetSegmentStopWatch();
   }
   secondSegment.appendChild(segment);
@@ -198,6 +197,10 @@ function createSegment() {
   segmentStopWatch.waitingForPause = true;
   segmentStopWatch.countdown = "on";
   segmentButton.value = "on";
+
+  if (segmentCounter === 3) {
+    segmentContainer.classList.add("reveal-scrollbar");
+  }
 }
 
 // Functions getting access for both objects and format its property values
@@ -273,7 +276,7 @@ function resetSegmentStopWatch() {
 
 // Reset all values
 function resetCountdown() {
-  const SegmentContainer = document.getElementById("segment-container");
+  const segmentContainer = document.getElementById("segment-container");
   const { waitingForPause } = stopWatch;
   if (toggleSwitchSlider.value === "dark") {
     resetButton.innerHTML =
@@ -287,7 +290,8 @@ function resetCountdown() {
     segmentCounter = 0;
     startButton.value = "null";
     segmentButton.value = "off";
-    SegmentContainer.innerHTML = "";
+    segmentContainer.innerHTML = "";
+    segmentContainer.classList.remove("reveal-scrollbar");
     resetButton.disabled = true;
     resetStopWatch();
     resetSegmentStopWatch();
