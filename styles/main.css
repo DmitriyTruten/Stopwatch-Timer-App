@@ -26,11 +26,12 @@
     height: 150px;
     overflow-y: scroll;
     margin-bottom: 30px;
+    width: 100%;
   }
 }
 @media (max-width: 480px) {
   .segment-container {
-    width: 95%;
+    width: 90%;
   }
 }
 * {
@@ -247,9 +248,9 @@ input:checked + .slider:before {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  font-weight: 400;
-  font-size: 20px;
-  padding: 0px 5px;
+  font-weight: 500;
+  padding-right: 5px;
+  align-items: center;
 }
 
 .segment-div {
@@ -259,6 +260,10 @@ input:checked + .slider:before {
 .segment-div p {
   margin-bottom: 5px;
   font-weight: 600;
+  font-size: 20px;
+}
+.segment-div div div {
+  font-size: 25px;
 }
 
 @-webkit-keyframes approach {
