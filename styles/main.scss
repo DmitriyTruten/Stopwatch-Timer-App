@@ -56,11 +56,11 @@ body {
 }
 
 input:checked + .slider {
-  background-color: #2196f3;
+  background-color: #008cff;;
 }
 
 input:focus + .slider {
-  box-shadow: 0 0 1px #2196f3;
+  box-shadow: 0 0 1px #008cff;;
 }
 
 input:checked + .slider:before {
@@ -159,7 +159,7 @@ input:checked + .slider:before {
     background-color: rgb(255, 255, 255);
   }
   .start {
-    background-color: #2196f3;
+    background-color: #008cff;
     height: 50px;
     width: 50px;
     img {
@@ -195,7 +195,7 @@ input:checked + .slider:before {
     border-radius: 10px;
   }
   &::-webkit-scrollbar-thumb {
-    background-color: #2196f3;
+    background-color: #008cff;
     border-radius: 10px;
   }
   div {
