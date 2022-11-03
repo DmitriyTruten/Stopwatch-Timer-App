@@ -31,6 +31,15 @@
 
 @media (max-width: 480px) {
   .segment-container {
-    width: 90%;
+    width: 95%;
+  }
+}
+
+@media(min-width:1025px) {
+  .circle {
+    top: 10px;
+  }
+  .stopwatch-container {
+    top: 350px;
   }
 }
