@@ -1,5 +1,11 @@
 import { toggleSwitch } from "./toggleSwitch.js";
 
+$(document).ready(() => {
+  $(".segment").on("click", () => {
+    $(".segment-div").css("border-bottom", "2px solid rgba(0, 0, 0, 0.3)")
+  })
+});
+
 // Model
 // Creating model of stopwatch object
 const stopWatch = {

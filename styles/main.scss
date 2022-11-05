@@ -179,7 +179,7 @@ input:checked + .slider:before {
 
 .reveal-scrollbar {
   &::-webkit-scrollbar {
-    width: 7px;
+    width: 5px;
   }
   &::-webkit-scrollbar-track {
     border-radius: 10px;
@@ -204,7 +204,6 @@ input:checked + .slider:before {
       flex-direction: row;
       justify-content: space-between;
       font-weight: 500;
-      padding-right: 5px;
       align-items: center;
     }
   }
@@ -212,6 +211,7 @@ input:checked + .slider:before {
 .segment-div {
   transition: all 0.5s ease-in-out;
   padding: 5px 0px;
+  margin-right: 10px;
   p {
     margin-bottom: 5px;
     font-weight: 600;
@@ -220,6 +220,7 @@ input:checked + .slider:before {
   div {
     div {
       font-size: 25px;
+      display: flex;
     }
   }
 }

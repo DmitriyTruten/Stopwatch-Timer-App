@@ -5,12 +5,15 @@ const stopWatchDisplay = document.getElementById("display");
 const segmentButton = document.getElementById("segment");
 const resetButton = document.getElementById("reset");
 const startButton = document.getElementById("start");
-const line = document.getElementById('line');
+const line = document.getElementById("line");
 
 toggleSwitchSlider.addEventListener("click", toggleSwitch);
 
 export function toggleSwitch() {
   if (toggleSwitchSlider.value === "light") {
+    $(document).ready(() => {
+      $(".segment-div").css("border-bottom", "2px solid rgb(255, 255, 255)");
+    });
     document.body.style.backgroundColor = "rgba(0, 0, 0, 0.8)";
     stopWatchDisplay.style.backgroundColor = "transparent";
     segmentDisplay.style.backgroundColor = "transparent";
@@ -20,7 +23,7 @@ export function toggleSwitch() {
     stopWatchDisplay.style.color = "white";
     segmentDisplay.style.color = "white";
     toggleSwitchSlider.value = "dark";
-    line.style.backgroundColor = 'red';
+    line.style.backgroundColor = "red";
     if (startButton.value === "on") {
       segmentButton.innerHTML =
         "<img style='opacity: 1;' src='images/stopwatch-white.png'>";
@@ -38,6 +41,9 @@ export function toggleSwitch() {
         "<img style='opacity: 0.5;' src='images/undo-white.png'>";
     }
   } else {
+    $(document).ready(() => {
+      $(".segment-div").css("border-bottom", "2px solid rgba(0, 0, 0, 0.3)")
+    });
     toggleSwitchSlider.value = "light";
     document.body.style.backgroundColor = "rgba(255, 255, 255)";
     stopWatchDisplay.style.backgroundColor = "transparent";
@@ -45,7 +51,7 @@ export function toggleSwitch() {
     stopWatchDisplay.style.color = "rgb(84, 84, 84)";
     segmentDisplay.style.color = "rgb(84, 84, 84)";
     segmentContainer.style.color = "black";
-    line.style.backgroundColor = 'cyan';
+    line.style.backgroundColor = "cyan";
     if (startButton.value === "on") {
       segmentButton.innerHTML =
         "<img style='opacity: 1;' src='images/stopwatch-black.png'>";
