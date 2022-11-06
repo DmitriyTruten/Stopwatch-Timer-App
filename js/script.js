@@ -2,7 +2,7 @@ import { toggleSwitch } from "./toggleSwitch.js";
 
 $(document).ready(() => {
   $(".segment").on("click", () => {
-    $(".segment-div").css("border-bottom", "2px solid rgba(0, 0, 0, 0.3)")
+    $(".segment-div").css("border-bottom", "1px solid ")
   })
 });
 

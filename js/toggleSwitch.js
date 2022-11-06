@@ -12,7 +12,7 @@ toggleSwitchSlider.addEventListener("click", toggleSwitch);
 export function toggleSwitch() {
   if (toggleSwitchSlider.value === "light") {
     $(document).ready(() => {
-      $(".segment-div").css("border-bottom", "2px solid rgb(255, 255, 255)");
+      $(".segment-div").css("border-bottom", "1px solid rgb(255, 255, 255)");
     });
     document.body.style.backgroundColor = "rgba(0, 0, 0, 0.8)";
     stopWatchDisplay.style.backgroundColor = "transparent";
@@ -42,7 +42,7 @@ export function toggleSwitch() {
     }
   } else {
     $(document).ready(() => {
-      $(".segment-div").css("border-bottom", "2px solid rgba(0, 0, 0, 0.3)")
+      $(".segment-div").css("border-bottom", "1px solid")
     });
     toggleSwitchSlider.value = "light";
     document.body.style.backgroundColor = "rgba(255, 255, 255)";
