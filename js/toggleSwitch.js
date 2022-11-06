@@ -13,6 +13,7 @@ export function toggleSwitch() {
   if (toggleSwitchSlider.value === "light") {
     $(document).ready(() => {
       $(".segment-div").css("border-bottom", "1px solid rgb(255, 255, 255)");
+      $("#timer-display").css("color", "white");
     });
     document.body.style.backgroundColor = "rgba(0, 0, 0, 0.8)";
     stopWatchDisplay.style.backgroundColor = "transparent";
@@ -42,7 +43,8 @@ export function toggleSwitch() {
     }
   } else {
     $(document).ready(() => {
-      $(".segment-div").css("border-bottom", "1px solid")
+      $(".segment-div").css("border-bottom", "1px solid");
+      $("#timer-display").css("color", "rgb(84, 84, 84)");
     });
     toggleSwitchSlider.value = "light";
     document.body.style.backgroundColor = "rgba(255, 255, 255)";

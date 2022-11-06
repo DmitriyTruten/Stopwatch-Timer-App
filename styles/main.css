@@ -30,6 +30,12 @@
     margin-bottom: 30px;
     width: 100%;
   }
+  .timer-picker-container {
+    width: 70%;
+    height: 150px;
+    margin-bottom: 30px;
+    width: 100%;
+  }
 }
 @media (max-width: 480px) {
   .segment-container {
@@ -40,7 +46,8 @@
   .circle {
     top: 10px;
   }
-  .stopwatch-container {
+  .stopwatch-container,
+.timer-container {
     top: 350px;
   }
 }
@@ -207,6 +214,10 @@ input:checked + .slider:before {
   justify-content: space-between;
   font-weight: 500;
   align-items: center;
+}
+
+.timer-picker-container {
+  margin-top: 20px;
 }
 
 .circle {
