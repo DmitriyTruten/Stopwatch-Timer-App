@@ -1,9 +1,10 @@
 import { toggleSwitch } from "./toggleSwitch.js";
+import { renderTimer } from "./timer.js"
 
 $(document).ready(() => {
   $(".segment").on("click", () => {
-    $(".segment-div").css("border-bottom", "1px solid ")
-  })
+    $(".segment-div").css("border-bottom", "1px solid ");
+  });
 });
 
 // Model
@@ -134,7 +135,7 @@ function handleCountdown(value) {
         stopWatch.minutes += 1;
         stopWatch.seconds = 0;
       }
-      renderTime();
+      renderStopWatch();
     }, 10);
   } else {
     segmentInterval = setInterval(function () {
@@ -147,7 +148,7 @@ function handleCountdown(value) {
         segmentStopWatch.minutes += 1;
         segmentStopWatch.seconds = 0;
       }
-      renderTime();
+      renderStopWatch();
     }, 10);
   }
 }
@@ -302,11 +303,11 @@ function resetCountdown() {
     resetStopWatch();
     resetSegmentStopWatch();
   }
-  renderTime();
+  renderStopWatch();
 }
 
 // View
-function renderTime() {
+function renderStopWatch() {
   const stopWatchDisplay = document.getElementById("display");
   const segmentDisplay = document.getElementById("segment-display");
 
@@ -328,4 +329,5 @@ function renderTime() {
   }
 }
 
-renderTime();
+renderStopWatch();
+renderTimer();

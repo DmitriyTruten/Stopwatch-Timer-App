@@ -14,11 +14,13 @@
   .circle-container {
     min-width: 330px;
   }
-  .stopwatch-container {
+  .stopwatch-container,
+.timer-container {
     top: 400px;
     min-width: 330px;
   }
-  .button-container {
+  .button-container,
+.timer-button-container {
     width: 100%;
   }
   .segment-container {
@@ -136,7 +138,8 @@ input:checked + .slider:before {
   right: 20%;
 }
 
-.stopwatch-container {
+.stopwatch-container,
+.timer-container {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -144,36 +147,44 @@ input:checked + .slider:before {
   position: absolute;
 }
 
-.button-container {
+.button-container,
+.timer-button-container {
   display: grid;
   grid-template: 1fr/1fr 1fr 1fr;
   justify-items: center;
   align-items: center;
 }
-.button-container button {
+.button-container button,
+.timer-button-container button {
   display: flex;
   justify-content: center;
   align-items: center;
   border-radius: 50%;
-  border: none;
+  border: 1px solid black;
   background-color: rgb(255, 255, 255);
 }
-.button-container .start {
+.button-container .start,
+.timer-button-container .start {
   background-color: #008cff;
   height: 50px;
   width: 50px;
 }
-.button-container .start img {
+.button-container .start img,
+.timer-button-container .start img {
   height: 20px;
   margin-left: 4px;
 }
 .button-container .reset,
-.button-container .segment {
+.button-container .segment,
+.timer-button-container .reset,
+.timer-button-container .segment {
   height: 40px;
   width: 40px;
 }
 .button-container .reset img,
-.button-container .segment img {
+.button-container .segment img,
+.timer-button-container .reset img,
+.timer-button-container .segment img {
   height: 24px;
 }
 
@@ -227,7 +238,8 @@ input:checked + .slider:before {
   bottom: 0;
 }
 
-.display {
+.display,
+.timer-display {
   max-width: 77%;
   min-width: 77%;
   font-size: 45px;

@@ -46,10 +46,13 @@
           <input type="text" class="timer-display" id="timer-display" value="" disabled>
         </div>
       </div>
-      <div class="stopwatch-container">
-        <div class="segment-container" id="segment-container"></div>
-        <div class="button-container">
-         
+      <div class="timer-container">
+        <div class="timer-button-container">
+          <button class="reset" id="reset" onmousedown="changeBackgroundColor('reset')" onmouseup="resetTransparent()"
+            disabled></button>
+          <button class="start" id="start" value="null"></button>
+          <button class="segment" id="segment" value="off" onmousedown="changeBackgroundColor('segment')"
+            onmouseup="resetTransparent()" disabled></button>
         </div>
       </div>
     </div>

@@ -13,11 +13,13 @@
   .circle-container {
     min-width: 330px;
   }
-  .stopwatch-container {
+  .stopwatch-container,
+  .timer-container {
     top: 400px;
     min-width: 330px;
   }
-  .button-container {
+  .button-container,
+  .timer-button-container {
     width: 100%;
   }
   .segment-container {
