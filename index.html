@@ -10,28 +10,47 @@
 </head>
 
 <body>
-  <div class="switch-container">
-    <label class="switch">
-      <input type="checkbox" id="toggle" value="light">
-      <span class="slider round"></span>
-    </label>
-  </div>
-  <div class="whole-container">
-    <div class="circle-container">
-      <div class="circle">
-        <div class="line" id="line"></div>
-        <input type="text" class="display" id="display" value="" disabled>
-        <input type="text" class="segment-display" id="segment-display" value="" disabled>
+  <div class="left-container">
+    <div class="whole-container">
+      <div class="circle-container">
+        <div class="circle">
+          <div class="line" id="line"></div>
+          <input type="text" class="display" id="display" value="" disabled>
+          <input type="text" class="segment-display" id="segment-display" value="" disabled>
+        </div>
+      </div>
+      <div class="stopwatch-container">
+        <div class="segment-container" id="segment-container"></div>
+        <div class="button-container">
+          <button class="reset" id="reset" onmousedown="changeBackgroundColor('reset')" onmouseup="resetTransparent()"
+            disabled></button>
+          <button class="start" id="start" value="null"></button>
+          <button class="segment" id="segment" value="off" onmousedown="changeBackgroundColor('segment')"
+            onmouseup="resetTransparent()" disabled></button>
+        </div>
       </div>
     </div>
-    <div class="stopwatch-container">
-      <div class="segment-container" id="segment-container"></div>
-      <div class="button-container">
-        <button class="reset" id="reset" onmousedown="changeBackgroundColor('reset')" onmouseup="resetTransparent()"
-          disabled></button>
-        <button class="start" id="start" value="null"></button>
-        <button class="segment" id="segment" value="off" onmousedown="changeBackgroundColor('segment')"
-          onmouseup="resetTransparent()" disabled></button>
+  </div>
+
+  <div class="right-container">
+    <div class="switch-container">
+      <label class="switch">
+        <input type="checkbox" id="toggle" value="light">
+        <span class="slider round"></span>
+      </label>
+    </div>
+    <div class="whole-container">
+      <div class="circle-container">
+        <div class="circle">
+          <div class="line" id="line"></div>
+          <input type="text" class="timer-display" id="timer-display" value="" disabled>
+        </div>
+      </div>
+      <div class="stopwatch-container">
+        <div class="segment-container" id="segment-container"></div>
+        <div class="button-container">
+         
+        </div>
       </div>
     </div>
   </div>
