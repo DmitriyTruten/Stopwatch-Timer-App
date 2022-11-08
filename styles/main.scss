@@ -125,7 +125,8 @@ input:checked + .slider:before {
     border: 1px solid black;
     background-color: rgb(255, 255, 255);
   }
-  .start {
+  .start,
+  .timer-start {
     background-color: #008cff;
     height: 50px;
     width: 50px;
@@ -135,7 +136,9 @@ input:checked + .slider:before {
     }
   }
   .reset,
-  .segment {
+  .segment,
+  .timer-reset,
+  .timer-soundpicker {
     height: 40px;
     width: 40px;
     img {

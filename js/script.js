@@ -1,5 +1,5 @@
 import { toggleSwitch } from "./toggleSwitch.js";
-import { renderTimer } from "./timer.js"
+import { timerView, timerController } from "./timer.js"
 
 $(document).ready(() => {
   $(".segment").on("click", () => {
@@ -330,4 +330,5 @@ function renderStopWatch() {
 }
 
 renderStopWatch();
-renderTimer();
+timerView();
+timerController()

@@ -171,27 +171,39 @@ input:checked + .slider:before {
   background-color: rgb(255, 255, 255);
 }
 .button-container .start,
-.timer-button-container .start {
+.button-container .timer-start,
+.timer-button-container .start,
+.timer-button-container .timer-start {
   background-color: #008cff;
   height: 50px;
   width: 50px;
 }
 .button-container .start img,
-.timer-button-container .start img {
+.button-container .timer-start img,
+.timer-button-container .start img,
+.timer-button-container .timer-start img {
   height: 20px;
   margin-left: 4px;
 }
 .button-container .reset,
 .button-container .segment,
+.button-container .timer-reset,
+.button-container .timer-soundpicker,
 .timer-button-container .reset,
-.timer-button-container .segment {
+.timer-button-container .segment,
+.timer-button-container .timer-reset,
+.timer-button-container .timer-soundpicker {
   height: 40px;
   width: 40px;
 }
 .button-container .reset img,
 .button-container .segment img,
+.button-container .timer-reset img,
+.button-container .timer-soundpicker img,
 .timer-button-container .reset img,
-.timer-button-container .segment img {
+.timer-button-container .segment img,
+.timer-button-container .timer-reset img,
+.timer-button-container .timer-soundpicker img {
   height: 24px;
 }
 
