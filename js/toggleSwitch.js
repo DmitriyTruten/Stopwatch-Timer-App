@@ -5,7 +5,7 @@ const stopWatchDisplay = document.getElementById("display");
 const segmentButton = document.getElementById("segment");
 const resetButton = document.getElementById("reset");
 const startButton = document.getElementById("start");
-const line = document.getElementById("line");
+const lines = document.querySelectorAll(".line");
 
 toggleSwitchSlider.addEventListener("click", toggleSwitch);
 
@@ -24,7 +24,9 @@ export function toggleSwitch() {
     stopWatchDisplay.style.color = "white";
     segmentDisplay.style.color = "white";
     toggleSwitchSlider.value = "dark";
-    line.style.backgroundColor = "red";
+    lines.forEach(line => {
+      line.style.backgroundColor = "red";
+    })
     if (startButton.value === "on") {
       segmentButton.innerHTML =
         "<img style='opacity: 1;' src='images/stopwatch-white.png'>";
@@ -53,7 +55,9 @@ export function toggleSwitch() {
     stopWatchDisplay.style.color = "rgb(84, 84, 84)";
     segmentDisplay.style.color = "rgb(84, 84, 84)";
     segmentContainer.style.color = "black";
-    line.style.backgroundColor = "cyan";
+    lines.forEach(line => {
+      line.style.backgroundColor = "cyan";
+    })
     if (startButton.value === "on") {
       segmentButton.innerHTML =
         "<img style='opacity: 1;' src='images/stopwatch-black.png'>";
