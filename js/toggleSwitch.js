@@ -1,7 +1,7 @@
-const segmentContainer = document.getElementById("segment-container");
-const segmentDisplay = document.getElementById("segment-display");
+const $segmentContainer = $("#segment-container");
+const $segmentDisplay = $("#segment-display");
 const toggleSwitchSlider = document.getElementById("toggle");
-const stopWatchDisplay = document.getElementById("display");
+const $stopWatchDisplay = $("#display");
 const segmentButton = document.getElementById("segment");
 const resetButton = document.getElementById("reset");
 const startButton = document.getElementById("start");
@@ -16,17 +16,21 @@ export function toggleSwitch() {
       $("#timer-display").css("color", "white");
       $("#timer-reset").css("background-color", "transparent");
       $("#timer-soundpicker").css("background-color", "transparent");
-      $("#timer-reset").html("<img style='opacity: 0.5;' src='images/undo-white.png'>")
-      $("#timer-soundpicker").html("<img style='opacity: 0.5;' src='images/bell-white.png'>")
+      $("#timer-reset").html(
+        "<img style='opacity: 0.5;' src='images/undo-white.png'>"
+      );
+      $("#timer-soundpicker").html(
+        "<img style='opacity: 0.5;' src='images/bell-white.png'>"
+      );
     });
     document.body.style.backgroundColor = "rgba(0, 0, 0, 0.8)";
-    stopWatchDisplay.style.backgroundColor = "transparent";
-    segmentDisplay.style.backgroundColor = "transparent";
+    $stopWatchDisplay.css("background-color", "transparent");
+    $segmentDisplay.css("background-color", "transparent");
     segmentButton.style.backgroundColor = "transparent";
     resetButton.style.backgroundColor = "transparent";
-    segmentContainer.style.color = "white";
-    stopWatchDisplay.style.color = "white";
-    segmentDisplay.style.color = "white";
+    $segmentContainer.css("color", "white");
+    $stopWatchDisplay.css("color", "white");
+    $segmentDisplay.css("color", "white");
     toggleSwitchSlider.value = "dark";
     lines.forEach((line) => {
       line.style.backgroundColor = "red";
@@ -51,16 +55,20 @@ export function toggleSwitch() {
     $(document).ready(() => {
       $(".segment-div").css("border-bottom", "1px solid");
       $("#timer-display").css("color", "rgb(84, 84, 84)");
-      $("#timer-reset").html("<img style='opacity: 0.5;' src='images/undo-black.png'>")
-      $("#timer-soundpicker").html("<img style='opacity: 0.5;' src='images/bell-black.png'>")
+      $("#timer-reset").html(
+        "<img style='opacity: 0.5;' src='images/undo-black.png'>"
+      );
+      $("#timer-soundpicker").html(
+        "<img style='opacity: 0.5;' src='images/bell-black.png'>"
+      );
     });
     toggleSwitchSlider.value = "light";
     document.body.style.backgroundColor = "rgba(255, 255, 255)";
-    stopWatchDisplay.style.backgroundColor = "transparent";
-    segmentDisplay.style.backgroundColor = "transparent";
-    stopWatchDisplay.style.color = "rgb(84, 84, 84)";
-    segmentDisplay.style.color = "rgb(84, 84, 84)";
-    segmentContainer.style.color = "black";
+    $stopWatchDisplay.css("background-color", "transparent");
+    $segmentDisplay.css("background-color", "transparent");
+    $stopWatchDisplay.css("color", "rgb(84, 84, 84)");
+    $segmentDisplay.css("color", "rgb(84, 84, 84)");
+    $segmentContainer.css("color", "black");
     lines.forEach((line) => {
       line.style.backgroundColor = "cyan";
     });
