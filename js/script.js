@@ -1,5 +1,5 @@
-import { toggleSwitch } from "./toggleSwitch.js";
-import { timerView, timerController } from "./timer.js"
+import { toggleSwitch, $toggleSwitchSlider } from "./toggleSwitch.js";
+import { timerView, timerController } from "./timer.js";
 
 $(document).ready(() => {
   $(".segment").on("click", () => {
@@ -15,6 +15,7 @@ const stopWatch = {
   minutes: 0,
   waitingForPause: false,
   countdown: "off",
+  wasOn: false,
 };
 
 // Copying stopwatch object
@@ -46,8 +47,6 @@ segmentButton.addEventListener("click", createSegment);
 
 const line = document.getElementById("line");
 
-const toggleSwitchSlider = document.getElementById("toggle");
-
 // Function handles the countdown process
 function StartCountdown() {
   const { waitingForPause } = stopWatch;
@@ -58,6 +57,7 @@ function StartCountdown() {
     segmentButton.disabled = false;
     stopWatch.waitingForPause = true;
     stopWatch.countdown = "on";
+    stopWatch.wasOn = true;
     resetButton.disabled = true;
     startButton.value = "on";
     startButton.innerHTML =
@@ -92,26 +92,24 @@ function StartCountdown() {
 }
 
 function handleWaitingForPause() {
+  if (!stopWatch.wasOn) {
+    return;
+  }
   segmentStopWatch.waitingForPause = false;
   segmentButton.disabled = true;
   startButton.value = "off";
   stopWatch.waitingForPause = false;
   resetButton.disabled = false;
   startButton.innerHTML = "<img src='images/play.png'>";
-  segmentButton.innerHTML =
-    "<img style='opacity: 0.5;' src='images/stopwatch-black.png'>";
-  resetButton.innerHTML =
-    "<img style='opacity: 1;' src='images/undo-black.png'>";
   line.style.animationPlayState = "paused";
   clearInterval(interval);
   clearInterval(segmentInterval);
-
-  if (toggleSwitchSlider.value === "dark") {
+  if ($toggleSwitchSlider.val() === "dark") {
     segmentButton.innerHTML =
       "<img style='opacity: 0.5;' src='images/stopwatch-white.png'>";
     resetButton.innerHTML =
       "<img style='opacity: 1;' src='images/undo-white.png'>";
-  } else {
+  } else if ($toggleSwitchSlider.val() === "light") {
     segmentButton.innerHTML =
       "<img style='opacity: 0.5;' src='images/stopwatch-black.png'>";
     resetButton.innerHTML =
@@ -293,6 +291,7 @@ function resetCountdown() {
       "<img style='opacity: 0.5;' src='images/undo-black.png'>";
   }
   if (!waitingForPause) {
+    stopWatch.wasOn = false;
     line.style.animation = "none";
     segmentCounter = 0;
     startButton.value = "null";
@@ -331,4 +330,4 @@ function renderStopWatch() {
 
 renderStopWatch();
 timerView();
-timerController()
+timerController();

@@ -1,6 +1,6 @@
 const $segmentContainer = $("#segment-container");
 const $segmentDisplay = $("#segment-display");
-const $toggleSwitchSlider = $("#toggle");
+export const $toggleSwitchSlider = $("#toggle");
 const $stopWatchDisplay = $("#display");
 const $segmentButton = $("#segment");
 const $resetButton = $("#reset");
