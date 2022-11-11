@@ -154,6 +154,22 @@ input:checked + .slider:before {
   position: absolute;
 }
 
+.timer-picker-container {
+  border: 1px solid black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.timer-picker-container input {
+  width: 33%;
+  font-size: 45px;
+  text-align: center;
+}
+
+.timer-container {
+  border: 1px solid black;
+}
+
 .button-container,
 .timer-button-container {
   display: grid;

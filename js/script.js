@@ -1,9 +1,9 @@
-import { toggleSwitch, $toggleSwitchSlider } from "./toggleSwitch.js";
-import { timerView, timerController } from "./timer.js";
+import { $toggleSwitchSlider } from "./toggleSwitch.js";
+import * as timer from "./timer.js"
 
 $(document).ready(() => {
   $(".segment").on("click", () => {
-    $(".segment-div").css("border-bottom", "1px solid ");
+    $(".segment-div").css("border-bottom", "1px solid");
   });
 });
 
@@ -329,5 +329,6 @@ function renderStopWatch() {
 }
 
 renderStopWatch();
-timerView();
-timerController();
+timer.timerView();
+timer.timerStyles();
+timer.numberPicker();

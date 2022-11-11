@@ -47,8 +47,10 @@
         </div>
       </div>
       <div class="timer-container">
-        <div class="timer-picker-container">
-          
+        <div class="timer-picker-container" id="timer-picker-container">
+          <input class="hours" type="text" value="0">
+          <input class="minutes" type="text" value="0">
+          <input class="seconds" type="text" value="0">
         </div>
         <div class="timer-button-container">
           <button class="timer-reset" id="timer-reset" onmousedown="changeBackgroundColor('reset')" onmouseup="resetTransparent()"

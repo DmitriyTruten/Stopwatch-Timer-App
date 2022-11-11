@@ -59,11 +59,11 @@ body {
 }
 
 input:checked + .slider {
-  background-color: #008cff;;
+  background-color: #008cff;
 }
 
 input:focus + .slider {
-  box-shadow: 0 0 1px #008cff;;
+  box-shadow: 0 0 1px #008cff;
 }
 
 input:checked + .slider:before {
@@ -109,6 +109,22 @@ input:checked + .slider:before {
   align-items: center;
   justify-content: center;
   position: absolute;
+}
+
+.timer-picker-container {
+  border: 1px solid black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  input {
+    width: 33%;
+    font-size: 45px;
+    text-align: center;
+  }
+}
+
+.timer-container {
+  border: 1px solid black;
 }
 
 .button-container,
