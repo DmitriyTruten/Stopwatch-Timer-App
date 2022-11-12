@@ -160,10 +160,15 @@ input:checked + .slider:before {
   align-items: center;
   justify-content: center;
 }
-.timer-picker-container input {
+.timer-picker-container div {
   width: 33%;
   font-size: 45px;
   text-align: center;
+  border: 1px solid black;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
 }
 
 .timer-container {

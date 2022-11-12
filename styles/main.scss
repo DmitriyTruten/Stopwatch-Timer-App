@@ -116,10 +116,12 @@ input:checked + .slider:before {
   display: flex;
   align-items: center;
   justify-content: center;
-  input {
+  div {
     width: 33%;
     font-size: 45px;
     text-align: center;
+    border: 1px solid black;
+    user-select: none;
   }
 }
 

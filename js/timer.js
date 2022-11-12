@@ -21,11 +21,11 @@ export function timerStyles() {
 }
 
 export function numberPicker() {
-  $("#timer-picker-container").on("scroll", () => {
+  $("#hours").on("click", () => {
     timer.hours += 1;
-    $("#timer-picker-container").html(timer.hours)
+    console.log(timer.hours)
+    timerView()
   })
-  timerView()
 }
 
 // View
@@ -33,4 +33,5 @@ export function timerView() {
   $("#timer-display").val(
     "0" + timer.hours + ":" + "0" + timer.minutes + ":" + "0" + timer.seconds
   );
+  $("#hours").html(timer.hours)
 }
