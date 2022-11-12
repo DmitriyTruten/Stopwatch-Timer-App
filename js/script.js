@@ -329,6 +329,6 @@ function renderStopWatch() {
 }
 
 renderStopWatch();
-timer.timerView();
+timer.renderTimerView();
 timer.timerStyles();
 timer.numberPicker();

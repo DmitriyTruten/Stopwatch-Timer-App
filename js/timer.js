@@ -21,17 +21,27 @@ export function timerStyles() {
 }
 
 export function numberPicker() {
-  $("#hours").on("click", () => {
-    timer.hours += 1;
-    console.log(timer.hours)
-    timerView()
-  })
+  const numbersArray = document.querySelectorAll('#number');
+  numbersArray.forEach(number => {
+    number.addEventListener("click", (event) => {
+      if(event.target.matches(".hours")) {
+        timer.hours += 1;
+      } else if(event.target.matches(".minutes")) {
+        timer.minutes += 1;
+      } else {
+        timer.seconds += 1;
+      }
+      renderTimerView()
+    })
+  });
 }
 
 // View
-export function timerView() {
+export function renderTimerView() {
   $("#timer-display").val(
     "0" + timer.hours + ":" + "0" + timer.minutes + ":" + "0" + timer.seconds
   );
-  $("#hours").html(timer.hours)
+  $(".hours").html(timer.hours)
+  $(".minutes").html(timer.minutes)
+  $(".seconds").html(timer.seconds)
 }
