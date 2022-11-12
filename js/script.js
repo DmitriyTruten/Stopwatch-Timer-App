@@ -332,3 +332,4 @@ renderStopWatch();
 timer.renderTimerView();
 timer.timerStyles();
 timer.numberPicker();
+timer.fillingNumbers()

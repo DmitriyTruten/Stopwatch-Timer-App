@@ -23,7 +23,7 @@ export function timerStyles() {
 export function numberPicker() {
   const numbersArray = document.querySelectorAll('#number');
   numbersArray.forEach(number => {
-    number.addEventListener("click", (event) => {
+    number.addEventListener("scroll", (event) => {
       if(event.target.matches(".hours")) {
         timer.hours += 1;
       } else if(event.target.matches(".minutes")) {
@@ -36,12 +36,18 @@ export function numberPicker() {
   });
 }
 
+export function fillingNumbers() {
+  for(let i = 0; i < 60; i++) {
+    $(".hours").append(`<div>${i}</div>`);
+    $(".minutes").append(`<div>${i}</div>`);
+    $(".seconds").append(`<div>${i}</div>`);
+  }
+}
+
 // View
 export function renderTimerView() {
   $("#timer-display").val(
     "0" + timer.hours + ":" + "0" + timer.minutes + ":" + "0" + timer.seconds
   );
-  $(".hours").html(timer.hours)
-  $(".minutes").html(timer.minutes)
-  $(".seconds").html(timer.seconds)
+  
 }

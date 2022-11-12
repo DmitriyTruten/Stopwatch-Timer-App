@@ -116,12 +116,19 @@ input:checked + .slider:before {
   display: flex;
   align-items: center;
   justify-content: center;
-  div {
-    width: 33%;
-    font-size: 45px;
-    text-align: center;
+  #number {
+    display: flex;
+    flex-direction: column;
+    max-width: 33%;
+    height: 50px;
     border: 1px solid black;
     user-select: none;
+    overflow-y: scroll;
+    overflow-x: hidden;
+  }
+  div {
+    height: 50px;
+    font-size: 45px;
   }
 }
 
