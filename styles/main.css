@@ -172,10 +172,16 @@ input:checked + .slider:before {
           user-select: none;
   overflow-y: scroll;
   overflow-x: hidden;
+  scrollbar-width: none;
 }
-.timer-picker-container div {
-  height: 50px;
+.timer-picker-container #number::-webkit-scrollbar {
+  display: none;
+}
+.timer-picker-container #number input {
   font-size: 45px;
+  width: 100%;
+  text-align: center;
+  color: black;
 }
 
 .timer-container {
