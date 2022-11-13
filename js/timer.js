@@ -7,6 +7,9 @@ const timer = {
   countdown: "off",
 };
 
+let previousScrollPosition = 0;
+let NextScrollPosition = 50;
+
 // Controller
 export function timerStyles() {
   $(document).ready(() => {
@@ -24,6 +27,9 @@ export function numberPicker() {
   const numbersArray = document.querySelectorAll('#number');
   numbersArray.forEach(number => {
     number.addEventListener("scroll", (event) => {
+      number.nextElementSibling.scrollIntoView()
+      console.log(`previousScrollPosition: ${previousScrollPosition}`)
+      console.log(`NextScrollPosition: ${NextScrollPosition}`)
       if(event.target.matches(".hours")) {
         timer.hours += 1;
       } else if(event.target.matches(".minutes")) {
