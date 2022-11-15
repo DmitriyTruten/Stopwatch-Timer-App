@@ -114,13 +114,12 @@ input:checked + .slider:before {
 .timer-picker-container {
   border: 1px solid black;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
   #number {
     display: flex;
     flex-direction: column;
-    max-width: 33%;
-    height: 50px;
+    height: 100px;
     border: 1px solid black;
     user-select: none;
     overflow-y: scroll;
