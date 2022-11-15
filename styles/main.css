@@ -197,6 +197,7 @@ input:checked + .slider:before {
   margin: 0px 10px;
   text-align: center;
   font-size: 30px;
+  border: 2px solid gray;
 }
 .input-container input::-moz-placeholder {
   font-size: 20px;
@@ -206,6 +207,9 @@ input:checked + .slider:before {
 }
 .input-container input::placeholder {
   font-size: 20px;
+}
+.input-container input:focus {
+  outline: none;
 }
 
 .timer-container {
@@ -397,5 +401,49 @@ input:checked + .slider:before {
   100% {
     transform: translateX(0px);
     opacity: 1;
+  }
+}
+@-webkit-keyframes reject {
+  0% {
+    border: 2px solid red;
+    transform: translateX(0px);
+  }
+  25% {
+    border: 2px solid red;
+    transform: translateX(5px);
+  }
+  50% {
+    border: 2px solid red;
+    transform: translateX(-5px);
+  }
+  75% {
+    border: 2px solid red;
+    transform: translateX(5px);
+  }
+  100% {
+    border: 2px solid gray;
+    transform: translateX(0px);
+  }
+}
+@keyframes reject {
+  0% {
+    border: 2px solid red;
+    transform: translateX(0px);
+  }
+  25% {
+    border: 2px solid red;
+    transform: translateX(5px);
+  }
+  50% {
+    border: 2px solid red;
+    transform: translateX(-5px);
+  }
+  75% {
+    border: 2px solid red;
+    transform: translateX(5px);
+  }
+  100% {
+    border: 2px solid gray;
+    transform: translateX(0px);
   }
 }/*# sourceMappingURL=main.css.map */

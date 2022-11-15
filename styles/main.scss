@@ -151,8 +151,12 @@ input:checked + .slider:before {
     margin: 0px 10px;
     text-align: center;
     font-size: 30px;
+    border: 2px solid gray;
     &::placeholder {
       font-size: 20px;
+    }
+    &:focus {
+      outline: none;
     }
   }
 }
@@ -312,5 +316,28 @@ input:checked + .slider:before {
   100% {
     transform: translateX(0px);
     opacity: 1;
+  }
+}
+
+@keyframes reject {
+  0% {
+    border: 2px solid red;
+    transform: translateX(0px);
+  }
+  25% {
+    border: 2px solid red;
+    transform: translateX(5px);
+  }
+  50% {
+    border: 2px solid red;
+    transform: translateX(-5px);
+  }
+  75% {
+    border: 2px solid red;
+    transform: translateX(5px);
+  }
+  100% {
+    border: 2px solid gray;
+    transform: translateX(0px);
   }
 }
