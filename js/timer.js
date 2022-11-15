@@ -27,7 +27,8 @@ export function numberPicker() {
   inputHours.addEventListener("keydown", (event) => {
     if(event.key === "Enter") {
       let inputValue = inputHours.value;
-      alert(inputValue)
+      const selectedNumber = document.getElementById(`h${inputValue}`);
+      selectedNumber.scrollIntoView({behavior: "smooth", block: "center"})
     }
   })
 }
