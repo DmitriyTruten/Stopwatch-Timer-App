@@ -7,8 +7,6 @@ const timer = {
   countdown: "off",
 };
 
-let numberCounter = 0;
-
 // Controller
 export function timerStyles() {
   $(document).ready(() => {
@@ -22,27 +20,31 @@ export function timerStyles() {
   });
 }
 
+const inputContainers = document.querySelectorAll('#input-container');
 export function numberPicker() {
-  const inputContainers = document.querySelectorAll('#input-container');
   inputContainers.forEach(container => {
     container.addEventListener("keydown", (event) => {
       if(event.key === "Enter") {
-        if(event.target === inputContainers[0]) {
-          let inputValue = container.value;
-          const selectedNumber = document.getElementById(`h${inputValue}`);
-          selectedNumber.scrollIntoView({behavior: "smooth", block: "center"})
-        } else if(event.target === inputContainers[1]) {
-          let inputValue = container.value;
-          const selectedNumber = document.getElementById(`m${inputValue}`);
-          selectedNumber.scrollIntoView({behavior: "smooth", block: "center"})
-        } else {
-          let inputValue = container.value;
-          const selectedNumber = document.getElementById(`s${inputValue}`);
-          selectedNumber.scrollIntoView({behavior: "smooth", block: "center"})
-        }
+        scrollIntoNumber(event, container)
       }
     })
   })
+}
+
+function scrollIntoNumber(event, container) {
+  if(event.target === inputContainers[0]) {
+    let inputValue = container.value;
+    const selectedNumber = document.getElementById(`h${inputValue}`);
+    selectedNumber.scrollIntoView({behavior: "smooth", block: "center"})
+  } else if(event.target === inputContainers[1]) {
+    let inputValue = container.value;
+    const selectedNumber = document.getElementById(`m${inputValue}`);
+    selectedNumber.scrollIntoView({behavior: "smooth", block: "center"})
+  } else {
+    let inputValue = container.value;
+    const selectedNumber = document.getElementById(`s${inputValue}`);
+    selectedNumber.scrollIntoView({behavior: "smooth", block: "center"})
+  }
 }
 
 export function fillingNumbers() {
