@@ -23,7 +23,13 @@ export function timerStyles() {
 }
 
 export function numberPicker() {
-
+  const inputHours = document.getElementById('input-hours');
+  inputHours.addEventListener("keydown", (event) => {
+    if(event.key === "Enter") {
+      let inputValue = inputHours.value;
+      alert(inputValue)
+    }
+  })
 }
 
 export function fillingNumbers() {
