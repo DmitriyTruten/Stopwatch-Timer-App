@@ -23,21 +23,33 @@ export function timerStyles() {
 }
 
 export function numberPicker() {
-  const inputHours = document.getElementById('input-hours');
-  inputHours.addEventListener("keydown", (event) => {
-    if(event.key === "Enter") {
-      let inputValue = inputHours.value;
-      const selectedNumber = document.getElementById(`h${inputValue}`);
-      selectedNumber.scrollIntoView({behavior: "smooth", block: "center"})
-    }
+  const inputContainers = document.querySelectorAll('#input-container');
+  inputContainers.forEach(container => {
+    container.addEventListener("keydown", (event) => {
+      if(event.key === "Enter") {
+        if(event.target === inputContainers[0]) {
+          let inputValue = container.value;
+          const selectedNumber = document.getElementById(`h${inputValue}`);
+          selectedNumber.scrollIntoView({behavior: "smooth", block: "center"})
+        } else if(event.target === inputContainers[1]) {
+          let inputValue = container.value;
+          const selectedNumber = document.getElementById(`m${inputValue}`);
+          selectedNumber.scrollIntoView({behavior: "smooth", block: "center"})
+        } else {
+          let inputValue = container.value;
+          const selectedNumber = document.getElementById(`s${inputValue}`);
+          selectedNumber.scrollIntoView({behavior: "smooth", block: "center"})
+        }
+      }
+    })
   })
 }
 
 export function fillingNumbers() {
   for(let i = 0; i < 60; i++) {
     $(".hours").append(`<input type="text" id=h${i} value=${i} disabled></input>`);
-    $(".minutes").append(`<input type="text" id=${i} value=${i} disabled></input>`);
-    $(".seconds").append(`<input type="text" id=${i} value=${i} disabled></input>`);
+    $(".minutes").append(`<input type="text" id=m${i} value=${i} disabled></input>`);
+    $(".seconds").append(`<input type="text" id=s${i} value=${i} disabled></input>`);
   }
 }
 
