@@ -113,9 +113,9 @@ input:checked + .slider:before {
 
 .timer-picker-container {
   border: 1px solid black;
-  display: flex;
   align-items: flex-start;
   justify-content: center;
+  margin-top: 20px;
   #number {
     display: flex;
     flex-direction: column;
@@ -130,15 +130,36 @@ input:checked + .slider:before {
     }
     input {
       font-size: 45px;
-      width: 100%;
       text-align: center;
       color: black;
     }
   }
 }
 
+.number-container,
+.input-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.input-container {
+  max-width: 100%;
+  height: 20%;
+  margin-top: 15px;
+  input{
+    width: 100%;
+    margin: 0px 10px;
+    text-align: center;
+    font-size: 30px;
+    &::placeholder {
+      font-size: 20px;
+    }
+  }
+}
+
 .timer-container {
   border: 1px solid black;
+  max-width: 100%;
 }
 
 .button-container,
@@ -198,10 +219,6 @@ input:checked + .slider:before {
       align-items: center;
     }
   }
-}
-
-.timer-picker-container {
-  margin-top: 20px;
 }
 
 // Certain elements
