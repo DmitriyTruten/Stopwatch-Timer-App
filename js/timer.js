@@ -34,7 +34,7 @@ export function numberPicker() {
 function scrollIntoNumber(event, container) {
   if (event.target === inputContainers[0]) {
     let inputValue = container.value;
-    if (inputValue > 59) {
+    if (inputValue > 59 || inputValue < 0) {
       rejectInput(container);
     } else {
       const selectedNumber = document.getElementById(`h${inputValue}`);
@@ -43,7 +43,7 @@ function scrollIntoNumber(event, container) {
     }
   } else if (event.target === inputContainers[1]) {
     let inputValue = container.value;
-    if (inputValue > 59) {
+    if (inputValue > 59 || inputValue < 0) {
       rejectInput(container);
     } else {
       const selectedNumber = document.getElementById(`m${inputValue}`);
@@ -52,7 +52,7 @@ function scrollIntoNumber(event, container) {
     }
   } else {
     let inputValue = container.value;
-    if (inputValue > 59) {
+    if (inputValue > 59 || inputValue < 0) {
       rejectInput(container);
     } else {
       const selectedNumber = document.getElementById(`s${inputValue}`);
