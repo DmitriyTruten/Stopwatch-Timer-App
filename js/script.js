@@ -214,16 +214,15 @@ function checkMiliseconds(value) {
     const { miliseconds } = stopWatch;
     if (miliseconds < 10) {
       return "0" + stopWatch.miliseconds;
-    } else {
-      return stopWatch.miliseconds;
     }
+    return stopWatch.miliseconds;
+
   } else {
     const { miliseconds } = segmentStopWatch;
     if (miliseconds < 10) {
       return "0" + segmentStopWatch.miliseconds;
-    } else {
-      return segmentStopWatch.miliseconds;
     }
+    return segmentStopWatch.miliseconds;
   }
 }
 
@@ -232,16 +231,15 @@ function checkSeconds(value) {
     const { seconds } = stopWatch;
     if (seconds < 10) {
       return "0" + stopWatch.seconds;
-    } else {
-      return stopWatch.seconds;
     }
+    return stopWatch.seconds;
+
   } else {
     const { seconds } = segmentStopWatch;
     if (seconds < 10) {
       return "0" + segmentStopWatch.seconds;
-    } else {
-      return segmentStopWatch.seconds;
-    }
+    } 
+    return segmentStopWatch.seconds;
   }
 }
 
@@ -250,16 +248,15 @@ function checkMinutes(value) {
     const { minutes } = stopWatch;
     if (minutes < 10) {
       return "0" + stopWatch.minutes;
-    } else {
+    } 
       return stopWatch.minutes;
-    }
+
   } else {
     const { minutes } = segmentStopWatch;
     if (minutes < 10) {
       return "0" + segmentStopWatch.minutes;
-    } else {
-      return segmentStopWatch.minutes;
-    }
+    } 
+    return segmentStopWatch.minutes;
   }
 }
 
