@@ -39,7 +39,9 @@ function scrollIntoNumber(event, container) {
     } 
     const selectedNumber = document.getElementById(`h${inputValue}`);
     selectedNumber.scrollIntoView({ behavior: "smooth", block: "center" });
+    timer.hours = inputValue;
     container.value = "";
+    renderTimerView();
     
   } else if (event.target === inputContainers[1]) {
     let inputValue = container.value;
@@ -48,7 +50,9 @@ function scrollIntoNumber(event, container) {
     }
     const selectedNumber = document.getElementById(`m${inputValue}`);
     selectedNumber.scrollIntoView({ behavior: "smooth", block: "center" });
+    timer.minutes = inputValue;
     container.value = "";
+    renderTimerView();
 
   } else {
     let inputValue = container.value;
@@ -57,7 +61,9 @@ function scrollIntoNumber(event, container) {
     }
     const selectedNumber = document.getElementById(`s${inputValue}`);
     selectedNumber.scrollIntoView({ behavior: "smooth", block: "center" });
+    timer.seconds = inputValue;
     container.value = "";
+    renderTimerView();
   }
 }
 
