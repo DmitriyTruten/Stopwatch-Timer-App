@@ -198,6 +198,7 @@ input:checked + .slider:before {
   text-align: center;
   font-size: 30px;
   border: 2px solid gray;
+  border-radius: 10px;
 }
 .input-container input::-moz-placeholder {
   font-size: 20px;

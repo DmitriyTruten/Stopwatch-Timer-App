@@ -36,29 +36,28 @@ function scrollIntoNumber(event, container) {
     let inputValue = container.value;
     if (inputValue > 59 || inputValue < 0) {
       rejectInput(container);
-    } else {
-      const selectedNumber = document.getElementById(`h${inputValue}`);
-      selectedNumber.scrollIntoView({ behavior: "smooth", block: "center" });
-      container.value = "";
-    }
+    } 
+    const selectedNumber = document.getElementById(`h${inputValue}`);
+    selectedNumber.scrollIntoView({ behavior: "smooth", block: "center" });
+    container.value = "";
+    
   } else if (event.target === inputContainers[1]) {
     let inputValue = container.value;
     if (inputValue > 59 || inputValue < 0) {
       rejectInput(container);
-    } else {
-      const selectedNumber = document.getElementById(`m${inputValue}`);
-      selectedNumber.scrollIntoView({ behavior: "smooth", block: "center" });
-      container.value = "";
     }
+    const selectedNumber = document.getElementById(`m${inputValue}`);
+    selectedNumber.scrollIntoView({ behavior: "smooth", block: "center" });
+    container.value = "";
+
   } else {
     let inputValue = container.value;
     if (inputValue > 59 || inputValue < 0) {
       rejectInput(container);
-    } else {
-      const selectedNumber = document.getElementById(`s${inputValue}`);
-      selectedNumber.scrollIntoView({ behavior: "smooth", block: "center" });
-      container.value = "";
     }
+    const selectedNumber = document.getElementById(`s${inputValue}`);
+    selectedNumber.scrollIntoView({ behavior: "smooth", block: "center" });
+    container.value = "";
   }
 }
 
