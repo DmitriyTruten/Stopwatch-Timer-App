@@ -7,6 +7,9 @@ const timer = {
   countdown: "off",
 };
 
+let previousNumber = 0;
+let nextNumber;
+
 // Controller
 export function timerStyles() {
   $(document).ready(() => {
@@ -38,8 +41,9 @@ function scrollIntoNumber(event, container) {
       rejectInput(container);
     }
     const selectedNumber = document.getElementById(`h${inputValue}`);
-    selectedNumber.scrollIntoView({ behavior: "smooth", block: "center" });
-    timer.hours = inputValue;
+    selectedNumber.scrollIntoView({ behavior: "smooth", block: "center", duration: 100 });
+    nextNumber = container.value
+    loopThroughTimerProperties()
     container.value = "";
     renderTimerView();
 
@@ -49,7 +53,7 @@ function scrollIntoNumber(event, container) {
       rejectInput(container);
     }
     const selectedNumber = document.getElementById(`m${inputValue}`);
-    selectedNumber.scrollIntoView({ behavior: "smooth", block: "center" });
+    selectedNumber.scrollIntoView({ behavior: "smooth", block: "center"});
     timer.minutes = inputValue;
     container.value = "";
     renderTimerView();
@@ -64,6 +68,28 @@ function scrollIntoNumber(event, container) {
     timer.seconds = inputValue;
     container.value = "";
     renderTimerView();
+  }
+}
+
+function loopThroughTimerProperties() {
+  if(previousNumber < nextNumber) {
+    setTimeout(() => {
+      timer.hours++
+      previousNumber++
+      renderTimerView()
+      if(previousNumber < nextNumber) {
+        loopThroughTimerProperties()
+      }
+    }, 50);
+  } else if(previousNumber > nextNumber) {
+    setTimeout(() => {
+      timer.hours--
+      previousNumber--
+      renderTimerView()
+      if(previousNumber > nextNumber) {
+        loopThroughTimerProperties()
+      }
+    }, 50);
   }
 }
 
