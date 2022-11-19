@@ -6,6 +6,7 @@ const $segmentButton = $("#segment");
 const $resetButton = $("#reset");
 const $startButton = $("#start")
 const lines = document.querySelectorAll('#line');
+const inputContainers = document.querySelectorAll('#input-container');
 
 $toggleSwitchSlider.on("click", toggleSwitch);
 
@@ -35,9 +36,16 @@ export function toggleSwitch() {
     lines.forEach((line) => {
       line.style.backgroundColor = "red";
     });
+    $(".input-container").children().css({
+      backgroundColor: "transparent",
+      borderColor: "white",
+      color: "white"
+    })
+    $(".input-container").children().addClass('white-placeholder')
+
     if ($startButton.val() === "on") {
       $segmentButton.html(
-        "<img style='opaci;ty: 1;' src='images/stopwatch-white.png'>"
+        "<img style='opacity: 1;' src='images/stopwatch-white.png'>"
       );
       $resetButton.html(
         "<img style='opacity: 0.5;' src='images/undo-white.png'>"
@@ -78,6 +86,12 @@ export function toggleSwitch() {
     lines.forEach((line) => {
       line.style.backgroundColor = "cyan";
     });
+    $(".input-container").children().css({
+      backgroundColor: "transparent",
+      borderColor: "gray",
+      color: "black"
+    })
+    $(".input-container").children().removeClass('white-placeholder')
     if ($startButton.val() === "on") {
       $segmentButton.html(
         "<img style='opacity: 1;' src='images/stopwatch-black.png'>"

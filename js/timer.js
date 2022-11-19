@@ -131,5 +131,4 @@ function formatNumbers() {
 // View
 export function renderTimerView() {
   $("#timer-display").val(formatNumbers());
-  console.log(timer);
 }

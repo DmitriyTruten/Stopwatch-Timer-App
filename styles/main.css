@@ -200,18 +200,28 @@ input:checked + .slider:before {
   font-size: 30px;
   border: 2px solid gray;
   border-radius: 10px;
+  transition: background-color 0.5s ease-in-out, border-color 0.5s ease-in-out, color 0.5s ease-in-out;
 }
 .input-container input::-moz-placeholder {
   font-size: 20px;
+  font-weight: 600;
 }
 .input-container input:-ms-input-placeholder {
   font-size: 20px;
+  font-weight: 600;
 }
 .input-container input::placeholder {
   font-size: 20px;
+  font-weight: 600;
 }
 .input-container input:focus {
   outline: none;
+}
+
+.white-placeholder::-webkit-input-placeholder {
+  color: rgb(148, 148, 148);
+  -webkit-transition: color 0.5s ease-in-out;
+  transition: color 0.5s ease-in-out;
 }
 
 .timer-container {

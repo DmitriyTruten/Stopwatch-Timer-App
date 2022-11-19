@@ -155,8 +155,13 @@ input:checked + .slider:before {
     font-size: 30px;
     border: 2px solid gray;
     border-radius: 10px;
+    transition: 
+      $transition-background-color, 
+      $transition-border-color,
+      $transition-color;
     &::placeholder {
       font-size: 20px;
+      font-weight: 600;
     }
     &:focus {
       outline: none;
@@ -164,8 +169,12 @@ input:checked + .slider:before {
   }
 }
 
+.white-placeholder::-webkit-input-placeholder {
+  color: rgb(148, 148, 148);
+  transition: $transition-color;
+}
+
 .timer-container {
-  // border: 1px solid black;
   max-width: 100%;
 }
 
