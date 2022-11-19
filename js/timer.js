@@ -25,8 +25,12 @@ const timerDisplay = document.getElementById("timer-display");
 export function numberPicker() {
   inputContainers.forEach((container) => {
     container.addEventListener("keydown", (event) => {
-      if (event.key === "Enter") {
-        scrollIntoNumber(event, container);
+      try {
+        if (event.key === "Enter") {
+          scrollIntoNumber(event, container);
+        }
+      } catch (error) {
+        return;
       }
     });
   });
@@ -124,4 +128,5 @@ function formatNumbers() {
 // View
 export function renderTimerView() {
   $("#timer-display").val(formatNumbers());
+  console.log(timer);
 }
