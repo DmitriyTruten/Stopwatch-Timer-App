@@ -447,4 +447,26 @@ input:checked + .slider:before {
     border: 2px solid gray;
     transform: translateX(0px);
   }
+}
+@-webkit-keyframes update-opacity {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes update-opacity {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }/*# sourceMappingURL=main.css.map */

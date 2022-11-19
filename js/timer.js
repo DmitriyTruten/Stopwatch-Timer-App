@@ -7,9 +7,6 @@ const timer = {
   countdown: "off",
 };
 
-let previousNumber = 0;
-let nextNumber;
-
 // Controller
 export function timerStyles() {
   $(document).ready(() => {
@@ -24,6 +21,7 @@ export function timerStyles() {
 }
 
 const inputContainers = document.querySelectorAll("#input-container");
+const timerDisplay = document.getElementById("timer-display");
 export function numberPicker() {
   inputContainers.forEach((container) => {
     container.addEventListener("keydown", (event) => {
@@ -41,23 +39,20 @@ function scrollIntoNumber(event, container) {
       rejectInput(container);
     }
     const selectedNumber = document.getElementById(`h${inputValue}`);
-    selectedNumber.scrollIntoView({ behavior: "smooth", block: "center", duration: 100 });
-    nextNumber = container.value
-    loopThroughTimerProperties()
+    selectedNumber.scrollIntoView({ behavior: "smooth", block: "center" });
     container.value = "";
-    renderTimerView();
-
+    timer.hours = inputValue;
+    renderTimerDisplay();
   } else if (event.target === inputContainers[1]) {
     let inputValue = container.value;
     if (inputValue > 59 || inputValue < 0) {
       rejectInput(container);
     }
     const selectedNumber = document.getElementById(`m${inputValue}`);
-    selectedNumber.scrollIntoView({ behavior: "smooth", block: "center"});
+    selectedNumber.scrollIntoView({ behavior: "smooth", block: "center" });
     timer.minutes = inputValue;
     container.value = "";
-    renderTimerView();
-    
+    renderTimerDisplay();
   } else {
     let inputValue = container.value;
     if (inputValue > 59 || inputValue < 0) {
@@ -67,30 +62,18 @@ function scrollIntoNumber(event, container) {
     selectedNumber.scrollIntoView({ behavior: "smooth", block: "center" });
     timer.seconds = inputValue;
     container.value = "";
-    renderTimerView();
+    renderTimerDisplay();
   }
 }
 
-function loopThroughTimerProperties() {
-  if(previousNumber < nextNumber) {
-    setTimeout(() => {
-      timer.hours++
-      previousNumber++
-      renderTimerView()
-      if(previousNumber < nextNumber) {
-        loopThroughTimerProperties()
-      }
-    }, 50);
-  } else if(previousNumber > nextNumber) {
-    setTimeout(() => {
-      timer.hours--
-      previousNumber--
-      renderTimerView()
-      if(previousNumber > nextNumber) {
-        loopThroughTimerProperties()
-      }
-    }, 50);
-  }
+function renderTimerDisplay() {
+  timerDisplay.style.animation = "update-opacity 1s linear";
+  setTimeout(() => {
+    renderTimerView();
+  }, 500);
+  setTimeout(() => {
+    timerDisplay.style.animation = "none";
+  }, 1000);
 }
 
 function rejectInput(container) {
@@ -117,30 +100,25 @@ export function fillingNumbers() {
 
 function formatNumbers() {
   const { hours, minutes, seconds } = timer;
-  if(hours.length === 2 && minutes.length === 2 && seconds.length === 2) {
-    return timer.hours + ":" + timer.minutes + ":" + timer.seconds
-
-  } else if(minutes.length === 2 && seconds.length === 2) {
-    return "0" + timer.hours + ":" + timer.minutes + ":" + timer.seconds
-
-  } else if(hours.length === 2 && minutes.length === 2) {
-    return timer.hours + ":" + timer.minutes + ":" + "0" + timer.seconds
-
-  } else if(hours.length === 2 && seconds.length === 2) {
-    return timer.hours + ":" +  "0" + timer.minutes + ":" + timer.seconds
-
-  } else if(hours.length === 2) {
-    return timer.hours + ":" +  "0" + timer.minutes + ":" + "0" + timer.seconds
-
-  } else if(minutes.length === 2) {
-    return "0" + timer.hours + ":" + timer.minutes + ":" + "0" + timer.seconds
-
-  } else if(seconds.length === 2) {
-    return "0" + timer.hours + ":" + "0" + timer.minutes + ":" + "0" + timer.seconds
-
+  if (hours.length === 2 && minutes.length === 2 && seconds.length === 2) {
+    return timer.hours + ":" + timer.minutes + ":" + timer.seconds;
+  } else if (minutes.length === 2 && seconds.length === 2) {
+    return "0" + timer.hours + ":" + timer.minutes + ":" + timer.seconds;
+  } else if (hours.length === 2 && minutes.length === 2) {
+    return timer.hours + ":" + timer.minutes + ":" + "0" + timer.seconds;
+  } else if (hours.length === 2 && seconds.length === 2) {
+    return timer.hours + ":" + "0" + timer.minutes + ":" + timer.seconds;
+  } else if (hours.length === 2) {
+    return timer.hours + ":" + "0" + timer.minutes + ":" + "0" + timer.seconds;
+  } else if (minutes.length === 2) {
+    return "0" + timer.hours + ":" + timer.minutes + ":" + "0" + timer.seconds;
+  } else if (seconds.length === 2) {
+    return "0" + timer.hours + ":" + "0" + timer.minutes + ":" + timer.seconds;
   }
 
-  return "0" + timer.hours + ":" + "0" + timer.minutes + ":" + "0" + timer.seconds
+  return (
+    "0" + timer.hours + ":" + "0" + timer.minutes + ":" + "0" + timer.seconds
+  );
 }
 
 // View

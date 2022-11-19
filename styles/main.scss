@@ -146,7 +146,7 @@ input:checked + .slider:before {
   max-width: 100%;
   height: 20%;
   margin-top: 15px;
-  input{
+  input {
     width: 100%;
     margin: 0px 10px;
     text-align: center;
@@ -340,5 +340,17 @@ input:checked + .slider:before {
   100% {
     border: 2px solid gray;
     transform: translateX(0px);
+  }
+}
+
+@keyframes update-opacity {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
   }
 }
