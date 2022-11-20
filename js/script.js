@@ -7,16 +7,6 @@ $(document).ready(() => {
   });
 });
 
-$(".input-container").keydown(
-  function (event) {
-    if(event.key === "ArrowRight") {
-      $("#input-container:focus").next().focus();
-    } else if(event.key === "ArrowLeft") {
-      $("#input-container:focus").prev().focus();
-    }
-  }
-) 
-
 // Model
 // Creating model of stopwatch object
 const stopWatch = {

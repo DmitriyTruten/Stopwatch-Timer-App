@@ -8,6 +8,17 @@ const timer = {
 };
 
 // Controller
+$(".input-container").on("keydown", (event) => {
+  if (
+    event.key === "ArrowRight" ||
+    event.key === "ArrowLeft" ||
+    event.key === "ArrowUp" ||
+    event.key === "ArrowDown"
+  ) {
+    event.preventDefault();
+  }
+});
+
 export function timerStyles() {
   $(document).ready(() => {
     $("#timer-start").html("<img src='images/play.png'>");
@@ -72,13 +83,13 @@ function scrollIntoNumber(event, container) {
 
 function renderTimerDisplay(container) {
   timerDisplay.style.animation = "update-opacity 1s linear";
-  container.setAttribute('readonly', true);
+  container.setAttribute("readonly", true);
   setTimeout(() => {
     renderTimerView();
   }, 500);
   setTimeout(() => {
     timerDisplay.style.animation = "none";
-    container.removeAttribute("readonly")
+    container.removeAttribute("readonly");
   }, 1000);
 }
 
