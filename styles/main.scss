@@ -112,7 +112,6 @@ input:checked + .slider:before {
 }
 
 .timer-picker-container {
-  // border: 1px solid black;
   align-items: flex-start;
   justify-content: center;
   margin-top: 20px;
@@ -120,13 +119,14 @@ input:checked + .slider:before {
     display: flex;
     flex-direction: column;
     height: 100px;
-    border: 1px solid black;
+    border: 2px solid gray;
     margin: 0px 10px;
     border-radius: 10px;
     user-select: none;
     overflow-y: scroll;
     overflow-x: hidden;
     scrollbar-width: none;
+    transition: $transition-border-color;
     &::-webkit-scrollbar {
       display: none;
     }
@@ -134,6 +134,11 @@ input:checked + .slider:before {
       font-size: 45px;
       text-align: center;
       color: black;
+      border-left: none;
+      border-right: none;
+      border-bottom: 2px solid gray;
+      border-top: none;
+      transition: $transition-color;
     }
   }
 }
@@ -170,7 +175,7 @@ input:checked + .slider:before {
 }
 
 .white-placeholder::-webkit-input-placeholder {
-  color: rgb(148, 148, 148);
+  color: rgb(173, 173, 173);
   transition: $transition-color;
 }
 

@@ -6,7 +6,7 @@ const $segmentButton = $("#segment");
 const $resetButton = $("#reset");
 const $startButton = $("#start")
 const lines = document.querySelectorAll('#line');
-const inputContainers = document.querySelectorAll('#input-container');
+const numbers = document.querySelectorAll('#number');
 
 $toggleSwitchSlider.on("click", toggleSwitch);
 
@@ -42,6 +42,16 @@ export function toggleSwitch() {
       color: "white"
     })
     $(".input-container").children().addClass('white-placeholder')
+
+    numbers.forEach(number => {
+      $(number).css({
+        border: "2px solid white"
+      })
+      $(number).children().css({
+        color: "white",
+        backgroundColor: "transparent"
+      })
+    })
 
     if ($startButton.val() === "on") {
       $segmentButton.html(
@@ -92,6 +102,17 @@ export function toggleSwitch() {
       color: "black"
     })
     $(".input-container").children().removeClass('white-placeholder')
+
+    numbers.forEach(number => {
+      $(number).css({
+        border: "2px solid gray"
+      })
+      $(number).children().css({
+        color: "black",
+        backgroundColor: "transparent"
+      })
+    })
+
     if ($startButton.val() === "on") {
       $segmentButton.html(
         "<img style='opacity: 1;' src='images/stopwatch-black.png'>"
