@@ -46,8 +46,7 @@ function scrollIntoNumber(event, container) {
     selectedNumber.scrollIntoView({ behavior: "smooth", block: "center" });
     container.value = "";
     timer.hours = inputValue;
-    container.readonly = true;
-    renderTimerDisplay();
+    renderTimerDisplay(container);
   } else if (event.target === inputContainers[1]) {
     let inputValue = container.value;
     if (inputValue > 59 || inputValue < 0) {
@@ -55,10 +54,9 @@ function scrollIntoNumber(event, container) {
     }
     const selectedNumber = document.getElementById(`m${inputValue}`);
     selectedNumber.scrollIntoView({ behavior: "smooth", block: "center" });
-    container.readonly = true;
     timer.minutes = inputValue;
     container.value = "";
-    renderTimerDisplay();
+    renderTimerDisplay(container);
   } else {
     let inputValue = container.value;
     if (inputValue > 59 || inputValue < 0) {
@@ -66,20 +64,21 @@ function scrollIntoNumber(event, container) {
     }
     const selectedNumber = document.getElementById(`s${inputValue}`);
     selectedNumber.scrollIntoView({ behavior: "smooth", block: "center" });
-    container.readonly = true;
     timer.seconds = inputValue;
     container.value = "";
-    renderTimerDisplay();
+    renderTimerDisplay(container);
   }
 }
 
-function renderTimerDisplay() {
+function renderTimerDisplay(container) {
   timerDisplay.style.animation = "update-opacity 1s linear";
+  container.setAttribute('readonly', true);
   setTimeout(() => {
     renderTimerView();
   }, 500);
   setTimeout(() => {
     timerDisplay.style.animation = "none";
+    container.removeAttribute("readonly")
   }, 1000);
 }
 
