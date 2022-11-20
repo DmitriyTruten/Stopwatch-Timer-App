@@ -1,5 +1,5 @@
 import { $toggleSwitchSlider } from "./toggleSwitch.js";
-import * as timer from "./timer.js"
+import * as timer from "./timer.js";
 
 $(document).ready(() => {
   $(".segment").on("click", () => {
@@ -216,7 +216,6 @@ function checkMiliseconds(value) {
       return "0" + stopWatch.miliseconds;
     }
     return stopWatch.miliseconds;
-
   } else {
     const { miliseconds } = segmentStopWatch;
     if (miliseconds < 10) {
@@ -233,12 +232,11 @@ function checkSeconds(value) {
       return "0" + stopWatch.seconds;
     }
     return stopWatch.seconds;
-
   } else {
     const { seconds } = segmentStopWatch;
     if (seconds < 10) {
       return "0" + segmentStopWatch.seconds;
-    } 
+    }
     return segmentStopWatch.seconds;
   }
 }
@@ -248,14 +246,13 @@ function checkMinutes(value) {
     const { minutes } = stopWatch;
     if (minutes < 10) {
       return "0" + stopWatch.minutes;
-    } 
-      return stopWatch.minutes;
-
+    }
+    return stopWatch.minutes;
   } else {
     const { minutes } = segmentStopWatch;
     if (minutes < 10) {
       return "0" + segmentStopWatch.minutes;
-    } 
+    }
     return segmentStopWatch.minutes;
   }
 }
@@ -329,4 +326,5 @@ renderStopWatch();
 timer.renderTimerView();
 timer.timerStyles();
 timer.numberPicker();
-timer.fillingNumbers()
+timer.fillingNumbers();
+timer.outerHandleTimerStart();

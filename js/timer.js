@@ -114,6 +114,28 @@ export function fillingNumbers() {
     );
   }
 }
+export function outerHandleTimerStart() {
+  $("#timer-start").on("click", () => {
+    innerHandleTimerStart();
+  });
+}
+
+function innerHandleTimerStart() {
+  const { waitingForStart } = timer;
+  if (waitingForStart) {
+    timer.waitingForStart = false;
+    $("#circle-line").css({
+      animation: "reverse-circle 60.5s linear infinite",
+    })
+    $("#timer-start").html("<img style='margin-left: 0px;' src='images/pause.png'>");
+  } else if (!waitingForStart) {
+    timer.waitingForStart = true;
+    $("#circle-line").css({
+      animationPlayState: "paused",
+    })
+    $("#timer-start").html("<img src='images/play.png'>");
+  }
+}
 
 function formatNumbers() {
   const { hours, minutes, seconds } = timer;

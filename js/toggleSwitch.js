@@ -5,7 +5,7 @@ const $stopWatchDisplay = $("#display");
 const $segmentButton = $("#segment");
 const $resetButton = $("#reset");
 const $startButton = $("#start")
-const lines = document.querySelectorAll('#line');
+const lines = document.querySelectorAll('.line');
 const numbers = document.querySelectorAll('#number');
 
 $toggleSwitchSlider.on("click", toggleSwitch);
