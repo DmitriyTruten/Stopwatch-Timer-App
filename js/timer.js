@@ -125,56 +125,63 @@ export function outerHandleTimerStart() {
 function innerHandleTimerStart() {
   const { waitingForStart } = timer;
   if (waitingForStart) {
-    timerCountdown()
+    timerCountdown();
+    timer.countdown = "on";
     timer.waitingForStart = false;
     $("#circle-line").css({
       animation: "reverse-circle 60.5s linear infinite",
-    })
-    $("#timer-start").html("<img style='margin-left: 0px;' src='images/pause.png'>");
+    });
+    $("#timer-start").html(
+      "<img style='margin-left: 0px;' src='images/pause.png'>"
+    );
   } else if (!waitingForStart) {
-    clearInterval(timerInterval)
+    clearInterval(timerInterval);
+    timer.countdown = "off";
     timer.waitingForStart = true;
     $("#circle-line").css({
       animationPlayState: "paused",
-    })
+    });
     $("#timer-start").html("<img src='images/play.png'>");
   }
 }
 
 function timerCountdown() {
   timerInterval = setInterval(() => {
-    timer.seconds--
-    timer.seconds.toString()
-    console.log(timer)
-    renderTimerView()
-  }, 1000)
+    timer.seconds--;
+    timer.seconds.toString();
+    console.log(timer);
+    console.log(Object.values(timer)[2]);
+    renderTimerView();
+  }, 1000);
 }
 
-function formatNumbers() {
-  const { hours, minutes, seconds } = timer;
-  if (hours.length === 2 && minutes.length === 2 && seconds.length === 2) {
-    return timer.hours + ":" + timer.minutes + ":" + timer.seconds;
-  } else if (minutes.length === 2 && seconds.length === 2) {
-    return "0" + timer.hours + ":" + timer.minutes + ":" + timer.seconds;
-  } else if (hours.length === 2 && minutes.length === 2) {
-    return timer.hours + ":" + timer.minutes + ":" + "0" + timer.seconds;
-  } else if (hours.length === 2 && seconds.length === 2) {
-    return timer.hours + ":" + "0" + timer.minutes + ":" + timer.seconds;
-  } else if (hours.length === 2) {
-    return timer.hours + ":" + "0" + timer.minutes + ":" + "0" + timer.seconds;
-  } else if (minutes.length === 2) {
-    return "0" + timer.hours + ":" + timer.minutes + ":" + "0" + timer.seconds;
-  } else if (seconds.length === 2) {
-    return "0" + timer.hours + ":" + "0" + timer.minutes + ":" + timer.seconds;
-  } else {
-    return (
-      "0" + timer.hours + ":" + "0" + timer.minutes + ":" + "0" + timer.seconds
-    );
+function formatHours() {
+  const { hours } = timer;
+  if (hours < 10) {
+    return "0" + timer.hours;
   }
+  return timer.hours;
+}
 
+function formatMinutes() {
+  const { minutes } = timer;
+  if (minutes < 10) {
+    return "0" + timer.minutes;
+  }
+  return timer.minutes;
+}
+
+function formatSeconds() {
+  const { seconds } = timer;
+  if (seconds < 10) {
+    return "0" + timer.seconds;
+  }
+  return timer.seconds;
 }
 
 // View
 export function renderTimerView() {
-  $("#timer-display").val(formatNumbers());
+  $("#timer-display").val(
+    formatHours() + ":" + formatMinutes() + ":" + formatSeconds()
+  );
 }
