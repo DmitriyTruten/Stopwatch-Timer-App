@@ -51,7 +51,7 @@ export function numberPicker() {
 
 function scrollIntoNumber(event, container) {
   if (event.target === inputContainers[0]) {
-    let inputValue = container.value;
+    let inputValue = parseFloat(container.value);
     if (inputValue > 59 || inputValue < 0) {
       rejectInput(container);
     }
@@ -61,7 +61,7 @@ function scrollIntoNumber(event, container) {
     timer.hours = inputValue;
     renderTimerDisplay(container);
   } else if (event.target === inputContainers[1]) {
-    let inputValue = container.value;
+    let inputValue = parseFloat(container.value);
     if (inputValue > 59 || inputValue < 0) {
       rejectInput(container);
     }
@@ -71,7 +71,7 @@ function scrollIntoNumber(event, container) {
     container.value = "";
     renderTimerDisplay(container);
   } else {
-    let inputValue = container.value;
+    let inputValue = parseFloat(container.value);
     if (inputValue > 59 || inputValue < 0) {
       rejectInput(container);
     }
@@ -150,6 +150,14 @@ function timerCountdown() {
     timer.seconds--;
     if(timer.seconds === -1) {
       timer.seconds = 59;
+      timer.minutes--;
+    }
+    if(timer.minutes === -1) {
+      timer.minutes = 59;
+      timer.hours--
+    }
+    if(timer.hours === -1) {
+      timer.hours = 59;
     }
     renderTimerView();
     console.log(timer)
