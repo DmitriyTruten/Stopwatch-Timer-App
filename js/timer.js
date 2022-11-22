@@ -148,10 +148,11 @@ function innerHandleTimerStart() {
 function timerCountdown() {
   timerInterval = setInterval(() => {
     timer.seconds--;
-    timer.seconds.toString();
-    console.log(timer);
-    console.log(Object.values(timer)[2]);
+    if(timer.seconds === -1) {
+      timer.seconds = 59;
+    }
     renderTimerView();
+    console.log(timer)
   }, 1000);
 }
 
