@@ -21,7 +21,7 @@ export function toggleSwitch() {
         "<img style='opacity: 0.5;' src='images/undo-white.png'>"
       );
       $("#timer-soundpicker").html(
-        "<img style='opacity: 0.5;' src='images/bell-white.png'>"
+        "<img style='opacity: 1;' src='images/bell-white.png'>"
       );
     });
     $(document.body).css("background-color", "rgba(0, 0, 0, 0.8)");
@@ -83,7 +83,7 @@ export function toggleSwitch() {
         "<img style='opacity: 0.5;' src='images/undo-black.png'>"
       );
       $("#timer-soundpicker").html(
-        "<img style='opacity: 0.5;' src='images/bell-black.png'>"
+        "<img style='opacity: 1;' src='images/bell-black.png'>"
       );
     });
     $toggleSwitchSlider.val("light");

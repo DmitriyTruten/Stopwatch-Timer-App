@@ -23,13 +23,26 @@ $(".input-container").on("keydown", (event) => {
 
 export function timerStyles() {
   $(document).ready(() => {
-    $("#timer-start").html("<img src='images/play.png'>");
-    $("#timer-reset").html(
-      "<img style='opacity: 0.5;' src='images/undo-black.png'>"
-    );
-    $("#timer-soundpicker").html(
-      "<img style='opacity: 0.5;' src='images/bell-black.png'>"
-    );
+    const { hours, minutes, seconds } = timer;
+    if (hours === 0 && minutes === 0 && seconds === 0) {
+      $("#timer-start").html(
+        "<img style= 'opacity: 0.5' src='images/play.png'>"
+      ).css("background-color", '#008cff7e');
+      $("#timer-reset").html(
+        "<img style='opacity: 0.5;' src='images/undo-black.png'>"
+      );
+      $("#timer-soundpicker").html(
+        "<img style='opacity: 1;' src='images/bell-black.png'>"
+      );
+    } else if(hours !== 0 || minutes !== 0 || seconds !== 0) {
+      $("#timer-start").html(
+        "<img style= 'opacity: 1' src='images/play.png'>"
+      ).css("background-color", '#008cff');
+      $("#timer-reset").html(
+        "<img style='opacity: 1;' src='images/undo-black.png'>"
+      );
+    }
+
   });
 }
 
@@ -59,8 +72,9 @@ function scrollIntoNumber(event, container) {
     selectedNumber.scrollIntoView({ behavior: "smooth", block: "center" });
     container.value = "";
     timer.hours = inputValue;
-    renderTimerDisplay(container);
     enableButtons();
+    timerStyles()
+    renderTimerDisplay(container);
   } else if (event.target === inputContainers[1]) {
     let inputValue = parseFloat(container.value);
     if (inputValue > 59 || inputValue < 0) {
@@ -71,6 +85,7 @@ function scrollIntoNumber(event, container) {
     timer.minutes = inputValue;
     container.value = "";
     enableButtons();
+    timerStyles()
     renderTimerDisplay(container);
   } else {
     let inputValue = parseFloat(container.value);
@@ -82,6 +97,7 @@ function scrollIntoNumber(event, container) {
     timer.seconds = inputValue;
     container.value = "";
     enableButtons();
+    timerStyles()
     renderTimerDisplay(container);
   }
 }
@@ -113,7 +129,7 @@ function enableButtons() {
     $("#timer-soundpicker"),
   ];
   timerButtonContainerArray.forEach((button) => {
-    button.prop("disabled", false)
+    button.prop("disabled", false);
   });
 }
 
