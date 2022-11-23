@@ -133,19 +133,6 @@ function enableButtons() {
   });
 }
 
-export function fillingNumbers() {
-  for (let i = 0; i < 60; i++) {
-    $(".hours").append(
-      `<input type="text" id=h${i} value=${i} disabled></input>`
-    );
-    $(".minutes").append(
-      `<input type="text" id=m${i} value=${i} disabled></input>`
-    );
-    $(".seconds").append(
-      `<input type="text" id=s${i} value=${i} disabled></input>`
-    );
-  }
-}
 export function outerHandleTimerStart() {
   $("#timer-start").on("click", () => {
     innerHandleTimerStart();
@@ -164,6 +151,9 @@ function innerHandleTimerStart() {
     $("#timer-start").html(
       "<img style='margin-left: 0px;' src='images/pause.png'>"
     );
+    $(".timer-picker-container").css({
+      visibility: "hidden"
+    })
   } else if (!waitingForStart) {
     clearInterval(timerInterval);
     timer.countdown = "off";
@@ -219,8 +209,22 @@ function formatSeconds() {
 }
 
 // View
+export function fillingNumbers() {
+  for (let i = 0; i < 60; i++) {
+    $(".hours").append(
+      `<input type="text" id=h${i} value=${i} disabled></input>`
+    );
+    $(".minutes").append(
+      `<input type="text" id=m${i} value=${i} disabled></input>`
+    );
+    $(".seconds").append(
+      `<input type="text" id=s${i} value=${i} disabled></input>`
+    );
+  }
+}
+
 export function renderTimerView() {
   $("#timer-display").val(
     formatHours() + ":" + formatMinutes() + ":" + formatSeconds()
-  );
+    );
 }
