@@ -123,8 +123,7 @@ input:checked + .slider:before {
     margin: 0px 10px;
     border-radius: 10px;
     user-select: none;
-    overflow-y: scroll;
-    overflow-x: hidden;
+    overflow: hidden;
     scrollbar-width: none;
     transition: $transition-border-color;
     &::-webkit-scrollbar {

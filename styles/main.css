@@ -169,8 +169,7 @@ input:checked + .slider:before {
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
-  overflow-y: scroll;
-  overflow-x: hidden;
+  overflow: hidden;
   scrollbar-width: none;
   transition: border-color 0.5s ease-in-out;
 }
