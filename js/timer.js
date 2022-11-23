@@ -60,6 +60,7 @@ function scrollIntoNumber(event, container) {
     container.value = "";
     timer.hours = inputValue;
     renderTimerDisplay(container);
+    enableButtons();
   } else if (event.target === inputContainers[1]) {
     let inputValue = parseFloat(container.value);
     if (inputValue > 59 || inputValue < 0) {
@@ -69,6 +70,7 @@ function scrollIntoNumber(event, container) {
     selectedNumber.scrollIntoView({ behavior: "smooth", block: "center" });
     timer.minutes = inputValue;
     container.value = "";
+    enableButtons();
     renderTimerDisplay(container);
   } else {
     let inputValue = parseFloat(container.value);
@@ -79,6 +81,7 @@ function scrollIntoNumber(event, container) {
     selectedNumber.scrollIntoView({ behavior: "smooth", block: "center" });
     timer.seconds = inputValue;
     container.value = "";
+    enableButtons();
     renderTimerDisplay(container);
   }
 }
@@ -101,6 +104,17 @@ function rejectInput(container) {
   setTimeout(() => {
     container.style.animation = "none";
   }, 500);
+}
+
+function enableButtons() {
+  const timerButtonContainerArray = [
+    $("#timer-reset"),
+    $("#timer-start"),
+    $("#timer-soundpicker"),
+  ];
+  timerButtonContainerArray.forEach((button) => {
+    button.prop("disabled", false)
+  });
 }
 
 export function fillingNumbers() {
@@ -148,19 +162,19 @@ function innerHandleTimerStart() {
 function timerCountdown() {
   timerInterval = setInterval(() => {
     timer.seconds--;
-    if(timer.seconds === -1) {
+    if (timer.seconds === -1) {
       timer.seconds = 59;
       timer.minutes--;
     }
-    if(timer.minutes === -1) {
+    if (timer.minutes === -1) {
       timer.minutes = 59;
-      timer.hours--
+      timer.hours--;
     }
-    if(timer.hours === -1) {
+    if (timer.hours === -1) {
       timer.hours = 59;
     }
     renderTimerView();
-    console.log(timer)
+    console.log(timer);
   }, 1000);
 }
 
