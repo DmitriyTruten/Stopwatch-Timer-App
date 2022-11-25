@@ -101,32 +101,8 @@ function scrollIntoNumber(event, container) {
   }
 }
 
-function renderTimerDisplay(container) {
-  timerDisplay.style.animation = "update-opacity 1s linear";
-  container.setAttribute("readonly", true);
-  setTimeout(() => {
-    renderTimerView();
-  }, 500);
-  setTimeout(() => {
-    timerDisplay.style.animation = "none";
-    container.removeAttribute("readonly");
-  }, 1000);
-}
-
-function rejectInput(container) {
-  container.value = "";
-  container.style.animation = "reject .5s ease-in-out";
-  setTimeout(() => {
-    container.style.animation = "none";
-  }, 500);
-}
-
 function enableButtons() {
-  const timerButtonContainerArray = [
-    $("#timer-reset"),
-    $("#timer-start"),
-    $("#timer-soundpicker"),
-  ];
+  const timerButtonContainerArray = [$("#timer-reset"), $("#timer-start")];
   timerButtonContainerArray.forEach((button) => {
     button.prop("disabled", false);
   });
@@ -168,7 +144,11 @@ function innerHandleTimerStart() {
 }
 
 function handleTimerReset() {
-  clearInterval(timerInterval);
+  const selectedHoursNumber = document.getElementById("h0");
+  const selectedMinutesNumber = document.getElementById("m0");
+  const selectedSecondsNumber = document.getElementById("s0");
+  const timerButtonContainerArray = [$("#timer-reset"), $("#timer-start")];
+  
   timer.hours = 0;
   timer.minutes = 0;
   timer.seconds = 0;
@@ -181,10 +161,14 @@ function handleTimerReset() {
     animation: "none",
   });
   $("#timer-start").html("<img src='images/play.png'>");
+
+  timerButtonContainerArray.forEach((button) => {
+    button.prop("disabled", true);
+  });
+
   renderTimerView();
-  const selectedHoursNumber = document.getElementById("h0");
-  const selectedMinutesNumber = document.getElementById("m0");
-  const selectedSecondsNumber = document.getElementById("s0");
+  timerStyles()
+  clearInterval(timerInterval);
   selectedHoursNumber.scrollIntoView();
   selectedMinutesNumber.scrollIntoView();
   selectedSecondsNumber.scrollIntoView();
@@ -246,6 +230,26 @@ export function fillingNumbers() {
       `<input type="text" id=s${i} value=${i} disabled></input>`
     );
   }
+}
+
+function rejectInput(container) {
+  container.value = "";
+  container.style.animation = "reject .5s ease-in-out";
+  setTimeout(() => {
+    container.style.animation = "none";
+  }, 500);
+}
+
+function renderTimerDisplay(container) {
+  timerDisplay.style.animation = "update-opacity 1s linear";
+  container.setAttribute("readonly", true);
+  setTimeout(() => {
+    renderTimerView();
+  }, 500);
+  setTimeout(() => {
+    timerDisplay.style.animation = "none";
+    container.removeAttribute("readonly");
+  }, 1000);
 }
 
 export function renderTimerView() {
