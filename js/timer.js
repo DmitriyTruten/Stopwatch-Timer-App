@@ -25,24 +25,23 @@ export function timerStyles() {
   $(document).ready(() => {
     const { hours, minutes, seconds } = timer;
     if (hours === 0 && minutes === 0 && seconds === 0) {
-      $("#timer-start").html(
-        "<img style= 'opacity: 0.5' src='images/play.png'>"
-      ).css("background-color", '#008cff7e');
+      $("#timer-start")
+        .html("<img style= 'opacity: 0.5' src='images/play.png'>")
+        .css("background-color", "#008cff7e");
       $("#timer-reset").html(
         "<img style='opacity: 0.5;' src='images/undo-black.png'>"
       );
       $("#timer-soundpicker").html(
         "<img style='opacity: 1;' src='images/bell-black.png'>"
       );
-    } else if(hours !== 0 || minutes !== 0 || seconds !== 0) {
-      $("#timer-start").html(
-        "<img style= 'opacity: 1' src='images/play.png'>"
-      ).css("background-color", '#008cff');
+    } else if (hours !== 0 || minutes !== 0 || seconds !== 0) {
+      $("#timer-start")
+        .html("<img style= 'opacity: 1' src='images/play.png'>")
+        .css("background-color", "#008cff");
       $("#timer-reset").html(
         "<img style='opacity: 1;' src='images/undo-black.png'>"
       );
     }
-
   });
 }
 
@@ -73,7 +72,7 @@ function scrollIntoNumber(event, container) {
     container.value = "";
     timer.hours = inputValue;
     enableButtons();
-    timerStyles()
+    timerStyles();
     renderTimerDisplay(container);
   } else if (event.target === inputContainers[1]) {
     let inputValue = parseFloat(container.value);
@@ -85,7 +84,7 @@ function scrollIntoNumber(event, container) {
     timer.minutes = inputValue;
     container.value = "";
     enableButtons();
-    timerStyles()
+    timerStyles();
     renderTimerDisplay(container);
   } else {
     let inputValue = parseFloat(container.value);
@@ -97,7 +96,7 @@ function scrollIntoNumber(event, container) {
     timer.seconds = inputValue;
     container.value = "";
     enableButtons();
-    timerStyles()
+    timerStyles();
     renderTimerDisplay(container);
   }
 }
@@ -137,6 +136,9 @@ export function outerHandleTimerStart() {
   $("#timer-start").on("click", () => {
     innerHandleTimerStart();
   });
+  $("#timer-reset").on("click", () => {
+    handleTimerReset();
+  });
 }
 
 function innerHandleTimerStart() {
@@ -152,8 +154,8 @@ function innerHandleTimerStart() {
       "<img style='margin-left: 0px;' src='images/pause.png'>"
     );
     $(".timer-picker-container").css({
-      visibility: "hidden"
-    })
+      visibility: "hidden",
+    });
   } else if (!waitingForStart) {
     clearInterval(timerInterval);
     timer.countdown = "off";
@@ -163,6 +165,29 @@ function innerHandleTimerStart() {
     });
     $("#timer-start").html("<img src='images/play.png'>");
   }
+}
+
+function handleTimerReset() {
+  clearInterval(timerInterval);
+  timer.hours = 0;
+  timer.minutes = 0;
+  timer.seconds = 0;
+  timer.countdown = "off";
+  timer.waitingForStart = true;
+  $(".timer-picker-container").css({
+    visibility: "visible",
+  });
+  $("#circle-line").css({
+    animation: "none",
+  });
+  $("#timer-start").html("<img src='images/play.png'>");
+  renderTimerView();
+  const selectedHoursNumber = document.getElementById("h0");
+  const selectedMinutesNumber = document.getElementById("m0");
+  const selectedSecondsNumber = document.getElementById("s0");
+  selectedHoursNumber.scrollIntoView();
+  selectedMinutesNumber.scrollIntoView();
+  selectedSecondsNumber.scrollIntoView();
 }
 
 function timerCountdown() {
@@ -226,5 +251,5 @@ export function fillingNumbers() {
 export function renderTimerView() {
   $("#timer-display").val(
     formatHours() + ":" + formatMinutes() + ":" + formatSeconds()
-    );
+  );
 }
