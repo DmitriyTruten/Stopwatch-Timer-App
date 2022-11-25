@@ -159,9 +159,7 @@ input:checked + .slider:before {
     font-size: 30px;
     border: 2px solid gray;
     border-radius: 10px;
-    transition: 
-      $transition-background-color, 
-      $transition-border-color,
+    transition: $transition-background-color, $transition-border-color,
       $transition-color;
     &::placeholder {
       font-size: 20px;
@@ -375,6 +373,26 @@ input:checked + .slider:before {
   50% {
     opacity: 0;
   }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes disable-opacity {
+  0% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes enable-opacity {
+  0% {
+    opacity: 0;
+  }
+
   100% {
     opacity: 1;
   }

@@ -130,8 +130,13 @@ function innerHandleTimerStart() {
       "<img style='margin-left: 0px;' src='images/pause.png'>"
     );
     $(".timer-picker-container").css({
-      visibility: "hidden",
+      animation: "disable-opacity 1s ease-in-out",
     });
+    setTimeout(() => {
+      $(".timer-picker-container").css({
+        opacity: 0,
+      });
+    }, 1000);
   } else if (!waitingForStart) {
     clearInterval(timerInterval);
     timer.countdown = "off";
@@ -155,7 +160,8 @@ function handleTimerReset() {
   timer.countdown = "off";
   timer.waitingForStart = true;
   $(".timer-picker-container").css({
-    visibility: "visible",
+    opacity: 1,
+    animation: "enable-opacity 1s ease-in-out",
   });
   $("#circle-line").css({
     animation: "none",
