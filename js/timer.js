@@ -1,3 +1,5 @@
+import { $toggleSwitchSlider } from "./toggleSwitch.js";
+
 // Model
 const timer = {
   hours: 0,
@@ -25,22 +27,43 @@ export function timerStyles() {
   $(document).ready(() => {
     const { hours, minutes, seconds } = timer;
     if (hours === 0 && minutes === 0 && seconds === 0) {
-      $("#timer-start")
-        .html("<img style= 'opacity: 0.5' src='images/play.png'>")
-        .css("background-color", "#008cff7e");
-      $("#timer-reset").html(
-        "<img style='opacity: 0.5;' src='images/undo-black.png'>"
-      );
-      $("#timer-soundpicker").html(
-        "<img style='opacity: 1;' src='images/bell-black.png'>"
-      );
+      if ($toggleSwitchSlider.val() === "light") {
+        $("#timer-start")
+          .html("<img style= 'opacity: 0.5' src='images/play.png'>")
+          .css("background-color", "#008cff7e");
+        $("#timer-reset")
+          .html("<img style='opacity: 0.5;' src='images/undo-black.png'>")
+          .css("background-color", "transparent");
+        $("#timer-soundpicker")
+          .html("<img style='opacity: 1;' src='images/bell-black.png'>")
+          .css("background-color", "transparent");
+      } else {
+        $("#timer-start")
+          .html("<img style= 'opacity: 0.5' src='images/play.png'>")
+          .css("background-color", "#008cff7e");
+        $("#timer-reset")
+          .html("<img style='opacity: 0.5;' src='images/undo-white.png'>")
+          .css("background-color", "transparent");
+        $("#timer-soundpicker")
+          .html("<img style='opacity: 1;' src='images/bell-white.png'>")
+          .css("background-color", "transparent");
+      }
     } else if (hours !== 0 || minutes !== 0 || seconds !== 0) {
-      $("#timer-start")
-        .html("<img style= 'opacity: 1' src='images/play.png'>")
-        .css("background-color", "#008cff");
-      $("#timer-reset").html(
-        "<img style='opacity: 1;' src='images/undo-black.png'>"
-      );
+      if ($toggleSwitchSlider.val() === "light") {
+        $("#timer-start")
+          .html("<img style= 'opacity: 1' src='images/play.png'>")
+          .css("background-color", "#008cff");
+        $("#timer-reset")
+          .html("<img style='opacity: 1;' src='images/undo-black.png'>")
+          .css("background-color", "transparent");
+      } else {
+        $("#timer-start")
+          .html("<img style= 'opacity: 1' src='images/play.png'>")
+          .css("background-color", "#008cff");
+        $("#timer-reset")
+          .html("<img style='opacity: 1;' src='images/undo-white.png'>")
+          .css("background-color", "transparent");
+      }
     }
   });
 }
@@ -62,6 +85,8 @@ export function numberPicker() {
 }
 
 function scrollIntoNumber(event, container) {
+  const timerStartButton = document.getElementById("timer-start");
+  timerStartButton.value = "on";
   if (event.target === inputContainers[0]) {
     let inputValue = parseFloat(container.value);
     if (inputValue > 59 || inputValue < 0) {
@@ -153,12 +178,14 @@ function handleTimerReset() {
   const selectedMinutesNumber = document.getElementById("m0");
   const selectedSecondsNumber = document.getElementById("s0");
   const timerButtonContainerArray = [$("#timer-reset"), $("#timer-start")];
-  
+  const timerStartButton = document.getElementById("timer-start");
+
   timer.hours = 0;
   timer.minutes = 0;
   timer.seconds = 0;
   timer.countdown = "off";
   timer.waitingForStart = true;
+  timerStartButton.value = "off";
   $(".timer-picker-container").css({
     opacity: 1,
     animation: "enable-opacity 1s ease-in-out",
@@ -173,7 +200,7 @@ function handleTimerReset() {
   });
 
   renderTimerView();
-  timerStyles()
+  timerStyles();
   clearInterval(timerInterval);
   selectedHoursNumber.scrollIntoView();
   selectedMinutesNumber.scrollIntoView();

@@ -1,25 +1,31 @@
+export const $toggleSwitchSlider = $("#toggle");
 const $segmentContainer = $("#segment-container");
 const $segmentDisplay = $("#segment-display");
-export const $toggleSwitchSlider = $("#toggle");
 const $stopWatchDisplay = $("#display");
 const $segmentButton = $("#segment");
 const $resetButton = $("#reset");
-const $startButton = $("#start")
-const lines = document.querySelectorAll('.line');
-const numbers = document.querySelectorAll('#number');
+const $startButton = $("#start");
+const lines = document.querySelectorAll(".line");
+const numbers = document.querySelectorAll("#number");
+const $timerStartButton = $("#timer-start");
 
 $toggleSwitchSlider.on("click", toggleSwitch);
 
 export function toggleSwitch() {
-  if ($toggleSwitchSlider.val() === 'light') {
+  if ($toggleSwitchSlider.val() === "light") {
     $(document).ready(() => {
+      if ($timerStartButton.val() === "on") {
+        $("#timer-reset")
+          .html("<img style='opacity: 1;' src='images/undo-white.png'>")
+          .css("background-color", "transparent");
+      } else {
+        $("#timer-reset")
+          .html("<img style='opacity: 0.5;' src='images/undo-white.png'>")
+          .css("background-color", "transparent");
+      }
       $(".segment-div").css("border-bottom", "1px solid rgb(255, 255, 255)");
       $("#timer-display").css("color", "white");
-      $("#timer-reset").css("background-color", "transparent");
       $("#timer-soundpicker").css("background-color", "transparent");
-      $("#timer-reset").html(
-        "<img style='opacity: 0.5;' src='images/undo-white.png'>"
-      );
       $("#timer-soundpicker").html(
         "<img style='opacity: 1;' src='images/bell-white.png'>"
       );
@@ -39,19 +45,19 @@ export function toggleSwitch() {
     $(".input-container").children().css({
       backgroundColor: "transparent",
       borderColor: "white",
-      color: "white"
-    })
-    $(".input-container").children().addClass('white-placeholder')
+      color: "white",
+    });
+    $(".input-container").children().addClass("white-placeholder");
 
-    numbers.forEach(number => {
+    numbers.forEach((number) => {
       $(number).css({
-        border: "2px solid white"
-      })
+        border: "2px solid white",
+      });
       $(number).children().css({
         color: "white",
-        backgroundColor: "transparent"
-      })
-    })
+        backgroundColor: "transparent",
+      });
+    });
 
     if ($startButton.val() === "on") {
       $segmentButton.html(
@@ -75,13 +81,19 @@ export function toggleSwitch() {
         "<img style='opacity: 0.5;' src='images/undo-white.png'>"
       );
     }
-  } else if($toggleSwitchSlider.val() === 'dark') {
+  } else if ($toggleSwitchSlider.val() === "dark") {
     $(document).ready(() => {
+      if ($timerStartButton.val() === "on") {
+        $("#timer-reset")
+          .html("<img style='opacity: 1;' src='images/undo-black.png'>")
+          .css("background-color", "transparent");
+      } else {
+        $("#timer-reset")
+          .html("<img style='opacity: 0.5;' src='images/undo-black.png'>")
+          .css("background-color", "transparent");
+      }
       $(".segment-div").css("border-bottom", "1px solid");
       $("#timer-display").css("color", "rgb(84, 84, 84)");
-      $("#timer-reset").html(
-        "<img style='opacity: 0.5;' src='images/undo-black.png'>"
-      );
       $("#timer-soundpicker").html(
         "<img style='opacity: 1;' src='images/bell-black.png'>"
       );
@@ -99,19 +111,19 @@ export function toggleSwitch() {
     $(".input-container").children().css({
       backgroundColor: "transparent",
       borderColor: "gray",
-      color: "black"
-    })
-    $(".input-container").children().removeClass('white-placeholder')
+      color: "black",
+    });
+    $(".input-container").children().removeClass("white-placeholder");
 
-    numbers.forEach(number => {
+    numbers.forEach((number) => {
       $(number).css({
-        border: "2px solid gray"
-      })
+        border: "2px solid gray",
+      });
       $(number).children().css({
         color: "black",
-        backgroundColor: "transparent"
-      })
-    })
+        backgroundColor: "transparent",
+      });
+    });
 
     if ($startButton.val() === "on") {
       $segmentButton.html(
