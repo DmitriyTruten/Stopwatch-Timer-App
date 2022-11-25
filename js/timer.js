@@ -209,16 +209,20 @@ function handleTimerReset() {
 
 function timerCountdown() {
   timerInterval = setInterval(() => {
+    const { hours, minutes, seconds, countdown } = timer;
     timer.seconds--;
-    if (timer.seconds === -1) {
+    if(hours === 0 && minutes === 0 && seconds === 0 && countdown === 'on') {
+      handleTimerReset();
+    }
+    if (seconds === -1) {
       timer.seconds = 59;
       timer.minutes--;
     }
-    if (timer.minutes === -1) {
+    if (minutes === -1) {
       timer.minutes = 59;
       timer.hours--;
     }
-    if (timer.hours === -1) {
+    if (hours === -1) {
       timer.hours = 59;
     }
     renderTimerView();
