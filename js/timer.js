@@ -95,8 +95,10 @@ export function handleUserInteractionsWithTimer() {
   $("#timer-soundpicker").on("click", () => {
     toggleModalBox("on")
   })
-  $(".modal-container").on("click", () => {
-    toggleModalBox("off")
+  $(".modal-container").on("click", event => {
+    if($(event.target).is($(".modal-container"))) {
+      toggleModalBox("off")
+    }
   })
 }
 
