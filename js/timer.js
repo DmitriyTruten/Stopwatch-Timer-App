@@ -1,7 +1,11 @@
-import { $toggleSwitchSlider } from "./toggleSwitch.js";
+import { formatHours, formatMinutes, formatSeconds } from "./helpers/formatNumbers.js";
+import { timerStyles } from "./helpers/timerStyles.js";
+import { enableButtons } from "./helpers/enableButtons.js";
+import { toggleModalBox } from "./helpers/toggleModalBox.js";
+import { rejectInput } from "./helpers/rejectInput.js";
 
 // Model
-const timer = {
+export const timer = {
   hours: 0,
   minutes: 0,
   seconds: 0,
@@ -22,51 +26,6 @@ $(".input-container").on("keydown", (event) => {
     event.preventDefault();
   }
 });
-
-export function timerStyles() {
-  $(document).ready(() => {
-    const { hours, minutes, seconds } = timer;
-    if (hours === 0 && minutes === 0 && seconds === 0) {
-      if ($toggleSwitchSlider.val() === "light") {
-        $("#timer-start")
-          .html("<img style= 'opacity: 0.5' src='images/play.png'>")
-          .css("background-color", "#008cff7e");
-        $("#timer-reset")
-          .html("<img style='opacity: 0.5;' src='images/undo-black.png'>")
-          .css("background-color", "transparent");
-        $("#timer-soundpicker")
-          .html("<img style='opacity: 1;' src='images/bell-black.png'>")
-          .css("background-color", "transparent");
-      } else {
-        $("#timer-start")
-          .html("<img style= 'opacity: 0.5' src='images/play.png'>")
-          .css("background-color", "#008cff7e");
-        $("#timer-reset")
-          .html("<img style='opacity: 0.5;' src='images/undo-white.png'>")
-          .css("background-color", "transparent");
-        $("#timer-soundpicker")
-          .html("<img style='opacity: 1;' src='images/bell-white.png'>")
-          .css("background-color", "transparent");
-      }
-    } else if (hours !== 0 || minutes !== 0 || seconds !== 0) {
-      if ($toggleSwitchSlider.val() === "light") {
-        $("#timer-start")
-          .html("<img style= 'opacity: 1' src='images/play.png'>")
-          .css("background-color", "#008cff");
-        $("#timer-reset")
-          .html("<img style='opacity: 1;' src='images/undo-black.png'>")
-          .css("background-color", "transparent");
-      } else {
-        $("#timer-start")
-          .html("<img style= 'opacity: 1' src='images/play.png'>")
-          .css("background-color", "#008cff");
-        $("#timer-reset")
-          .html("<img style='opacity: 1;' src='images/undo-white.png'>")
-          .css("background-color", "transparent");
-      }
-    }
-  });
-}
 
 const inputContainers = document.querySelectorAll("#input-container");
 const timerDisplay = document.getElementById("timer-display");
@@ -126,24 +85,9 @@ function scrollIntoNumber(event, container) {
   }
 }
 
-function enableButtons() {
-  const timerButtonContainerArray = [$("#timer-reset"), $("#timer-start")];
-  timerButtonContainerArray.forEach((button) => {
-    button.prop("disabled", false);
-  });
-}
-
-function toggleModalBox(value) {
-  if(value === 'on') {
-    $(".modal-container").css("display", "block")
-  } else if(value === 'off') {
-    $(".modal-container").css("display", "none")
-  }
-}
-
 export function handleUserInteractionsWithTimer() {
   $("#timer-start").on("click", () => {
-    innerHandleTimerStart();
+    handleTimerStart();
   });
   $("#timer-reset").on("click", () => {
     handleTimerReset();
@@ -156,7 +100,7 @@ export function handleUserInteractionsWithTimer() {
   })
 }
 
-function innerHandleTimerStart() {
+function handleTimerStart() {
   const { waitingForStart } = timer;
   if (waitingForStart) {
     timerCountdown();
@@ -244,53 +188,7 @@ function timerCountdown() {
   }, 1000);
 }
 
-function formatHours() {
-  const { hours } = timer;
-  if (hours < 10) {
-    return "0" + timer.hours;
-  }
-  return timer.hours;
-}
-
-function formatMinutes() {
-  const { minutes } = timer;
-  if (minutes < 10) {
-    return "0" + timer.minutes;
-  }
-  return timer.minutes;
-}
-
-function formatSeconds() {
-  const { seconds } = timer;
-  if (seconds < 10) {
-    return "0" + timer.seconds;
-  }
-  return timer.seconds;
-}
-
 // View
-export function fillingNumbers() {
-  for (let i = 0; i < 60; i++) {
-    $(".hours").append(
-      `<input type="text" id=h${i} value=${i} disabled></input>`
-    );
-    $(".minutes").append(
-      `<input type="text" id=m${i} value=${i} disabled></input>`
-    );
-    $(".seconds").append(
-      `<input type="text" id=s${i} value=${i} disabled></input>`
-    );
-  }
-}
-
-function rejectInput(container) {
-  container.value = "";
-  container.style.animation = "reject .5s ease-in-out";
-  setTimeout(() => {
-    container.style.animation = "none";
-  }, 500);
-}
-
 function renderTimerDisplay(container) {
   timerDisplay.style.animation = "update-opacity 1s linear";
   container.setAttribute("readonly", true);
