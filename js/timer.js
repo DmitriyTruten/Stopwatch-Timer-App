@@ -1,4 +1,8 @@
-import { formatHours, formatMinutes, formatSeconds } from "./helpers/formatNumbers.js";
+import {
+  formatHours,
+  formatMinutes,
+  formatSeconds,
+} from "./helpers/formatNumbers.js";
 import { timerStyles } from "./helpers/timerStyles.js";
 import { enableButtons } from "./helpers/enableButtons.js";
 import { toggleModalBox } from "./helpers/toggleModalBox.js";
@@ -93,13 +97,13 @@ export function handleUserInteractionsWithTimer() {
     handleTimerReset();
   });
   $("#timer-soundpicker").on("click", () => {
-    toggleModalBox("on")
-  })
-  $(".modal-container").on("click", event => {
-    if($(event.target).is($(".modal-container"))) {
-      toggleModalBox("off")
+    toggleModalBox("on");
+  });
+  $(".modal-container").on("click", (event) => {
+    if ($(event.target).is($(".modal-container"))) {
+      toggleModalBox("off");
     }
-  })
+  });
 }
 
 function handleTimerStart() {
@@ -108,6 +112,7 @@ function handleTimerStart() {
     timerCountdown();
     timer.countdown = "on";
     timer.waitingForStart = false;
+    $(".timer-reset").prop("disabled", true);
     $("#circle-line").css({
       animation: "reverse-circle 60.5s linear infinite",
     });
@@ -121,6 +126,7 @@ function handleTimerStart() {
       $(".timer-picker-container").css({
         opacity: 0,
       });
+      $(".timer-reset").prop("disabled", false);
     }, 1000);
   } else if (!waitingForStart) {
     clearInterval(timerInterval);
@@ -182,7 +188,7 @@ function timerCountdown() {
     if (timer.hours === -1) {
       timer.hours = 59;
     }
-    if(hours === 0 && minutes === 0 && seconds === 0 && countdown === 'on') {
+    if (hours === 0 && minutes === 0 && seconds === 0 && countdown === "on") {
       handleTimerReset();
     }
     renderTimerView();
