@@ -327,4 +327,4 @@ timer.renderTimerView();
 timer.timerStyles();
 timer.numberPicker();
 timer.fillingNumbers();
-timer.outerHandleTimerStart();
+timer.handleUserInteractionsWithTimer();

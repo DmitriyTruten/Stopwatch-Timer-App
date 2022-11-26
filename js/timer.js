@@ -133,13 +133,27 @@ function enableButtons() {
   });
 }
 
-export function outerHandleTimerStart() {
+function toggleModalBox(value) {
+  if(value === 'on') {
+    $(".modal-container").css("display", "block")
+  } else if(value === 'off') {
+    $(".modal-container").css("display", "none")
+  }
+}
+
+export function handleUserInteractionsWithTimer() {
   $("#timer-start").on("click", () => {
     innerHandleTimerStart();
   });
   $("#timer-reset").on("click", () => {
     handleTimerReset();
   });
+  $("#timer-soundpicker").on("click", () => {
+    toggleModalBox("on")
+  })
+  $(".modal-container").on("click", () => {
+    toggleModalBox("off")
+  })
 }
 
 function innerHandleTimerStart() {
