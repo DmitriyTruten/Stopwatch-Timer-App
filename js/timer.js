@@ -8,6 +8,7 @@ import { enableButtons } from "./helpers/enableButtons.js";
 import { toggleModalBox } from "./helpers/toggleModalBox.js";
 import { rejectInput } from "./helpers/rejectInput.js";
 import { toggleSound } from "./helpers/toggleSound.js";
+import { playSound } from "./helpers/playSound.js";
 
 // Model
 export const timer = {
@@ -108,6 +109,10 @@ export function handleUserInteractionsWithTimer() {
   $(".modal-content").on("click", (event) => {
     toggleSound(event);
   });
+
+  $(".modal-content").on("click", (event) => {
+    playSound(event)
+  })
 }
 
 function handleTimerStart() {
