@@ -7,6 +7,7 @@ import { timerStyles } from "./helpers/timerStyles.js";
 import { enableButtons } from "./helpers/enableButtons.js";
 import { toggleModalBox } from "./helpers/toggleModalBox.js";
 import { rejectInput } from "./helpers/rejectInput.js";
+import { toggleSound } from "./helpers/toggleSound.js";
 
 // Model
 export const timer = {
@@ -105,11 +106,7 @@ export function handleUserInteractionsWithTimer() {
     }
   });
   $(".modal-content").on("click", (event) => {
-    let currentSoundContainer = document.getElementsByClassName("active");
-    currentSoundContainer[0].className =
-      currentSoundContainer[0].className.replace(" active", "");
-    event.target.className += " active";
-    event.target.querySelector('input').checked = true
+    toggleSound(event)
   });
 }
 
