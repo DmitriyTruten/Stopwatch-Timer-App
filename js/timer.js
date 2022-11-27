@@ -8,7 +8,7 @@ import { enableButtons } from "./helpers/enableButtons.js";
 import { toggleModalBox } from "./helpers/toggleModalBox.js";
 import { rejectInput } from "./helpers/rejectInput.js";
 import { toggleSound } from "./helpers/toggleSound.js";
-import { playSound } from "./helpers/playSound.js";
+import { playSound, soundOnCountdownEnd }from "./helpers/playSound.js"
 
 // Model
 export const timer = {
@@ -199,6 +199,7 @@ function timerCountdown() {
     }
     if (hours === 0 && minutes === 0 && seconds === 0 && countdown === "on") {
       handleTimerReset();
+      soundOnCountdownEnd()
     }
     renderTimerView();
     console.log(timer);
