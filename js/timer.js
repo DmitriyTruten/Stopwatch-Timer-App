@@ -106,7 +106,7 @@ export function handleUserInteractionsWithTimer() {
     }
   });
   $(".modal-content").on("click", (event) => {
-    toggleSound(event)
+    toggleSound(event);
   });
 }
 
