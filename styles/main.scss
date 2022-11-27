@@ -337,6 +337,9 @@ input:checked + .slider:before {
     height: 20%;
   }
 }
+.active {
+  background-color: lightblue;
+}
 
 // Animations
 @keyframes circle {

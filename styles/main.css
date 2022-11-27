@@ -408,6 +408,10 @@ input:checked + .slider:before {
   height: 20%;
 }
 
+.active {
+  background-color: lightblue;
+}
+
 @-webkit-keyframes circle {
   0% {
     transform: rotate(90deg) translate(-150px) rotate(90deg);
