@@ -404,8 +404,14 @@ input:checked + .slider:before {
 .modal-content div {
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
+  padding: 0px 5px;
+  align-items: center;
   border: 1px solid black;
   height: 20%;
+}
+.modal-content div label {
+  font-weight: 600;
 }
 
 .active {
