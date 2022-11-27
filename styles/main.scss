@@ -340,6 +340,7 @@ input:checked + .slider:before {
     height: 20%;
     label {
       font-weight: 600;
+      user-select: none;
     }
   }
 }
