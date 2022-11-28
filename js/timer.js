@@ -7,7 +7,7 @@ import { timerStyles } from "./helpers/timerStyles.js";
 import { enableButtons } from "./helpers/enableButtons.js";
 import { toggleModalBox } from "./helpers/toggleModalBox.js";
 import { rejectInput } from "./helpers/rejectInput.js";
-import { toggleSound } from "./helpers/toggleSound.js";
+import { toggleSound, getSavedSound } from "./helpers/toggleSound.js";
 import { playSound, soundOnCountdownEnd }from "./helpers/playSound.js"
 
 // Model
@@ -100,6 +100,7 @@ export function handleUserInteractionsWithTimer() {
   });
   $("#timer-soundpicker").on("click", () => {
     toggleModalBox("on");
+    getSavedSound()
   });
   $(".modal-container").on("click", (event) => {
     if ($(event.target).is($(".modal-container"))) {
@@ -108,11 +109,8 @@ export function handleUserInteractionsWithTimer() {
   });
   $(".modal-content").on("click", (event) => {
     toggleSound(event);
-  });
-
-  $(".modal-content").on("click", (event) => {
     playSound(event)
-  })
+  });
 }
 
 function handleTimerStart() {
