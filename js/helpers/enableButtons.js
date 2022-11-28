@@ -4,3 +4,10 @@ export function enableButtons() {
     button.prop("disabled", false);
   });
 }
+
+export function disableButtons() {
+  const timerButtonContainerArray = [$("#timer-reset"), $("#timer-start")];
+  timerButtonContainerArray.forEach((button) => {
+    button.prop("disabled", true);
+  });
+}

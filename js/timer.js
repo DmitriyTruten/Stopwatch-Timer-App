@@ -4,7 +4,7 @@ import {
   formatSeconds,
 } from "./helpers/formatNumbers.js";
 import { timerStyles } from "./helpers/timerStyles.js";
-import { enableButtons } from "./helpers/enableButtons.js";
+import { enableButtons, disableButtons } from "./helpers/enableButtons.js";
 import { toggleModalBox } from "./helpers/toggleModalBox.js";
 import { rejectInput } from "./helpers/rejectInput.js";
 import { toggleSound, getSavedSound } from "./helpers/toggleSound.js";
@@ -61,9 +61,15 @@ function scrollIntoNumber(event, container) {
     selectedNumber.scrollIntoView({ behavior: "smooth", block: "center" });
     container.value = "";
     timer.hours = inputValue;
-    enableButtons();
     timerStyles();
     renderTimerDisplay(container);
+
+    if(timer.hours === 0 && timer.minutes === 0 && timer.seconds === 0) {
+      disableButtons()
+    } else {
+      enableButtons();
+    }
+
   } else if (event.target === inputContainers[1]) {
     let inputValue = parseFloat(container.value);
     if (inputValue > 59 || inputValue < 0) {
@@ -73,9 +79,15 @@ function scrollIntoNumber(event, container) {
     selectedNumber.scrollIntoView({ behavior: "smooth", block: "center" });
     timer.minutes = inputValue;
     container.value = "";
-    enableButtons();
     timerStyles();
     renderTimerDisplay(container);
+
+    if(timer.hours === 0 && timer.minutes === 0 && timer.seconds === 0) {
+      disableButtons()
+    } else {
+      enableButtons();
+    }
+
   } else {
     let inputValue = parseFloat(container.value);
     if (inputValue > 59 || inputValue < 0) {
@@ -85,9 +97,14 @@ function scrollIntoNumber(event, container) {
     selectedNumber.scrollIntoView({ behavior: "smooth", block: "center" });
     timer.seconds = inputValue;
     container.value = "";
-    enableButtons();
     timerStyles();
     renderTimerDisplay(container);
+
+    if(timer.hours === 0 && timer.minutes === 0 && timer.seconds === 0) {
+      disableButtons()
+    } else {
+      enableButtons();
+    }
   }
 }
 
