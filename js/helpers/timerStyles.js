@@ -1,9 +1,15 @@
-import { timer } from "../timer.js"
+import { timer } from "../timer.js";
 import { $toggleSwitchSlider } from "../toggleSwitch.js";
 
 export function timerStyles() {
   $(document).ready(() => {
     const { hours, minutes, seconds } = timer;
+    const numberContainersArray = [
+      $(".hours input"),
+      $(".minutes input"),
+      $(".seconds input"),
+    ];
+
     if (hours === 0 && minutes === 0 && seconds === 0) {
       if ($toggleSwitchSlider.val() === "light") {
         $("#timer-start")
@@ -43,5 +49,13 @@ export function timerStyles() {
           .css("background-color", "transparent");
       }
     }
+    numberContainersArray.forEach((container) => {
+      container.first().css({
+        marginTop: 25
+      });
+      container.last().css({
+        marginBottom: 50,
+      });
+    });
   });
 }

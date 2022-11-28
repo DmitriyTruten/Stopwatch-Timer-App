@@ -133,10 +133,7 @@ input:checked + .slider:before {
       font-size: 45px;
       text-align: center;
       color: black;
-      border-left: none;
-      border-right: none;
-      border-bottom: 2px solid gray;
-      border-top: none;
+      border: none;
       transition: $transition-color;
     }
   }
