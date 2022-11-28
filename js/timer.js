@@ -8,7 +8,8 @@ import { enableButtons, disableButtons } from "./helpers/enableButtons.js";
 import { toggleModalBox } from "./helpers/toggleModalBox.js";
 import { rejectInput } from "./helpers/rejectInput.js";
 import { toggleSound, getSavedSound } from "./helpers/toggleSound.js";
-import { playSound, soundOnCountdownEnd }from "./helpers/playSound.js"
+import { playSound, soundOnCountdownEnd } from "./helpers/playSound.js";
+import { innerScrollNumber } from "./helpers/innerScrollNumber.js";
 
 // Model
 export const timer = {
@@ -52,59 +53,15 @@ export function numberPicker() {
 function scrollIntoNumber(event, container) {
   const timerStartButton = document.getElementById("timer-start");
   timerStartButton.value = "on";
+  
   if (event.target === inputContainers[0]) {
-    let inputValue = parseFloat(container.value);
-    if (inputValue > 59 || inputValue < 0) {
-      rejectInput(container);
-    }
-    const selectedNumber = document.getElementById(`h${inputValue}`);
-    selectedNumber.scrollIntoView({ behavior: "smooth", block: "center" });
-    container.value = "";
-    timer.hours = inputValue;
-    timerStyles();
-    renderTimerDisplay(container);
-
-    if(timer.hours === 0 && timer.minutes === 0 && timer.seconds === 0) {
-      disableButtons()
-    } else {
-      enableButtons();
-    }
+    innerScrollNumber("hours", container);
 
   } else if (event.target === inputContainers[1]) {
-    let inputValue = parseFloat(container.value);
-    if (inputValue > 59 || inputValue < 0) {
-      rejectInput(container);
-    }
-    const selectedNumber = document.getElementById(`m${inputValue}`);
-    selectedNumber.scrollIntoView({ behavior: "smooth", block: "center" });
-    timer.minutes = inputValue;
-    container.value = "";
-    timerStyles();
-    renderTimerDisplay(container);
-
-    if(timer.hours === 0 && timer.minutes === 0 && timer.seconds === 0) {
-      disableButtons()
-    } else {
-      enableButtons();
-    }
+    innerScrollNumber("minutes", container);
 
   } else {
-    let inputValue = parseFloat(container.value);
-    if (inputValue > 59 || inputValue < 0) {
-      rejectInput(container);
-    }
-    const selectedNumber = document.getElementById(`s${inputValue}`);
-    selectedNumber.scrollIntoView({ behavior: "smooth", block: "center" });
-    timer.seconds = inputValue;
-    container.value = "";
-    timerStyles();
-    renderTimerDisplay(container);
-
-    if(timer.hours === 0 && timer.minutes === 0 && timer.seconds === 0) {
-      disableButtons()
-    } else {
-      enableButtons();
-    }
+    innerScrollNumber("seconds", container);
   }
 }
 
@@ -117,7 +74,7 @@ export function handleUserInteractionsWithTimer() {
   });
   $("#timer-soundpicker").on("click", () => {
     toggleModalBox("on");
-    getSavedSound()
+    getSavedSound();
   });
   $(".modal-container").on("click", (event) => {
     if ($(event.target).is($(".modal-container"))) {
@@ -126,7 +83,7 @@ export function handleUserInteractionsWithTimer() {
   });
   $(".modal-content").on("click", (event) => {
     toggleSound(event);
-    playSound(event)
+    playSound(event);
   });
 }
 
@@ -192,9 +149,9 @@ function handleTimerReset() {
   renderTimerView();
   timerStyles();
   clearInterval(timerInterval);
-  selectedHoursNumber.scrollIntoView({block: "center"});
-  selectedMinutesNumber.scrollIntoView({block: "center"});
-  selectedSecondsNumber.scrollIntoView({block: "center"});
+  selectedHoursNumber.scrollIntoView({ block: "center" });
+  selectedMinutesNumber.scrollIntoView({ block: "center" });
+  selectedSecondsNumber.scrollIntoView({ block: "center" });
 }
 
 function timerCountdown() {
@@ -214,14 +171,14 @@ function timerCountdown() {
     }
     if (hours === 0 && minutes === 0 && seconds === 0 && countdown === "on") {
       handleTimerReset();
-      soundOnCountdownEnd()
+      soundOnCountdownEnd();
     }
     renderTimerView();
   }, 1000);
 }
 
 // View
-function renderTimerDisplay(container) {
+export function renderTimerDisplay(container) {
   timerDisplay.style.animation = "update-opacity 1s linear";
   container.setAttribute("readonly", true);
   setTimeout(() => {
