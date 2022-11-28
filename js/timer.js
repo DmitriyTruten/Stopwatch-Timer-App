@@ -175,9 +175,9 @@ function handleTimerReset() {
   renderTimerView();
   timerStyles();
   clearInterval(timerInterval);
-  selectedHoursNumber.scrollIntoView();
-  selectedMinutesNumber.scrollIntoView();
-  selectedSecondsNumber.scrollIntoView();
+  selectedHoursNumber.scrollIntoView({block: "center"});
+  selectedMinutesNumber.scrollIntoView({block: "center"});
+  selectedSecondsNumber.scrollIntoView({block: "center"});
 }
 
 function timerCountdown() {
