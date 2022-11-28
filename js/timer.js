@@ -202,7 +202,6 @@ function timerCountdown() {
       soundOnCountdownEnd()
     }
     renderTimerView();
-    console.log(timer);
   }, 1000);
 }
 

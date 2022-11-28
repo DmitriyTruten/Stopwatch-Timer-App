@@ -32,7 +32,7 @@ export function playSound(event) {
 }
 
 export function soundOnCountdownEnd() {
-  const selectedSoundID = document.getElementsByClassName("sound active")[0].id;
+  const selectedSoundID = localStorage.getItem("savedSound")
   switch (selectedSoundID) {
     case "correct":
       new Audio(sounds.correct).play();
