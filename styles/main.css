@@ -247,7 +247,6 @@ input:checked + .slider:before {
   align-items: center;
   border-radius: 50%;
   border: none;
-  cursor: pointer;
   background-color: rgb(255, 255, 255);
 }
 .button-container .start,
@@ -417,6 +416,10 @@ input:checked + .slider:before {
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
+  cursor: pointer;
+}
+.modal-content div input {
+  cursor: pointer;
 }
 
 .active {

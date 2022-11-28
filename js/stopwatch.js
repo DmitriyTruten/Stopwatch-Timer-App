@@ -1,6 +1,7 @@
 import { $toggleSwitchSlider } from "./toggleSwitch.js";
 import { timerStyles } from "./helpers/timerStyles.js";
 import { fillingNumbers } from "./helpers/fillingNumbers.js";
+import { listenCursor } from "./helpers/listenCursor.js";
 import * as timer from "./timer.js";
 
 $(document).ready(() => {
@@ -325,6 +326,7 @@ function renderStopWatch() {
 }
 
 timerStyles();
+listenCursor();
 fillingNumbers();
 renderStopWatch();
 timer.numberPicker();
