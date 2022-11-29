@@ -47,11 +47,9 @@
       <div class="stopwatch-container">
         <div class="segment-container" id="segment-container"></div>
         <div class="button-container">
-          <button class="reset" id="reset" onmousedown="changeBackgroundColor('reset')" onmouseup="resetTransparent()"
-            disabled></button>
+          <button class="reset" id="reset" disabled></button>
           <button class="start" id="start" value="null"></button>
-          <button class="segment" id="segment" value="off" onmousedown="changeBackgroundColor('segment')"
-            onmouseup="resetTransparent()" disabled></button>
+          <button class="segment" id="segment" value="off" disabled></button>
         </div>
       </div>
     </div>
@@ -86,53 +84,15 @@
 
         </div>
         <div class="timer-button-container">
-          <button class="timer-reset" id="timer-reset" onmousedown="changeBackgroundColor('timer-reset')"
-            onmouseup="resetTransparent()" disabled></button>
+          <button class="timer-reset" id="timer-reset" disabled></button>
           <button class="timer-start" id="timer-start" value="off" disabled></button>
-          <button class="timer-soundpicker" id="timer-soundpicker"
-            onmousedown="changeBackgroundColor('timer-soundpicker')" onmouseup="resetTransparent()"></button>
+          <button class="timer-soundpicker" id="timer-soundpicker"></button>
         </div>
       </div>
     </div>
   </div>
   <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
-  <script>
-    const toggleSwitchSlider = document.getElementById("toggle");
-    function changeBackgroundColor(value) {
-      if (toggleSwitchSlider.value === 'light') {
-        if (value === 'reset') {
-          $("#reset").css("background-color", "rgb(211, 211, 211)")
-        } else if (value === 'timer-reset') {
-          $("#timer-reset").css("background-color", "rgb(211, 211, 211)")
-        } else if (value === 'timer-soundpicker') {
-          $("#timer-soundpicker").css("background-color", "rgb(211, 211, 211)")
-        }
-        else {
-          $("#segment").css("background-color", "rgb(211, 211, 211)")
-        }
-
-      } else {
-        if (value === 'reset') {
-          $("#reset").css("background-color", "rgb(70, 70, 70)")
-        } else if (value === 'timer-reset') {
-          $("#timer-reset").css("background-color", "rgb(70, 70, 70)")
-        } else if(value === 'timer-soundpicker') {
-          $("#timer-soundpicker").css("background-color", "rgb(70, 70, 70)")
-        } else {
-          $("#segment").css("background-color", "rgb(70, 70, 70)")
-        }
-        
-      }
-    }
-    function resetTransparent() {
-      $("#reset").css("background-color", "transparent")
-      $("#segment").css("background-color", "transparent")
-      $("#timer-reset").css("background-color", "transparent")
-      $("#timer-soundpicker").css("background-color", "transparent")
-    }
-  </script>
   <script type="module" src="/Stopwatch-App/js/stopwatch.js"></script>
-  <!-- <script src="./js/helpers/playSound.js"></script> -->
 </body>
 
 </html>

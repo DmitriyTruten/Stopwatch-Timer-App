@@ -1,13 +1,8 @@
+import { fillingNumbers } from "./helpers/fillingNumbers.js";
 import { $toggleSwitchSlider } from "./toggleSwitch.js";
 import { timerStyles } from "./helpers/timerStyles.js";
-import { fillingNumbers } from "./helpers/fillingNumbers.js";
+import { toggleButtonBackground } from "./helpers/toggleButtonBackground.js";
 import * as timer from "./timer.js";
-
-$(document).ready(() => {
-  $(".segment").on("click", () => {
-    $(".segment-div").css("border-bottom", "1px solid");
-  });
-});
 
 // Model
 // Creating model of stopwatch object
@@ -35,7 +30,7 @@ let segmentCounter = 0;
 // Get access for buttons and adding EventListener
 const startButton = document.getElementById("start");
 startButton.innerHTML = "<img src='images/play.png'>";
-startButton.style.cursor = 'pointer'
+startButton.style.cursor = "pointer";
 startButton.addEventListener("click", StartCountdown);
 
 const resetButton = document.getElementById("reset");
@@ -67,8 +62,8 @@ function StartCountdown() {
     resetButton.innerHTML =
       "<img style='opacity: 0.5;' src='images/undo-black.png'>";
     line.style.animation = "circle 60.5s linear infinite";
-    segmentButton.style.cursor = "pointer"
-    resetButton.style.color = 'default'
+    segmentButton.style.cursor = "pointer";
+    resetButton.style.color = "default";
     handleCountdown("stopWatch");
 
     // If segmentButton is pressed then start the countdown for copied stopwatch object(segmentStopWatch)
@@ -76,7 +71,7 @@ function StartCountdown() {
       handleCountdown("segment");
     }
 
-    if (toggleSwitchSlider.value === "dark") {
+    if ($toggleSwitchSlider.val() === "dark") {
       segmentButton.innerHTML =
         "<img style='opacity: 1;' src='images/stopwatch-white.png'>";
       resetButton.innerHTML =
@@ -106,8 +101,8 @@ function handleWaitingForPause() {
   resetButton.disabled = false;
   startButton.innerHTML = "<img src='images/play.png'>";
   line.style.animationPlayState = "paused";
-  segmentButton.style.cursor = "default"
-  resetButton.style.cursor = 'pointer'
+  segmentButton.style.cursor = "default";
+  resetButton.style.cursor = "pointer";
   clearInterval(interval);
   clearInterval(segmentInterval);
   if ($toggleSwitchSlider.val() === "dark") {
@@ -283,7 +278,7 @@ function resetSegmentStopWatch() {
 function resetCountdown() {
   const segmentContainer = document.getElementById("segment-container");
   const { waitingForPause } = stopWatch;
-  if (toggleSwitchSlider.value === "dark") {
+  if ($toggleSwitchSlider.val() === "dark") {
     resetButton.innerHTML =
       "<img style='opacity: 0.5;' src='images/undo-white.png'>";
   } else {
@@ -299,7 +294,7 @@ function resetCountdown() {
     segmentContainer.innerHTML = "";
     segmentContainer.classList.remove("reveal-scrollbar");
     resetButton.disabled = true;
-    resetButton.style.cursor = 'default';
+    resetButton.style.cursor = "default";
     resetStopWatch();
     resetSegmentStopWatch();
   }
@@ -332,6 +327,7 @@ function renderStopWatch() {
 timerStyles();
 fillingNumbers();
 renderStopWatch();
+toggleButtonBackground()
 timer.numberPicker();
 timer.renderTimerView();
 timer.handleUserInteractionsWithTimer();
