@@ -121,6 +121,7 @@ input:checked + .slider:before {
     height: 100px;
     margin: 0px 10px;
     border-radius: 10px;
+    box-shadow: inset 0px 0px 30px 15px rgb(255, 255, 255);
     user-select: none;
     overflow: hidden;
     scrollbar-width: none;
@@ -129,7 +130,9 @@ input:checked + .slider:before {
       display: none;
     }
     input {
-      font-size: 45px;
+      position: relative;
+      z-index: -1;
+      font-size: 35px;
       text-align: center;
       color: black;
       border: none;

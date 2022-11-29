@@ -164,6 +164,7 @@ input:checked + .slider:before {
   height: 100px;
   margin: 0px 10px;
   border-radius: 10px;
+  box-shadow: inset 0px 0px 30px 15px rgb(255, 255, 255);
   -webkit-user-select: none;
      -moz-user-select: none;
       -ms-user-select: none;
@@ -176,7 +177,9 @@ input:checked + .slider:before {
   display: none;
 }
 .timer-picker-container #number input {
-  font-size: 45px;
+  position: relative;
+  z-index: -1;
+  font-size: 35px;
   text-align: center;
   color: black;
   border: none;
