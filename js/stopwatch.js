@@ -1,7 +1,6 @@
 import { $toggleSwitchSlider } from "./toggleSwitch.js";
 import { timerStyles } from "./helpers/timerStyles.js";
 import { fillingNumbers } from "./helpers/fillingNumbers.js";
-import { listenCursor } from "./helpers/listenCursor.js";
 import * as timer from "./timer.js";
 
 $(document).ready(() => {
@@ -36,6 +35,7 @@ let segmentCounter = 0;
 // Get access for buttons and adding EventListener
 const startButton = document.getElementById("start");
 startButton.innerHTML = "<img src='images/play.png'>";
+startButton.style.cursor = 'pointer'
 startButton.addEventListener("click", StartCountdown);
 
 const resetButton = document.getElementById("reset");
@@ -61,13 +61,14 @@ function StartCountdown() {
     stopWatch.waitingForPause = true;
     stopWatch.countdown = "on";
     stopWatch.wasOn = true;
-    resetButton.disabled = true;
     startButton.value = "on";
     startButton.innerHTML =
       "<img style='margin-left: 0px;' src='images/pause.png'>";
     resetButton.innerHTML =
       "<img style='opacity: 0.5;' src='images/undo-black.png'>";
     line.style.animation = "circle 60.5s linear infinite";
+    segmentButton.style.cursor = "pointer"
+    resetButton.style.color = 'default'
     handleCountdown("stopWatch");
 
     // If segmentButton is pressed then start the countdown for copied stopwatch object(segmentStopWatch)
@@ -105,6 +106,8 @@ function handleWaitingForPause() {
   resetButton.disabled = false;
   startButton.innerHTML = "<img src='images/play.png'>";
   line.style.animationPlayState = "paused";
+  segmentButton.style.cursor = "default"
+  resetButton.style.cursor = 'pointer'
   clearInterval(interval);
   clearInterval(segmentInterval);
   if ($toggleSwitchSlider.val() === "dark") {
@@ -296,6 +299,7 @@ function resetCountdown() {
     segmentContainer.innerHTML = "";
     segmentContainer.classList.remove("reveal-scrollbar");
     resetButton.disabled = true;
+    resetButton.style.cursor = 'default';
     resetStopWatch();
     resetSegmentStopWatch();
   }
@@ -326,7 +330,6 @@ function renderStopWatch() {
 }
 
 timerStyles();
-listenCursor();
 fillingNumbers();
 renderStopWatch();
 timer.numberPicker();
