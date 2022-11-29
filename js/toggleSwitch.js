@@ -30,7 +30,7 @@ export function toggleSwitch() {
         "<img style='opacity: 1;' src='images/bell-white.png'>"
       );
     });
-    $(document.body).css("background-color", "rgba(0, 0, 0, 0.8)");
+    $(document.body).css("background-color", "rgba(25, 25, 25)");
     $stopWatchDisplay.css("background-color", "transparent");
     $segmentDisplay.css("background-color", "transparent");
     $segmentButton.css("background-color", "transparent");
@@ -47,11 +47,14 @@ export function toggleSwitch() {
       borderColor: "white",
       color: "white",
     });
-    $(".input-container").children().addClass("white-placeholder");
+    $(".input-container").children().addClass("light-placeholder");
+    $(".input-container").children().removeClass("dark-placeholder");
+    $(".number-container").addClass("white-colon")
+    $(".number-container").removeClass("black-colon")
 
     numbers.forEach((number) => {
       $(number).css({
-        border: "2px solid white",
+        boxShadow: "inset 0px 0px 30px 15px rgb(25, 25, 25)",
       });
       $(number).children().css({
         color: "white",
@@ -113,11 +116,14 @@ export function toggleSwitch() {
       borderColor: "gray",
       color: "black",
     });
-    $(".input-container").children().removeClass("white-placeholder");
+    $(".input-container").children().removeClass("light-placeholder");
+    $(".input-container").children().addClass("dark-placeholder");
+    $(".number-container").addClass("black-colon")
+    $(".number-container").removeClass("white-colon")
 
     numbers.forEach((number) => {
       $(number).css({
-        border: "2px solid gray",
+        boxShadow: "inset 0px 0px 30px 15px  rgb(255, 255, 255)",
       });
       $(number).children().css({
         color: "black",

@@ -171,7 +171,7 @@ input:checked + .slider:before {
           user-select: none;
   overflow: hidden;
   scrollbar-width: none;
-  transition: border-color 0.5s ease-in-out;
+  transition: box-shadow 0.5s ease-in-out;
 }
 .timer-picker-container #number::-webkit-scrollbar {
   display: none;
@@ -222,8 +222,14 @@ input:checked + .slider:before {
   outline: none;
 }
 
-.white-placeholder::-webkit-input-placeholder {
+.light-placeholder::-webkit-input-placeholder {
   color: rgb(173, 173, 173);
+  -webkit-transition: color 0.5s ease-in-out;
+  transition: color 0.5s ease-in-out;
+}
+
+.dark-placeholder::-webkit-input-placeholder {
+  color: grey;
   -webkit-transition: color 0.5s ease-in-out;
   transition: color 0.5s ease-in-out;
 }
@@ -435,6 +441,18 @@ input:checked + .slider:before {
   position: absolute;
   top: 17%;
   right: 30%;
+}
+
+.white-colon::before,
+.white-colon::after {
+  color: white;
+  transition: color 0.5s ease-in-out;
+}
+
+.black-colon::before,
+.black-colon::after {
+  color: black;
+  transition: color 0.5s ease-in-out;
 }
 
 .active {

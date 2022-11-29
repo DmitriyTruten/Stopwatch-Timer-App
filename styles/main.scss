@@ -125,7 +125,7 @@ input:checked + .slider:before {
     user-select: none;
     overflow: hidden;
     scrollbar-width: none;
-    transition: $transition-border-color;
+    transition: $transition-box-shadow;
     &::-webkit-scrollbar {
       display: none;
     }
@@ -170,8 +170,13 @@ input:checked + .slider:before {
   }
 }
 
-.white-placeholder::-webkit-input-placeholder {
+.light-placeholder::-webkit-input-placeholder {
   color: rgb(173, 173, 173);
+  transition: $transition-color;
+}
+
+.dark-placeholder::-webkit-input-placeholder {
+  color: grey;
   transition: $transition-color;
 }
 
@@ -362,6 +367,18 @@ input:checked + .slider:before {
   position: absolute;
   top: 17%;
   right: 30%;
+}
+
+.white-colon::before,
+.white-colon::after {
+  color: white;
+  transition: $transition-color
+}
+
+.black-colon::before,
+.black-colon::after {
+  color: black;
+  transition: $transition-color
 }
 
 

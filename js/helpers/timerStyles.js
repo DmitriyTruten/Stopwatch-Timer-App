@@ -81,10 +81,10 @@ export function timerStyles() {
     }
     numberContainersArray.forEach((container) => {
       container.first().css({
-        marginTop: 25,
+        marginTop: 35,
       });
       container.last().css({
-        marginBottom: 50,
+        marginBottom: 30,
       });
     });
   });
