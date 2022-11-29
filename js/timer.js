@@ -106,7 +106,7 @@ function handleTimerStart() {
         opacity: 0,
       });
       $(".timer-reset").prop("disabled", false);
-    }, 1000);
+    }, 990);
   } else if (!waitingForStart) {
     clearInterval(timerInterval);
     timer.countdown = "off";

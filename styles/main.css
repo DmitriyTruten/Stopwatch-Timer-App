@@ -431,7 +431,7 @@ input:checked + .slider:before {
   content: ":";
   font-size: 45px;
   position: absolute;
-  top: 17%;
+  top: 16%;
   left: 30%;
 }
 
