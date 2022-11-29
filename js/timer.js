@@ -4,9 +4,7 @@ import {
   formatSeconds,
 } from "./helpers/formatNumbers.js";
 import { timerStyles } from "./helpers/timerStyles.js";
-import { enableButtons, disableButtons } from "./helpers/enableButtons.js";
 import { toggleModalBox } from "./helpers/toggleModalBox.js";
-import { rejectInput } from "./helpers/rejectInput.js";
 import { toggleSound, getSavedSound } from "./helpers/toggleSound.js";
 import { playSound, soundOnCountdownEnd } from "./helpers/playSound.js";
 import { innerScrollNumber } from "./helpers/innerScrollNumber.js";
@@ -52,14 +50,14 @@ export function numberPicker() {
 
 function scrollIntoNumber(event, container) {
   const timerStartButton = document.getElementById("timer-start");
+  if(container.value === '') {
+    return
+  }
   timerStartButton.value = "on";
-  
   if (event.target === inputContainers[0]) {
     innerScrollNumber("hours", container);
-
   } else if (event.target === inputContainers[1]) {
     innerScrollNumber("minutes", container);
-
   } else {
     innerScrollNumber("seconds", container);
   }

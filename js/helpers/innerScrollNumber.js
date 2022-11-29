@@ -2,6 +2,7 @@ import { timer } from "../timer.js";
 import { renderTimerDisplay } from "../timer.js";
 import { timerStyles } from "./timerStyles.js";
 import { enableButtons, disableButtons } from "./enableButtons.js";
+import { rejectInput } from "./rejectInput.js";
 
 export function innerScrollNumber(value, container) {
   let inputValue = parseFloat(container.value);
