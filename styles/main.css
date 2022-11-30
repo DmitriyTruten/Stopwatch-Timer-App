@@ -57,8 +57,13 @@
   box-sizing: border-box;
 }
 
+html {
+  width: 200vw;
+}
+
 body {
   transition: background-color 0.5s ease-in-out;
+  overflow-x: scroll;
 }
 
 .switch-container {
@@ -134,14 +139,14 @@ input:checked + .slider:before {
   display: flex;
   justify-content: center;
   position: absolute;
-  left: 20%;
+  left: calc(50% - 165px);
 }
 
 .right-container {
   display: flex;
   justify-content: center;
   position: absolute;
-  right: 20%;
+  left: calc(150% - 165px);
 }
 
 .stopwatch-container,
