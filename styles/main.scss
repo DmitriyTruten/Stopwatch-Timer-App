@@ -14,11 +14,11 @@
 
 html {
   width: 200vw;
+  overflow-x: hidden;
 }
 
 body {
   transition: $transition-background-color;
-  overflow-x: scroll;
 }
 
 // Toggle Switch settings
@@ -393,7 +393,8 @@ input:checked + .slider:before {
   border-radius: 20px;
 }
 
-.scroll-to-left {
+.scroll-to-left-button,
+.scroll-to-right-button {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -401,24 +402,20 @@ input:checked + .slider:before {
   width: 30px;
   top: 0;
   bottom: 0;
-  left: 0;
+  z-index: 1;
+  background-color: transparent;
+  border: none;
   img {
-    height: 30px;
+    height: 40px;
   }
 }
 
-.scroll-to-right {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: fixed;
-  width: 30px;
-  top: 0;
-  bottom: 0;
+.scroll-to-left-button {
+  left: 0;
+}
+
+.scroll-to-right-button {
   right: 0;
-  img {
-    height: 30px;
-  }
 }
 
 // Animations
