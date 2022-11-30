@@ -1,5 +1,6 @@
 import { timer } from "../timer.js";
 
+// Formats timer display
 export function formatHours() {
   const { hours } = timer;
   if (hours < 10) {

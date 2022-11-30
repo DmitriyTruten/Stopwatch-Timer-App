@@ -1,3 +1,4 @@
+// Generates numbers to fill numbers containers
 export function fillingNumbers() {
   let value
   for (let i = 0; i < 60; i++) {

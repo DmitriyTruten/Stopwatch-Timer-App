@@ -1,3 +1,4 @@
+// Object contains paths to sounds
 export const sounds = {
   correct: "./sounds/correct.wav",
   happy: "./sounds/happy.wav",
@@ -6,6 +7,7 @@ export const sounds = {
   uplifting: "./sounds/uplifting.wav",
 };
 
+// Creats Audio object and plays the sound, based on event target ID
 export function playSound(event) {
   switch (event.target.id) {
     case "correct":
@@ -31,8 +33,10 @@ export function playSound(event) {
   }
 }
 
+/* Gets saved sound from the localStorage 
+and plays it at the end of the countdown */
 export function soundOnCountdownEnd() {
-  const selectedSoundID = localStorage.getItem("savedSound")
+  const selectedSoundID = localStorage.getItem("savedSound");
   switch (selectedSoundID) {
     case "correct":
       new Audio(sounds.correct).play();

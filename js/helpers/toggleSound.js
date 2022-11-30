@@ -1,3 +1,6 @@
+
+/* Checks for selected user sound, adds 'active' class for parent div of target
+and saves that div ID in localStorage */
 export function toggleSound(event) {
   const { target } = event;
   const currentSoundContainer = document.getElementsByClassName("active")[0];
@@ -24,6 +27,7 @@ export function toggleSound(event) {
   }
 }
 
+// Extracts the saved div ID 
 export function getSavedSound() {
   const currentSoundContainer = document.getElementsByClassName("active")[0];
   const savedSound = document.getElementById(

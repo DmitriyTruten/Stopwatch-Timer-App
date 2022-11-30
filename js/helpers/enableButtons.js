@@ -1,3 +1,4 @@
+// Functions changes buttons 'disabled' property depending on timer object
 export function enableButtons() {
   const timerButtonContainerArray = [$("#timer-reset"), $("#timer-start")];
   timerButtonContainerArray.forEach((button) => {

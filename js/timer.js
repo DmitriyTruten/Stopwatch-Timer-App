@@ -18,9 +18,12 @@ export const timer = {
   countdown: "off",
 };
 
+// Create interval storage for timer
 let timerInterval;
 
 // Controller
+
+// Event listener for preventing early scrollIntoView stop 
 $(".input-container").on("keydown", (event) => {
   if (
     event.key === "ArrowRight" ||
@@ -34,6 +37,8 @@ $(".input-container").on("keydown", (event) => {
 
 const inputContainers = document.querySelectorAll("#input-container");
 const timerDisplay = document.getElementById("timer-display");
+
+// Function handle user input
 export function numberPicker() {
   inputContainers.forEach((container) => {
     container.addEventListener("keydown", (event) => {
@@ -48,6 +53,7 @@ export function numberPicker() {
   });
 }
 
+// Distributes scroll in certain number containers  
 function scrollIntoNumber(event, container) {
   if(container.value === '') {
     return
@@ -61,6 +67,7 @@ function scrollIntoNumber(event, container) {
   }
 }
 
+// Contains basic event listeners for interaction with timer
 export function handleUserInteractionsWithTimer() {
   $("#timer-start").on("click", () => {
     handleTimerStart();
@@ -83,6 +90,7 @@ export function handleUserInteractionsWithTimer() {
   });
 }
 
+// Handle timer StartButton state, starts/stops the countdown
 function handleTimerStart() {
   const { waitingForStart } = timer;
   if (waitingForStart) {
@@ -116,6 +124,7 @@ function handleTimerStart() {
   }
 }
 
+// Returns timer into the initial state
 function handleTimerReset() {
   const selectedHoursNumber = document.getElementById("h0");
   const selectedMinutesNumber = document.getElementById("m0");
@@ -150,6 +159,7 @@ function handleTimerReset() {
   selectedSecondsNumber.scrollIntoView({ block: "center" });
 }
 
+// Changes the timer properties and renders it on timer display
 function timerCountdown() {
   timerInterval = setInterval(() => {
     const { hours, minutes, seconds, countdown } = timer;
@@ -174,6 +184,8 @@ function timerCountdown() {
 }
 
 // View
+
+// Render changes, made by user
 export function renderTimerDisplay(container) {
   timerDisplay.style.animation = "update-opacity 1s linear";
   container.setAttribute("readonly", true);
@@ -186,6 +198,7 @@ export function renderTimerDisplay(container) {
   }, 1000);
 }
 
+// Render timer object properties
 export function renderTimerView() {
   $("#timer-display").val(
     formatHours() + ":" + formatMinutes() + ":" + formatSeconds()

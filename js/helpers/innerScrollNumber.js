@@ -4,6 +4,8 @@ import { timerStyles } from "./timerStyles.js";
 import { enableButtons, disableButtons } from "./enableButtons.js";
 import { rejectInput } from "./rejectInput.js";
 
+/* Function changes certain timer property depending on value that it gets
+and scrolls number container into chosen number */
 export function innerScrollNumber(value, container) {
   let inputValue = parseFloat(container.value);
   let selectedNumber;

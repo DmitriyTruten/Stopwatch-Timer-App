@@ -1,6 +1,7 @@
 import { $toggleSwitchSlider } from "../toggleSwitch.js";  
-export function toggleButtonBackground() {
 
+// Changes background color of buttons, depending on light/dark theme
+export function toggleButtonBackground() {
   $("button").mousedown(function () {
     let color;
     if ($toggleSwitchSlider.val() === "light") {

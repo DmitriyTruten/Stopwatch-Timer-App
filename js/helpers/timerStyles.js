@@ -1,6 +1,7 @@
 import { timer } from "../timer.js";
 import { $toggleSwitchSlider } from "../toggleSwitch.js";
 
+// Changes the appearance of timer
 export function timerStyles() {
   $(document).ready(() => {
     const { hours, minutes, seconds } = timer;
