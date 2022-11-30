@@ -377,19 +377,46 @@ input:checked + .slider:before {
 .white-colon::before,
 .white-colon::after {
   color: white;
-  transition: $transition-color
+  transition: $transition-color;
 }
 
 .black-colon::before,
 .black-colon::after {
   color: black;
-  transition: $transition-color
+  transition: $transition-color;
 }
-
 
 .active {
   background-color: lightblue;
   border-radius: 20px;
+}
+
+.scroll-to-left {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  width: 30px;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  img {
+    height: 30px;
+  }
+}
+
+.scroll-to-right {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  width: 30px;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  img {
+    height: 30px;
+  }
 }
 
 // Animations
