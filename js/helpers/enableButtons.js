@@ -3,6 +3,7 @@ export function enableButtons() {
   timerButtonContainerArray.forEach((button) => {
     button.prop("disabled", false);
   });
+  $("#timer-start").val("on")
 }
 
 export function disableButtons() {
@@ -10,4 +11,5 @@ export function disableButtons() {
   timerButtonContainerArray.forEach((button) => {
     button.prop("disabled", true);
   });
+  $("#timer-start").val("off")
 }

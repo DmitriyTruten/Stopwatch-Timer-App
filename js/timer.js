@@ -49,11 +49,9 @@ export function numberPicker() {
 }
 
 function scrollIntoNumber(event, container) {
-  const timerStartButton = document.getElementById("timer-start");
   if(container.value === '') {
     return
   }
-  timerStartButton.value = "on";
   if (event.target === inputContainers[0]) {
     innerScrollNumber("hours", container);
   } else if (event.target === inputContainers[1]) {
