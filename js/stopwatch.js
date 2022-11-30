@@ -2,6 +2,7 @@ import { fillingNumbers } from "./helpers/fillingNumbers.js";
 import { $toggleSwitchSlider } from "./toggleSwitch.js";
 import { timerStyles } from "./helpers/timerStyles.js";
 import { toggleButtonBackground } from "./helpers/toggleButtonBackground.js";
+import { scrollIntoContainers } from "./helpers/scrollIntoContainers.js";
 import * as timer from "./timer.js";
 
 // Model
@@ -328,6 +329,7 @@ timerStyles();
 fillingNumbers();
 renderStopWatch();
 toggleButtonBackground()
+scrollIntoContainers()
 timer.numberPicker();
 timer.renderTimerView();
 timer.handleUserInteractionsWithTimer();

@@ -23,7 +23,9 @@ body {
 
 // Toggle Switch settings
 .switch-container {
-  position: absolute;
+  position: fixed;
+  top: 10px;
+  right: 40px;
 }
 
 /* The switch - the box around the slider */
