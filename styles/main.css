@@ -1,5 +1,13 @@
 @import url("https://fonts.googleapis.com/css2?family=Inconsolata:wght@400;500;600;700&display=swap");
 @media (min-width: 0px) {
+  html {
+    width: 200vw;
+    overflow-x: hidden;
+  }
+  
+  body {
+    transition: background-color 0.5s ease-in-out;
+  }
   .switch-container {
     top: 10px;
     right: 10px;
@@ -55,15 +63,6 @@
   padding: 0;
   font-family: Inconsolata, monospace;
   box-sizing: border-box;
-}
-
-html {
-  width: 200vw;
-  overflow-x: hidden;
-}
-
-body {
-  transition: background-color 0.5s ease-in-out;
 }
 
 .switch-container {
