@@ -10,7 +10,6 @@ export function toggleSound(event) {
       " active",
       ""
     );
-
     if (target.className === "sound") {
       target.className += " active";
       target.querySelector("input").checked = true;
@@ -29,6 +28,10 @@ export function toggleSound(event) {
 
 // Extracts the saved div ID 
 export function getSavedSound() {
+  if(localStorage.getItem("savedSound") === null) {
+    const savedSound = document.getElementsByClassName("active")[0].id
+    localStorage.setItem("savedSound", savedSound)
+  }
   const currentSoundContainer = document.getElementsByClassName("active")[0];
   const savedSound = document.getElementById(
     localStorage.getItem("savedSound")
