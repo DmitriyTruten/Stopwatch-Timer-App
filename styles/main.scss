@@ -12,15 +12,6 @@
   box-sizing: border-box;
 }
 
-html {
-  width: 200vw;
-  overflow-x: hidden;
-}
-
-body {
-  transition: $transition-background-color;
-}
-
 // Toggle Switch settings
 .switch-container {
   position: fixed;

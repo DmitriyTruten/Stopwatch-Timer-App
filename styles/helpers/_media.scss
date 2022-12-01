@@ -1,4 +1,12 @@
 @media (min-width: 0px) {
+  html {
+    width: 200vw;
+    overflow-x: hidden;
+  }
+  
+  body {
+    transition: $transition-background-color;
+  }
   .switch-container {
     top: 10px;
     right: 10px;
