@@ -1,13 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Inconsolata:wght@400;500;600;700&display=swap");
 @media (min-width: 0px) {
-  html {
-    width: 200vw;
-    overflow-x: hidden;
-  }
-  
-  body {
-    transition: background-color 0.5s ease-in-out;
-  }
   .switch-container {
     top: 10px;
     right: 10px;
@@ -21,11 +13,13 @@
   }
   .circle-container {
     min-width: 330px;
+    max-height: 330px;
   }
   .stopwatch-container,
 .timer-container {
     top: 400px;
     min-width: 330px;
+    max-width: 330px;
   }
   .button-container,
 .timer-button-container {
@@ -65,10 +59,22 @@
   box-sizing: border-box;
 }
 
+html {
+  width: 200vw;
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+body {
+  transition: background-color 0.5s ease-in-out;
+  min-height: 100vh;
+}
+
 .switch-container {
   position: fixed;
   top: 10px;
   right: 40px;
+  z-index: 1;
 }
 
 /* The switch - the box around the slider */
@@ -133,21 +139,24 @@ input:checked + .slider:before {
 .whole-container {
   display: flex;
   justify-content: center;
-  align-items: center;
 }
 
 .left-container {
   display: flex;
   justify-content: center;
   position: absolute;
-  left: calc(50% - 165px);
+  width: 100vw;
+  height: 100vh;
+  left: 0;
 }
 
 .right-container {
   display: flex;
   justify-content: center;
   position: absolute;
-  left: calc(150% - 165px);
+  width: 100vw;
+  height: 100vh;
+  right: -100%;
 }
 
 .stopwatch-container,
@@ -169,7 +178,6 @@ input:checked + .slider:before {
   flex-direction: column;
   height: 100px;
   margin: 0px 10px;
-  border-radius: 10px;
   box-shadow: inset 0px 0px 30px 15px rgb(255, 255, 255);
   -webkit-user-select: none;
      -moz-user-select: none;
@@ -238,10 +246,6 @@ input:checked + .slider:before {
   color: grey;
   -webkit-transition: color 0.5s ease-in-out;
   transition: color 0.5s ease-in-out;
-}
-
-.timer-container {
-  max-width: 100%;
 }
 
 .button-container,
