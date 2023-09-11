@@ -11,8 +11,5 @@
 * __CSS/SCSS__
 * __JavaScript (JQuery)__
 ***
-#### _If you want to check or use this app_
-* Follow __Environments > View Deployment__  
-#### _Or_
-* Follow this link [https://dmitriytruten.github.io/Stopwatch-App/](https://dmitriytruten.github.io/Stopwatch-App/)
+* Follow this link [[https://dmytrotruten.github.io/Stopwatch-App/](https://dmytrotruten.github.io/Stopwatch-App/)]
 ***
